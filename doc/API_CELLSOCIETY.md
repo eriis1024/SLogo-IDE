@@ -1,3 +1,5 @@
+Erik Riis (evr4), Dorian Barber (dpb20), Jing Yang (jy201), Kelley Scroggs (jks38)
+
 API Critique
 
 Simulation:
