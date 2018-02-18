@@ -6,28 +6,28 @@ Our group is trying to develop an integrated development environment that suppor
 ## Design Overview
 
 Internal Front-end API:
-+Image view
-+Text field
-+Buttons
++ Image View
++ Text Field
++ Button
 
 The internal front-end API constructs the graphical user interface of a program. It creates buttons and listens to user input events. This api also contains a text field for the user to input commands. Displays errors. 
 
 External Front-end API:
-+User input
-+Button/or other events (ones that are not handled by the front end)
++ User input
++ Button/or other events (ones that are not handled by the front end)
 
 Communicating user input, button events depending on how the specific language is going to be implemented. 
 
 Internal Back-end API:
-+Parsing command
-+User input events
-+Turtle graphics package
++ Parsing command
++ User input events
++ Turtle graphics package
 
 Parses the user input and implements button commands. Implements changes to the graphical interface. 
 
 External Back-end API:
-+Changes in graphic
-+Error checking/other important alerts
++ Changes in graphic
++ Error checking/other important alerts
 
 Sends errors received from the internal back-end up to the front-end which are properly displayed there. Sends changes in graphics to the front end.  
 	
