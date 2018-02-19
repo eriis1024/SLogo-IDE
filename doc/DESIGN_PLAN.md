@@ -41,6 +41,65 @@ Sends errors received from the internal back-end up to the front-end which are p
 
 ## API Details
 
+* **public interface InternalFrontEnd {**
+    * public class WindowView {
+        * Container for the TextField, MenuBar, Console, and ImageView classes
+    * public class TextField {
+        * Shows the history of the user input represented as a list of string, and allows the user to access the history similar as with the command prompt. The most crucial part of the TextField class will have to be the ability to take in a user text input
+    * public class MenuBar {
+ 		* Acts as the container for all the buttons and remains fixed at the top of the JavaFX application window)
+    * public class Buttons {
+    	* May be an override of the traditional Java Button class with additional features such as responsive to size changes)
+    * public class Console {
+        * Will exist to show the user errors from their input. There will also be a feature to hide/show the Console class as it is not a crucial part of the IDE
+    * public class ImageView {
+        * Will represent the plot where the turtle graphics are displayed
+    * public class updateView 
+        * Method that will update the image after every valid user input)
+
+    * How API supports features of project:
+    * What resources API uses:
+    * How API is intended to be used:
+    * How API could be extended to include additional requirements: 
+    * Errors intended to throw:
+
+* **public interface ExternalFrontEnd {**
+	* public class UserInput {
+        *Will acquire all text inputs from the user, if there are any buttons that require the backend to implement the UserInput class will transfer the appropriate information to the backend)
+
+    * How API supports features of project:
+    * What resources API uses:
+    * How API is intended to be used:
+    * How API could be extended to include additional requirements: 
+    * Errors intended to throw:
+
+* **public interface InternalBackEnd {**
+	* public class Parser {
+        * Will hold the actual algorithm related to parsing SLogo inputs, this class will return an instance of one of the Command classes
+	* public class SimpleCommand {
+        * Will be represented by a string and some sort of data point, prospectively an integer value. This will represent a command such as "Forward", 60 -- meaning moving the turtle forward by 60 pixels
+	* public class Command {
+        * Will be used for more complex commands such as for loops, etc
+
+    * How API supports features of project:
+    * What resources API uses:
+    * How API is intended to be used:
+    * How API could be extended to include additional requirements:
+    * Errors intended to throw:
+
+* **public interface ExternalBackEnd {**
+	* public class Result {
+        * Will take in a Command class and apply these changes to an image which will be used to pass to the frontend in ImageView
+	* public class ErrorSender {
+        *Will be able to send errors to the frontend to be displayed by the Console class
+
+    * How API supports features of project:
+    * What resources API uses:
+    * How API is intended to be used:
+    * How API could be extended to include additional requirements: 
+    * Errors intended to throw:
+
+
 ## API Example Code
  * fd 100: forward 100 pixels
  * bd 100: backward 100 pixels
