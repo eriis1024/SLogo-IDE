@@ -36,19 +36,28 @@ Sends errors received from the internal back-end up to the front-end which are p
 ## API Details
 
 ## API Example Code
-fd 100: forward 100 pixels
-bd 100: backward 100 pixels
-lt 90: left-turn 90 degrees
-rt 90: right-turn 90 degrees
-du: drawer unabled
-da: drawer abled
-ht: hide turtle
-st: show turtle
-clear: reset the window
-home: turtle go to default place, without clearing existing paint
-repeat 5-(PROCEDURE): repeat the procedure 5 times
-setX, setY: set the position of the turtle, right and up positive
-setAngle: set the angle of the turtle, horizontal right to be 
+ * fd 100: forward 100 pixels
+ * bd 100: backward 100 pixels
+ * lt 90: left-turn 90 degrees
+ * rt 90: right-turn 90 degrees
+ * du: drawer unabled
+ * da: drawer abled
+ * ht: hide turtle
+ * st: show turtle
+ * clear: reset the window
+ * home: turtle go to default place, without clearing existing paint
+ * repeat (PROCEDURE)/5: repeat the procedure 5 times
+ * setX, setY: set the position of the turtle, right and up positive
+ * setAngle: set the angle of the turtle, horizontal right as zero and counterclockwise as positive
+ * polygon 3: an quilateral triangle, with the first edge drawn towards the current direction of the turtle and following edges going counterclockwise
+ * polygon 10000: a circle instead of a 10000-edge polygon
+ * polygon 6/2: half of a hexagon
+ * [1+1]: arithmetic in [] will be calculated first
+ * polygon [6/2]: an quilateral triangle
+ * save example.txt: save all commands used to generate current graph to a .txt file
+ * saveGraph example.jpg: save the current graph into a .jpg file
+ * load example.txt: load the .txt file to generate a graph
+ * load example.jpg: load the graph
 
 ## Design Considerations
 
