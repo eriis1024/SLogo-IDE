@@ -10,27 +10,33 @@ Our group is trying to develop an integrated development environment that suppor
 + Text Field
 + Button
 
-The internal front-end API constructs the graphical user interface of a program. It creates buttons and listens to user input events. This api also contains a text field for the user to input commands. Displays errors. 
+The internal front-end API constructs the graphical user interface of a program. It creates buttons and listens to user input events. This api also contains a text field for the user to input commands and displays errors. There is a WindowView class which acts as the container for the TextField, MenuBar, Console, and ImageView classes. The TextField class shows the history of the user input represented as a list of string, and allows the user to access the history similar as with the command prompt. The most crucial part of the TextField class will have to be the ability to take in a user text input. The MenuBar class acts as the container for all the buttons and remains fixed at the top of the JavaFX application window. The MenuBar may be replaced by an HBox or contain an HBox as the main structure of it. The Buttons class may be an override of the traditional Java Button class with additional features such as responsive to size changes. The Console class will exist to show the user errors from their input. There will also be a feature to hide/show the Console class as it is not a crucial part of the IDE. The ImageView class will represent the plot where the turtle graphics are displayed. There will also be an updateView method that will update the image after every valid user input. 
 
 *External Front-end API:*
 + User input
 + Button/or other events (ones that are not handled by the front end)
 
-Communicating user input, button events depending on how the specific language is going to be implemented. 
+Communicating user input, button events depending on how the specific language is going to be implemented. There will be a UserInput class that will acquire all text inputs from the user. If there are any buttons that require the backend to implement the UserInput class will transfer the appropriate information to the backend. 
 
 *Internal Back-end API:*
 + Parsing command
 + User input events
 + Turtle graphics package
 
-Parses the user input and implements button commands. Implements changes to the graphical interface. 
+Parses the user input and implements button commands. Implements changes to the graphical interface. There will be a Parser class that will hold the actual algorithm related to parsing SLogo inputs, this class will return an instance of one of the Command classes. It is still unclear if all possible commands will be represented in the Parser class or in a different holding, more passive class. Regardless there will be SimpleCommand and Command classes. The SimpleCommand class will be represented by a string and some sort of data point, prospectively an integer value. This will represent a command such as "Forward", 60 -- meaning moving the turtle forward by 60 pixels. The Command class will be used for more complex commands such as for loops, etc. There will be a List of SimpleCommands which is the inherent structure behind more complex commands. In both types of Command classes there will a getResult method which can be applied properly to an image. 
 
 *External Back-end API:*
 + Changes in graphic
 + Error checking/other important alerts
 
-Sends errors received from the internal back-end up to the front-end which are properly displayed there. Sends changes in graphics to the front end.  
-	
+Sends errors received from the internal back-end up to the front-end which are properly displayed there. Sends changes in graphics to the front end. There will be a Result class which can take in a Command class and apply these changes to an image which is the image that will be used to pass to the frontend in ImageView. The external backend will also contain the ErrorSender class which will be able to send errors to the frontend to be displayed by the Console class. 
+
+*Related Components:*
+
+![alt text](../doc/Design_Overview.png "Logo Title Text 1")
+
+
+
 ## User Interface
 
 ## API Details
