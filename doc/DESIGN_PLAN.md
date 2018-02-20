@@ -39,6 +39,11 @@ Sends errors received from the internal back-end up to the front-end which are p
 
 ## User Interface
 
+Our program will appear much like a typical IDE. It will be one large rectangular window. The user will be able to adjust the size of this window to their preference, which will adjust everything inside of it accordingly. Inside of the main window there will be a top bar, with buttons like change background color or change language. Below this bar on the left side there will be a window where the user can type in their slogo commands, view their previously entered slogo commands, and an enter button to run the current slogo command that the user has typed into the text field. When the user is typing their current command into the textfield, they will be able to press the up key to access their most recent command, much like how the terminal works. As this window is on the left side, the user will be able to expand it by dragging its right edge to the right. To the right of this window will be the main image view, which will contain the slogo graphics, and below that the console, which will output information from the backend to the user. These two windows will be separated from each other by a line that the user will also be able to manipulate, dragging it up or down to adjust the size of both windows concurrently. Erroneous situations that are due to the user typing in bad code will appear as pop-up boxes in the left window where the user enters text.  Other errors that happen after the user's input has already been successfully parsed into text, stack traces or other alerts thrown by the programs operation, will appear in the console window. 
+
+
+![alt text](../doc/UI.JPG "UI Design Drawing")
+
 ## API Details
 
 * **public interface InternalFrontEnd {**
