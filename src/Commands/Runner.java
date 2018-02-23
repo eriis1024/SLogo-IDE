@@ -1,6 +1,6 @@
+package Commands;
 
 import javafx.application.Application;
-import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
@@ -8,6 +8,9 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
+import java.util.ArrayList;
+import java.util.List;
+
 import Movers.Mover;
 import Movers.Turtle;
 
@@ -48,8 +51,10 @@ public class Runner extends Application {
 		commandTextField.setOnKeyPressed(event -> {
 			if (event.getCode() == KeyCode.ENTER) {
 				int dist = Integer.parseInt(commandTextField.getText());
-				TurtleCommand command = new Right(myTurtle, myRoot);
-				command.executeCommand(dist);
+				TurtleCommand command = new Forward(myTurtle, myRoot); //make so you don't need root, MVC design pattern
+				List<Integer> args = new ArrayList<Integer>();
+				args.add(dist);
+				command.executeCommand(args);
 			}
 		});
 
@@ -57,7 +62,9 @@ public class Runner extends Application {
 			if (event.getCode() == KeyCode.ENTER) {
 				int rotate = Integer.parseInt(headingTextField.getText());
 				TurtleCommand command = new SetHeading(myTurtle);
-				command.executeCommand(rotate);
+				List<Integer> args = new ArrayList<Integer>();
+				args.add(rotate);
+				command.executeCommand(args);
 			}
 		});
 

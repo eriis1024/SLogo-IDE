@@ -1,3 +1,5 @@
+package Commands;
+import java.util.List;
 import Movers.Mover;
 
 public class SetHeading implements TurtleCommand {
@@ -8,7 +10,7 @@ private Mover myTurtle;
 	}
 
 	@Override
-	public void executeCommand(double angle) {
-		myTurtle.setAngle(angle);
+	public void executeCommand(List<Integer> args) {
+		myTurtle.setAngle(args.get(0));
 	}
 }
