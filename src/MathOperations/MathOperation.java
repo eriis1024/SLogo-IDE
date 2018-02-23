@@ -1,7 +1,7 @@
-package Commands;
+package MathOperations;
 import java.util.List;
 
-public interface TurtleCommand {
+public interface MathOperation {
 	
 	public void executeCommand(List<Integer> args);
 

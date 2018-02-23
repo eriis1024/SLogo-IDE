@@ -1,5 +1,7 @@
 package Commands;
 
+
+//Temporary runner to test commands
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
@@ -25,12 +27,12 @@ public class Runner extends Application {
 	private Pane myRoot;
 
 	public void start (Stage primaryStage) throws Exception {
-		myScene = setupGame(SIZE, SIZE, BACKGROUND_COLOR);	
+		myScene = setupScene(SIZE, SIZE, BACKGROUND_COLOR);	
 		primaryStage.setScene(myScene);
 		primaryStage.show();
 	}
 
-	private Scene setupGame (int width, int height, Paint background) {
+	private Scene setupScene(int width, int height, Paint background) {
 		myRoot = new Pane();
 		Scene scene = new Scene(myRoot, width, height, background);
 
@@ -51,7 +53,7 @@ public class Runner extends Application {
 		commandTextField.setOnKeyPressed(event -> {
 			if (event.getCode() == KeyCode.ENTER) {
 				int dist = Integer.parseInt(commandTextField.getText());
-				TurtleCommand command = new Forward(myTurtle, myRoot); //make so you don't need root, MVC design pattern
+				TurtleCommand command = new Forward(myTurtle, myRoot); //make so you don't need to specify root
 				List<Integer> args = new ArrayList<Integer>();
 				args.add(dist);
 				command.executeCommand(args);
@@ -61,17 +63,15 @@ public class Runner extends Application {
 		headingTextField.setOnKeyPressed(event -> {
 			if (event.getCode() == KeyCode.ENTER) {
 				int rotate = Integer.parseInt(headingTextField.getText());
-				TurtleCommand command = new SetHeading(myTurtle);
+				TurtleCommand command = new ClearScreen(myTurtle, myRoot);
 				List<Integer> args = new ArrayList<Integer>();
-				args.add(rotate);
+//				args.add(rotate);
 				command.executeCommand(args);
 			}
 		});
-
 		myRoot.getChildren().addAll(commandTextField, headingTextField);
 		return scene;
 	}
-
 
 	/**
 	 * Launches the program

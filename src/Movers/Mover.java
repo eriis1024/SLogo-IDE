@@ -2,8 +2,6 @@ package Movers;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-
-import javafx.geometry.Bounds;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -13,10 +11,10 @@ public class Mover implements MoverInterface {
 	private ImageView myImage;
 	private Line myLine;
 	private Pane myRoot;
+	private boolean penCheck = true;
 	private double lineX = 250;
 	private double lineY = 250;
 	private List<Line> myLines;
-
 
 	public Mover(String imageFilePath, Pane root) {
 		init(0, 0, imageFilePath, root);
@@ -27,19 +25,18 @@ public class Mover implements MoverInterface {
 	}
 
 	public void setCoords(double x, double y) {
-		
-		Bounds bounds = myImage.localToScene(myImage.getBoundsInLocal());
-		System.out.println(bounds);
 		double currX = lineX;
 		double currY = lineY;
-		myLine = drawLine(currX, currY, x, y);
-		myRoot.getChildren().add(myLine);
+		if (penCheck == true) {
+			myLine = drawLine(currX, currY, x, y);
+			myRoot.getChildren().add(myLine);
+		}
 		myImage.setTranslateX(x);
 		myImage.setTranslateY(y);
 		lineX = myImage.getTranslateX();
 		lineY = myImage.getTranslateY();
 	}
-	
+
 	public double getX() {
 		return myImage.getTranslateX();
 	}
@@ -67,6 +64,24 @@ public class Mover implements MoverInterface {
 	@Override
 	public List<Line> getLine(){
 		return myLines;
+	}
+
+	public void PenStatus(boolean status) {
+		penCheck = status;
+	}
+	
+	public void removeImage() {
+		myRoot.getChildren().remove(myImage);
+	}
+	
+	public void addImage() {
+		myRoot.getChildren().add(myImage);
+	}
+	
+	public void removeLines() {
+		for (int i = 0; i < myLines.size(); i++) {
+			myRoot.getChildren().remove(myLines.get(i));
+		}
 	}
 
 	public Line drawLine(double x, double y, double x1, double y1){
