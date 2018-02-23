@@ -1,8 +1,9 @@
 package MathOperations;
 import java.util.List;
 
-public class Quotient {
+public class Quotient implements MathOperation {
 
+	@Override
 	public double executeCommand(List<Integer> args) {
 		double x = args.get(0);
 		double y = args.get(1);

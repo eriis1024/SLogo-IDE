@@ -63,9 +63,9 @@ public class Runner extends Application {
 		headingTextField.setOnKeyPressed(event -> {
 			if (event.getCode() == KeyCode.ENTER) {
 				int rotate = Integer.parseInt(headingTextField.getText());
-				TurtleCommand command = new ClearScreen(myTurtle, myRoot);
+				TurtleCommand command = new SetHeading(myTurtle);
 				List<Integer> args = new ArrayList<Integer>();
-//				args.add(rotate);
+				args.add(rotate);
 				command.executeCommand(args);
 			}
 		});

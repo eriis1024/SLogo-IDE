@@ -11,6 +11,6 @@ private Mover myTurtle;
 
 	@Override
 	public void executeCommand(List<Integer> args) {
-		myTurtle.setAngle(args.get(0));
+		myTurtle.setAngle(myTurtle.getAngle() + args.get(0));
 	}
 }

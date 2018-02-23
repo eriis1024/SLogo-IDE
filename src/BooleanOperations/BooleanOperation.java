@@ -1,7 +1,7 @@
-package MathOperations;
+package BooleanOperations;
 import java.util.List;
 
-public interface MathOperation {
+public interface BooleanOperation {
 	
 	public double executeCommand(List<Integer> args);
 
