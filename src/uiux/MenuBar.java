@@ -19,5 +19,7 @@ public class MenuBar extends HBox{
 	    for(ToolButton button : buttons) {
 	    	this.getChildren().add(button);
 	    }
+	    
+	    this.getStyleClass().add("toolbar");
 	}
 }

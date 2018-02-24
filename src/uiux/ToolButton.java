@@ -9,13 +9,10 @@ import javafx.scene.image.ImageView;
 public abstract class ToolButton extends Button{
 	protected int prefSize = 50;
 	
-	public ToolButton(String labelName, String path) {
+	public ToolButton(String path) {
+		super();
+		setImage(path);
 		
-		
-		super(labelName);
-		
-		Image icon = new Image(getClass().getResourceAsStream(path));
-		super.setGraphic(new ImageView(icon));
 		
 		this.setPrefSize(prefSize, prefSize);
 		this.setOnAction(new EventHandler<ActionEvent>()
@@ -25,6 +22,17 @@ public abstract class ToolButton extends Button{
 						action();
 					}
 				});
+		
+		this.setStyle("-fx-background-color: slateblue;");
+		//this.getStyleClass().add("toolbutton");
+	}
+	
+	private void setImage(String path) {
+		Image icon = new Image(getClass().getResourceAsStream(path));
+		ImageView iconImage =  new ImageView(icon);
+		iconImage.setFitHeight(prefSize);
+		iconImage.setFitWidth(prefSize);
+		super.setGraphic(iconImage);
 	}
 	
 	public abstract void action();

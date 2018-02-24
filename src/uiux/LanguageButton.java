@@ -2,11 +2,10 @@ package uiux;
 
 public class LanguageButton extends ToolButton{
 	
-	private static final String LABEL = "Languages";
 	private static final String PATH = "../languages.png";
 
 	public LanguageButton() {
-		super(LABEL, PATH);
+		super(PATH);
 	}
 
 	@Override

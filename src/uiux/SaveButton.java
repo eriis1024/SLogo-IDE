@@ -2,11 +2,10 @@ package uiux;
 
 public class SaveButton extends ToolButton{
 	
-	private static final String LABEL = "Save";
 	private static final String PATH = "../save.png";
 	
 	public SaveButton() {
-		super(LABEL, PATH);
+		super(PATH);
 	}
 
 	@Override

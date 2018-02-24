@@ -18,7 +18,6 @@ public class Main extends Application{
 	public void start(Stage primaryStage) throws Exception {
 		Window screen = new Window();
 		
-
 		Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
 		
 		primaryStage.setX(primaryScreenBounds.getMinX());
@@ -27,6 +26,8 @@ public class Main extends Application{
 		primaryStage.setHeight(primaryScreenBounds.getHeight());
 		
 		Scene scene = new Scene(screen);
+		scene.getStylesheets().add("../styleSheet.css");
+		
 		primaryStage.setScene(scene);
 		primaryStage.setTitle(TITLE);
 
