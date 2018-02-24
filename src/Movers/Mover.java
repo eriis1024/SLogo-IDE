@@ -2,15 +2,18 @@ package Movers;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 
+//make this and front end non-dependent on each other (get rid of root in this class, add methods in 
 public class Mover implements MoverInterface {
 	private ImageView myImage;
 	private Line myLine;
 	private Pane myRoot;
+	private boolean imageCheck = true;
 	private boolean penCheck = true;
 	private double lineX = 250;
 	private double lineY = 250;
@@ -70,12 +73,22 @@ public class Mover implements MoverInterface {
 		penCheck = status;
 	}
 	
+	public boolean getPenStatus() {
+		return penCheck;
+	}
+	
 	public void removeImage() {
+		imageCheck = false;
 		myRoot.getChildren().remove(myImage);
 	}
 	
 	public void addImage() {
+		imageCheck = true;
 		myRoot.getChildren().add(myImage);
+	}
+	
+	public boolean getImageStatus() {
+		return imageCheck;
 	}
 	
 	public void removeLines() {

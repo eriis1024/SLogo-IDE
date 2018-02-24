@@ -1,46 +1,34 @@
-package Commands;
 
-
-//Temporary runner to test commands
-import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
-import javafx.stage.Stage;
 import java.util.ArrayList;
 import java.util.List;
 
+import Commands.Forward;
+import Commands.SetHeading;
+import Commands.TurtleCommand;
 import Movers.Mover;
 import Movers.Turtle;
+import Queries.Showing;
+import Queries.TurtleQuery;
 
-public class Runner extends Application {
 
-	public static final int SIZE = 500;
-	public static final Paint BACKGROUND_COLOR = Color.WHITE;
-	public static final String TURTLE_IMAGE = "turtle.png";
+public class TurtleGUI {
 
-	protected Mover myTurtle;
-	private Scene myScene;
+	private Mover myTurtle;
 	private Pane myRoot;
 
-	public void start (Stage primaryStage) throws Exception {
-		myScene = setupScene(SIZE, SIZE, BACKGROUND_COLOR);	
-		primaryStage.setScene(myScene);
-		primaryStage.show();
-	}
-
-	private Scene setupScene(int width, int height, Paint background) {
+	public Scene setupScene(int width, int height, Paint background) {
 		myRoot = new Pane();
 		Scene scene = new Scene(myRoot, width, height, background);
-
-		myTurtle = new Turtle(SIZE/2, SIZE/2, "images/turtle.png", myRoot);
+		myTurtle = new Turtle(250, 250, "images/turtle.png", myRoot);
 
 		TextField commandTextField = new TextField();
 		commandTextField.setMaxSize(100, 20);
-		commandTextField.setPromptText("left");
+		commandTextField.setPromptText("forward");
 		commandTextField.setTranslateY(400);
 		commandTextField.setTranslateX(200);
 
@@ -50,10 +38,18 @@ public class Runner extends Application {
 		headingTextField.setTranslateY(400);
 		headingTextField.setTranslateX(100);
 
+		TextField queryTextField = new TextField();
+		queryTextField.setPromptText("query");
+		queryTextField.setMaxSize(100, 20);
+		queryTextField.setTranslateY(400);
+		queryTextField.setTranslateX(300);
+
+		
+		//how are commands going to be called -> add call method in command interfaces?
 		commandTextField.setOnKeyPressed(event -> {
 			if (event.getCode() == KeyCode.ENTER) {
 				int dist = Integer.parseInt(commandTextField.getText());
-				TurtleCommand command = new Forward(myTurtle, myRoot); //make so you don't need to specify root
+				TurtleCommand command = new Forward(myTurtle, myRoot);
 				List<Integer> args = new ArrayList<Integer>();
 				args.add(dist);
 				command.executeCommand(args);
@@ -69,16 +65,20 @@ public class Runner extends Application {
 				command.executeCommand(args);
 			}
 		});
-		myRoot.getChildren().addAll(commandTextField, headingTextField);
-		return scene;
-	}
+		
+		queryTextField.setOnKeyPressed(event -> {
+			if (event.getCode() == KeyCode.ENTER) {
+				TurtleQuery command = new Showing(myTurtle);
+				List<Integer> args = new ArrayList<Integer>();
+				args.add(1);
+				command.executeCommand(args);
+			}
+		});
+		
 
-	/**
-	 * Launches the program
-	 * @param args
-	 */
-	public static void main (String[] args) {
-		launch(args);
+		
+		myRoot.getChildren().addAll(commandTextField, headingTextField, queryTextField);
+		return scene;
 	}
 }
 
