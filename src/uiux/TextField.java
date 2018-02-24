@@ -1,5 +1,7 @@
 package uiux;
 
-public class TextField {
+import javafx.scene.Node;
 
+public abstract class TextField extends Node{
+	
 }

@@ -1,5 +1,7 @@
 package uiux;
 
-public class MenuBar {
+import javafx.scene.layout.HBox;
+
+public class MenuBar extends HBox{
 
 }
