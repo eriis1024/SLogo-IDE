@@ -1,9 +1,12 @@
 package uiux;
 
 public class SettingsButton extends ToolButton{
-
+	
+	private static final String LABEL = "Settings";
+	private static final String PATH = "../setting.png";
+	
 	public SettingsButton() {
-		super("Setting");
+		super(LABEL, PATH);
 	}
 
 	@Override
