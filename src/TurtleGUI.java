@@ -26,6 +26,8 @@ public class TurtleGUI {
 		Scene scene = new Scene(myRoot, width, height, background);
 		myTurtle = new Turtle(250, 250, "images/turtle.png", myRoot);
 
+		
+		//textfields are just for testing commands
 		TextField commandTextField = new TextField();
 		commandTextField.setMaxSize(100, 20);
 		commandTextField.setPromptText("forward");
@@ -74,8 +76,6 @@ public class TurtleGUI {
 				command.executeCommand(args);
 			}
 		});
-		
-
 		
 		myRoot.getChildren().addAll(commandTextField, headingTextField, queryTextField);
 		return scene;
