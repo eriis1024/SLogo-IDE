@@ -8,7 +8,7 @@ import javafx.scene.layout.BorderPane;
  *
  */
 public class Window extends BorderPane{
-	private MenuBar toolbar;
+	private MenuBar toolbar = new MenuBar();
 	private ConsoleBox console;
 	private TurtleImage result;
 	private TextField compiler;

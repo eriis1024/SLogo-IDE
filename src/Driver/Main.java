@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 import uiux.Window;
 
 public class Main extends Application{
+	private static final String TITLE = "SLogo IDE";
 
 	public static void main (String[] args) {
 		launch(args);
@@ -16,7 +17,7 @@ public class Main extends Application{
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		Window screen = new Window();
-		primaryStage.setScene(new Scene(screen));
+		
 
 		Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
 		
@@ -24,6 +25,10 @@ public class Main extends Application{
 		primaryStage.setY(primaryScreenBounds.getMinY());
 		primaryStage.setWidth(primaryScreenBounds.getWidth());
 		primaryStage.setHeight(primaryScreenBounds.getHeight());
+		
+		Scene scene = new Scene(screen);
+		primaryStage.setScene(scene);
+		primaryStage.setTitle(TITLE);
 
 		primaryStage.show();
 	}
