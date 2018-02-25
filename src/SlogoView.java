@@ -2,6 +2,7 @@ import java.awt.Dimension;
 import java.util.ResourceBundle;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
+import uiux.ImageWindow;
 
 public class SlogoView {
 	// constants
@@ -32,7 +33,7 @@ public class SlogoView {
     	BorderPane root = new BorderPane();
     	// TODO: eventually change this from method to new class
     	
-    	SlogoImageWindow myCenterElement = new SlogoImageWindow(root);
+    	ImageWindow myCenterElement = new ImageWindow(root);
     	SlogoTerminal myLeftElement = new SlogoTerminal(root, myCenterElement);
   
     	

@@ -51,7 +51,6 @@ public class Terminal{
 		
 		Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
 		result.setPrefWidth(primaryScreenBounds.getWidth()/2);
-		
 		//Creates an enter button -- still debating on whether to use
 		//result.getChildren().add(makeButton("Enter", event -> passTextInput()));
 		
