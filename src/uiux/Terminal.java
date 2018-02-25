@@ -1,36 +1,35 @@
+package uiux;
+
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Screen;
 
 /*
  * 	Class to represent slogo terminal.
  *  This is an area of the program with a textbox that the user can type commands into.
  *	The program will list the previous commands for the user to see. 
  */
-public class SlogoTerminal {
+public class Terminal{
 	
-	private BorderPane myRoot;
 	private Node myNode;
 	private TextField myTextField;
 	private ObservableList<String> myPrevCommands;
-	private SlogoImageWindow myView;
 
 	/*
 	 * Sets the value of myNode to a node with a text field, enter button, and list
 	 * of previously entered commands.
 	 */
-	public SlogoTerminal(BorderPane root, SlogoImageWindow myCenterElement) {
-		myRoot = root;
-		myView = myCenterElement;
+	public Terminal() {
 		myNode = makeTurtleTerminal();
-		myRoot.setLeft(this.getSlogoTerminal());
 	}
 
 	/*
@@ -49,8 +48,15 @@ public class SlogoTerminal {
 		VBox result = new VBox();
 		result.getChildren().add(makeHistoryTable());
 		result.getChildren().add(makeInputField(40, event -> passTextInput()));
-		result.getChildren().add(makeButton("Enter", event -> passTextInput()));
+		
+		Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
+		result.setPrefWidth(primaryScreenBounds.getWidth()/2);
+		
+		//Creates an enter button -- still debating on whether to use
+		//result.getChildren().add(makeButton("Enter", event -> passTextInput()));
+		
 		return result;
+		
 	}
 	
 	/*
@@ -62,17 +68,7 @@ public class SlogoTerminal {
 		list.setItems(myPrevCommands);
 		return list;
 	}
-	/*
-	 * makes enter button.
-	 */
-	// makeButton function code taken from webbrowser example
-	// makes a button using either an image or a label
-	private Button makeButton(String property, EventHandler<ActionEvent> handler) {
-		Button result = new Button();
-		result.setText(property);
-		result.setOnAction(handler);
-		return result;
-	}
+	
 	/*
 	 * Makes input text field.
 	 */
@@ -92,9 +88,21 @@ public class SlogoTerminal {
 	public String passTextInput() {
 		String retString = myTextField.getText();
 		myPrevCommands.add(retString);
-		myView.updateScreen();
 		myTextField.clear();
 		return retString;
 	}
-
+	
+	
+	/*
+	 * makes enter button.
+	 */
+	// makeButton function code taken from webbrowser example
+	// makes a button using either an image or a label
+	private Button makeButton(String property, EventHandler<ActionEvent> handler) {
+		Button result = new Button();
+		result.setText(property);
+		result.setOnAction(handler);
+		return result;
+	}
+	
 }

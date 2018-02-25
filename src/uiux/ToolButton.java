@@ -30,8 +30,8 @@ public abstract class ToolButton extends Button{
 		path = "../button-images/" + path;
 		Image icon = new Image(getClass().getResourceAsStream(path));
 		ImageView iconImage =  new ImageView(icon);
-		//iconImage.setFitHeight(prefSize);
-		//iconImage.setFitWidth(prefSize);
+		iconImage.setFitHeight(prefSize);
+		iconImage.setFitWidth(prefSize);
 		super.setGraphic(iconImage);
 	}
 	

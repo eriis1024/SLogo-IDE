@@ -26,7 +26,7 @@ public class LanguageButton extends MenuButton{
 	};
 	
 	public LanguageButton() {
-		super("Languages");
+		super();
 		setIcon();
 		this.getStyleClass().add("toolbutton");
 		for(LanguageItem lang : langOptions) {
@@ -37,6 +37,8 @@ public class LanguageButton extends MenuButton{
 	private void setIcon() {
 		Image icon = new Image(getClass().getResourceAsStream(PATH));
 		ImageView iconImage =  new ImageView(icon);
+		iconImage.setFitHeight(30);
+		iconImage.setFitWidth(30);
 		super.setGraphic(iconImage);
 	}
 	

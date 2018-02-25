@@ -1,35 +1,39 @@
 package uiux;
 
-import com.sun.javafx.geom.BaseBounds;
-import com.sun.javafx.geom.transform.BaseTransform;
-import com.sun.javafx.jmx.MXNodeAlgorithm;
-import com.sun.javafx.jmx.MXNodeAlgorithmContext;
-import com.sun.javafx.sg.prism.NGNode;
+import java.util.ArrayList;
+import java.util.List;
 
-public class ConsoleBox extends TextField{
+import javafx.beans.property.SimpleListProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
+import javafx.scene.control.ListView;
 
-	@Override
-	protected boolean impl_computeContains(double arg0, double arg1) {
-		// TODO Auto-generated method stub
-		return false;
+public class ConsoleBox extends ListView<String>{
+	private ObservableList<String> results;
+	private String currentOutput;
+	
+	public ConsoleBox() {
+		super();
+		List<String> list = new ArrayList<String>();
+		results = FXCollections.observableList(list);
+		results.addListener(new ListChangeListener<String>() {
+			@Override
+			public void onChanged(Change<? extends String> change) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 	}
-
-	@Override
-	public BaseBounds impl_computeGeomBounds(BaseBounds arg0, BaseTransform arg1) {
-		// TODO Auto-generated method stub
-		return null;
+	
+	
+	public void findOutput(String systemOutput) {
+		currentOutput = systemOutput;
+		
 	}
-
-	@Override
-	protected NGNode impl_createPeer() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Object impl_processMXNode(MXNodeAlgorithm arg0, MXNodeAlgorithmContext arg1) {
-		// TODO Auto-generated method stub
-		return null;
+	
+	private void updateList() {
+		results.add(currentOutput);
 	}
 
 }

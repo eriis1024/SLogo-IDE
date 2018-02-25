@@ -11,7 +11,7 @@ public class Window extends BorderPane{
 	private MenuBar toolbar = new MenuBar();
 	private ConsoleBox console;
 	private TurtleImage result;
-	private TextField compiler;
+	private Terminal compiler = new Terminal();
 	
 	/**
 	 * Creates a Window class and sets the top section to be the button bar,
@@ -22,7 +22,7 @@ public class Window extends BorderPane{
 	public Window() {
 		super();
 		this.setTop(toolbar);
-		this.setLeft(compiler);
+		this.setLeft(compiler.getSlogoTerminal());
 		this.setBottom(console);
 		this.setCenter(result);
 	}
