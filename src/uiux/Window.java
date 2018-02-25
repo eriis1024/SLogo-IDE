@@ -1,6 +1,8 @@
 package uiux;
 
+import javafx.event.EventHandler;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 /**
  * Compiles all the front-end components together.
@@ -26,11 +28,22 @@ public class Window extends BorderPane{
 		this.setLeft(compiler.getSlogoTerminal());
 		this.setBottom(console);
 		this.setCenter(result.getImageWindow());
-		this.setOnKeyPressed(e -> handleKeyInput(e.getCode()));
+		//this.setOnKeyPressed(e -> handleKeyInput(e.getCode()));
+		this.addEventFilter(KeyEvent.KEY_RELEASED, new EventHandler<KeyEvent>() {
+			@Override
+			public void handle(KeyEvent event) {
+				if(event.getCode() == KeyCode.ENTER) {
+					String res = compiler.getInput();
+					System.out.println(res);
+					console.findOutput(res);
+				}
+			}
+		});
 	}
 	
 	private void handleKeyInput(KeyCode code) {
-		if(code == KeyCode.ENTER) {
+		System.out.println(code);
+		if(code == KeyCode.UP) {
 			System.out.println("hi");
 			String res = compiler.getInput();
 			console.findOutput(res);

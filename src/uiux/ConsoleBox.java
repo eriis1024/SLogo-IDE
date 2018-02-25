@@ -1,11 +1,12 @@
 package uiux;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ListView;
 
 public class ConsoleBox extends ListView<String>{
-	private ObservableList<String> myPrevCommands;
-	private String currentOutput;
+	private ObservableList<String> myPrevCommands = FXCollections.observableArrayList();;
+	private String currentOutput = "";
 	
 	public ConsoleBox(){
 		super();

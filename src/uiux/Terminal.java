@@ -24,7 +24,7 @@ public class Terminal{
 	private TextField myTextField;
 	private ObservableList<String> myPrevCommands;
 	
-	private String input;
+	private String input = "";
 
 	/*
 	 * Sets the value of myNode to a node with a text field, enter button, and list
