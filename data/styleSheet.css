@@ -5,6 +5,7 @@
         linear-gradient(#fafdfe, #e8f5fc),
         linear-gradient(#eaf6fd 0%, #d9f0fc 49%, #bee6fd 50%, #a7d9f5 100%);
 	-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+	-fx-size: 100;
 }
 
 .toolbutton:hover {
