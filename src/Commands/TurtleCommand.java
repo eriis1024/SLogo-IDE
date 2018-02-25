@@ -3,6 +3,6 @@ import java.util.List;
 
 public interface TurtleCommand {
 	
-	public void executeCommand(List<Integer> args);
+	public void executeCommand(Integer[] args);
 
 }
