@@ -33,20 +33,11 @@ public class Window extends BorderPane{
 			@Override
 			public void handle(KeyEvent event) {
 				if(event.getCode() == KeyCode.ENTER) {
+					//TODO: Work this in with the backend to get the desired result
 					String res = compiler.getInput();
-					System.out.println(res);
 					console.findOutput(res);
 				}
 			}
 		});
-	}
-	
-	private void handleKeyInput(KeyCode code) {
-		System.out.println(code);
-		if(code == KeyCode.UP) {
-			System.out.println("hi");
-			String res = compiler.getInput();
-			console.findOutput(res);
-		}
 	}
 }
