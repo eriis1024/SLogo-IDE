@@ -1,6 +1,7 @@
 package language;
 
 public class German extends LanguageItem {
+	
 	private static final String lang = "German";
 	private static final String image = "german.png";
 

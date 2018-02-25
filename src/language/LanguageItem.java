@@ -20,7 +20,7 @@ public abstract class LanguageItem extends MenuItem{
 	}
 	
 	private void setImage(String path) {
-		path = "../flag-icons" + path;
+		path = "../flag-icons/" + path;
 		Image icon = new Image(getClass().getResourceAsStream(path));
 		ImageView iconImage =  new ImageView(icon);
 		super.setGraphic(iconImage);
