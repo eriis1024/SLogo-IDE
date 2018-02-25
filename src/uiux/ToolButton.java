@@ -7,7 +7,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public abstract class ToolButton extends Button{
-	protected int prefSize = 50;
+	protected int prefSize = 30;
 	
 	public ToolButton(String path) {
 		super();
@@ -23,8 +23,7 @@ public abstract class ToolButton extends Button{
 					}
 				});
 		
-		this.setStyle("-fx-background-color: slateblue;");
-		//this.getStyleClass().add("toolbutton");
+		this.getStyleClass().add("toolbutton");
 	}
 	
 	private void setImage(String path) {

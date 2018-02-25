@@ -1,8 +1,21 @@
 .toolbutton {
 	-fx-padding: 10;
-	-fx-background-color: #CCFF99;
+	-fx-background-color: 
+		#3c7fb1,
+        linear-gradient(#fafdfe, #e8f5fc),
+        linear-gradient(#eaf6fd 0%, #d9f0fc 49%, #bee6fd 50%, #a7d9f5 100%);
+	-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+
+.toolbutton:hover {
+	-fx-background-color: #6faad6;
 }
 
 .toolbar {
-	-fx-background-color: #CCFF99;
+	-fx-background-color: 
+	#3c7fb1,
+	linear-gradient(#79bef2, #1f8fe2);
+	-fx-padding: 5;
+	-fx-border-width: 3;
+	-fx-border-color: #436b89;
 }

@@ -26,7 +26,7 @@ public class Main extends Application{
 		primaryStage.setHeight(primaryScreenBounds.getHeight());
 		
 		Scene scene = new Scene(screen);
-		scene.getStylesheets().add("../styleSheet.css");
+		scene.getStylesheets().add("styleSheet.css");
 		
 		primaryStage.setScene(scene);
 		primaryStage.setTitle(TITLE);

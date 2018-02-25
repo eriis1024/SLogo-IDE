@@ -10,11 +10,13 @@ public class MenuBar extends HBox{
 			new LanguageButton()
 	};
 	
+	private static final int PADDING = 10;
+	
 	public MenuBar() {
 		//TODO : Changes these numbers to variables and give them names
-		super(10);
-	    this.setPadding(new Insets(15, 12, 15, 12));
-	    this.setSpacing(10);
+		super(PADDING);
+		//this.setPadding(new Insets(15, 12, 15, 12));
+//	    this.setSpacing(10);
 	    
 	    for(ToolButton button : buttons) {
 	    	this.getChildren().add(button);
