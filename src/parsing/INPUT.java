@@ -1,5 +1,6 @@
 package parsing;
 import java.util.*;
+import java.util.regex.Pattern;
 
 import Commands.*;
 
@@ -14,6 +15,31 @@ public class INPUT {
 		
 		for (int i=0;i<input.length();i++){
 			Command.add(inputDivide[i]);
+		}
+		
+		reconstruct();
+		executor();
+		
+	}
+	
+	public void reconstruct(){
+		
+		for (int i=0;i<Command.size();i++){
+			
+			if (Command.get(i).equals("*")){
+				booleanControl(i);
+			}
+			
+			if (Command.get(i).equals("sum")){
+				for (int j=i+1;j<Command.size();j++){
+					if (!(Pattern.compile("^[+-]?[0-9]+$").matcher(Command.get(j)).find()) && !(Command.get(j)).equals("sum")){
+						sumControl(i,j);
+					}
+				}
+			}
+			
+			
+			
 		}
 		
 	}
@@ -53,8 +79,6 @@ public class INPUT {
 					parameter[1] = Integer.parseInt(Command.get(i + 2));
 					SetXY.executeCommand(parameter);
 				}
-				
-				
 			
 			}
 		}
@@ -124,7 +148,5 @@ public class INPUT {
 		return total;
 		
 	}
-	
-	public int 
 	
 }
