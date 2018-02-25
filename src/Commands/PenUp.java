@@ -1,5 +1,4 @@
 package Commands;
-import java.util.List;
 import javafx.scene.layout.Pane;
 import Movers.Mover;
 
@@ -11,7 +10,7 @@ public class PenUp implements TurtleCommand {
 	}
 	
 	@Override
-	public void executeCommand(List<Integer> args) {
-		myMover.PenStatus(false);
+	public void executeCommand(Integer[] args) {
+		myMover.setPenStatus(false);
 	}
 }

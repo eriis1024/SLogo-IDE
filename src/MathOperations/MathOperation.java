@@ -1,8 +1,7 @@
 package MathOperations;
-import java.util.List;
 
 public interface MathOperation {
 	
-	public double executeCommand(List<Integer> args);
+	public double executeCommand(Integer[] args);
 
 }

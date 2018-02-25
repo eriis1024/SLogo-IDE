@@ -4,7 +4,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
-public class Main extends Application {
+public class MainTest extends Application {
 	
 	public static final int SIZE = 500;
 	public static final Paint BACKGROUND_COLOR = Color.WHITE;

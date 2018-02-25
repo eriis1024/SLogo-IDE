@@ -1,5 +1,4 @@
 package Commands;
-import java.util.List;
 import javafx.scene.layout.Pane;
 import Movers.Mover;
 
@@ -11,7 +10,7 @@ public class ShowTurtle implements TurtleCommand {
 	}
 	
 	@Override
-	public void executeCommand(List<Integer> args) {
-		myMover.removeImage();
+	public void executeCommand(Integer[] args) {
+		myMover.setImageStatus(false);
 	}
 }

@@ -1,5 +1,4 @@
 package Commands;
-import java.util.List;
 import javafx.scene.layout.Pane;
 import Movers.Mover;
 
@@ -11,12 +10,12 @@ public class Left implements TurtleCommand {
 	}
 	
 	@Override
-	public void executeCommand(List<Integer> args) { 
+	public void executeCommand(Integer[] args) { 
 		double x = 0;
 		double y = 0;
 		double angle = myMover.getAngle() - 180;
-		x = args.get(0)*Math.cos(Math.toRadians(angle));
-		y = args.get(0)*Math.sin(Math.toRadians(angle));
+		x = args[0]*Math.cos(Math.toRadians(angle));
+		y = args[0]*Math.sin(Math.toRadians(angle));
 		myMover.setCoords(myMover.getX() + x, myMover.getY() + y);
 	}
 }
