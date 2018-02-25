@@ -10,7 +10,7 @@ import javafx.scene.layout.BorderPane;
 public class Window extends BorderPane{
 	private MenuBar toolbar = new MenuBar();
 	private ConsoleBox console;
-	private TurtleImage result;
+	private ImageWindow result = new ImageWindow();
 	private Terminal compiler = new Terminal();
 	
 	/**
@@ -24,6 +24,6 @@ public class Window extends BorderPane{
 		this.setTop(toolbar);
 		this.setLeft(compiler.getSlogoTerminal());
 		this.setBottom(console);
-		this.setCenter(result);
+		this.setCenter(result.getImageWindow());
 	}
 }
