@@ -2,7 +2,7 @@ package uiux;
 
 public class SettingsButton extends ToolButton{
 	
-	private static final String PATH = "../setting.png";
+	private static final String PATH = "setting.png";
 	
 	public SettingsButton() {
 		super(PATH);

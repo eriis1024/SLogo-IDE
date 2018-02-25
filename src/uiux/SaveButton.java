@@ -2,7 +2,7 @@ package uiux;
 
 public class SaveButton extends ToolButton{
 	
-	private static final String PATH = "../save.png";
+	private static final String PATH = "save.png";
 	
 	public SaveButton() {
 		super(PATH);

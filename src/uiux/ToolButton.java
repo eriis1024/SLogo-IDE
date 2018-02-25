@@ -27,6 +27,7 @@ public abstract class ToolButton extends Button{
 	}
 	
 	private void setImage(String path) {
+		path = "../button-images/" + path;
 		Image icon = new Image(getClass().getResourceAsStream(path));
 		ImageView iconImage =  new ImageView(icon);
 		iconImage.setFitHeight(prefSize);
@@ -34,5 +35,5 @@ public abstract class ToolButton extends Button{
 		super.setGraphic(iconImage);
 	}
 	
-	public abstract void action();
+	protected abstract void action();
 }
