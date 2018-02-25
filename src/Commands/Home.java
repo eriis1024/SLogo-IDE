@@ -1,6 +1,5 @@
 package Commands;
 
-import java.util.List;
 import Movers.Mover;
 import javafx.scene.layout.Pane;
 
@@ -12,7 +11,7 @@ public class Home implements TurtleCommand {
 	}
 	
 	@Override
-	public void executeCommand(List<Integer> args) { 
+	public void executeCommand(Integer[] args) { 
 		myMover.setCoords(500/2, 500/2);
 	}
 }

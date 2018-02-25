@@ -1,5 +1,4 @@
 package Commands;
-import java.util.List;
 import javafx.scene.layout.Pane;
 import Movers.Mover;
 
@@ -11,7 +10,7 @@ public class PenDown implements TurtleCommand {
 	}
 	
 	@Override
-	public void executeCommand(List<Integer> args) {
-		myMover.PenStatus(true);
+	public void executeCommand(Integer[] args) {
+		myMover.setPenStatus(true);
 	}
 }
