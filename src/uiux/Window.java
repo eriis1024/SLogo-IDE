@@ -36,8 +36,13 @@ public class Window extends BorderPane{
 					//TODO: Work this in with the backend to get the desired result
 					String res = compiler.getInput();
 					console.findOutput(res);
+					updateScreen();
 				}
 			}
 		});
+	}
+	
+	private void updateScreen() {
+		this.setCenter(result.updateScreen());
 	}
 }
