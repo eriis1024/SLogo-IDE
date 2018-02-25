@@ -1,5 +1,4 @@
 package BooleanOperations;
-import java.util.List;
 
 public class Less implements BooleanOperation {
 

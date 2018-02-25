@@ -1,6 +1,5 @@
 package Commands;
-import java.util.List;
-import javafx.scene.layout.Pane;
+
 import Movers.Mover;
 
 public class Forward implements TurtleCommand {

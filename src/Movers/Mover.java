@@ -34,7 +34,7 @@ public abstract class Mover implements MoverInterface {
 	}
 
 	public void setAngle(double angle) {
-		System.out.println(myImage.getRotate());
+		System.out.println(myImage.getRotate()); //not correct
 		myImage.setRotate(myImage.getRotate() + angle);
 	}
 
