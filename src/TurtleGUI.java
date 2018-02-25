@@ -54,10 +54,13 @@ public class TurtleGUI {
 		commandTextField.setOnKeyPressed(event -> {
 			if (event.getCode() == KeyCode.ENTER) {
 				int dist = Integer.parseInt(commandTextField.getText());
+			
 				TurtleCommand command = new Forward(myTurtle);
 				Integer[] args = new Integer[1];
 				args[0] = dist;
 				command.executeCommand(args);
+				
+				
 				updateTurtleLocation(myTurtle);
 			}
 		});
