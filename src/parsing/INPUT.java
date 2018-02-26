@@ -40,15 +40,12 @@ public class INPUT {
 			if (Command.get(i).equals("*")){
 				booleanControl(i);
 			}
-<<<<<<< HEAD
-=======
 		}
 		
 		for (int i=0;i<Command.size();i++){
 			if (Command.get(i).equals("sum")){
 				sumControl(i, i+2);
 			}
->>>>>>> 76a47a4c5ab4c45b6020da43fa09c0a4b824196a
 		}
 	}
 	
