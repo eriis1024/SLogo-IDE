@@ -5,6 +5,7 @@ import java.util.regex.Pattern;
 import Commands.*;
 import Movers.Mover;
 
+
 public class INPUT {
 	
 	public String theInput;
@@ -13,9 +14,9 @@ public class INPUT {
 	Map<String,Integer> variables = new HashMap<String,Integer>();
 	ArrayList<String> Command = new ArrayList<String>();
 	
-	public INPUT(String inputs, Mover theTurtle){
+	public INPUT(String inputs, Mover turtle){
 		theInput = inputs;
-		myTurtle = theTurtle;
+		myTurtle = turtle;
 	}
 	
 	public void inputDecoder(String input){
@@ -25,10 +26,8 @@ public class INPUT {
 		for (int i=0;i<inputDivide.length;i++){
 			Command.add(inputDivide[i]);
 		}
-		
 		reconstruct();
 		executor();
-		
 	}
 	
 	public void reconstruct(){
@@ -46,17 +45,11 @@ public class INPUT {
 					}
 				}
 			}
-			
-			
-			
 		}
-		
 	}
 	
-	public Map getVariavles(){
-		
+	public Map<String, Integer> getVariavles(){
 		return variables;
-		
 	}
 	
 	public void executor(){
@@ -69,6 +62,7 @@ public class INPUT {
 					parameter[0] = Integer.parseInt(Command.get(i + 1));
 					TurtleCommand current = new Forward(myTurtle);
 					current.executeCommand(parameter);
+					System.out.println("HERE:" + myTurtle.getX());
 				}
 				
 				case "bd":{
@@ -95,14 +89,12 @@ public class INPUT {
 				case "SetXY":{
 					Integer[] parameter = new Integer[2];
 					parameter[0] = Integer.parseInt(Command.get(i + 1));
-					parameter[1] = Integer.parseInt(Command.get(i + 2));
+//					parameter[1] = Integer.parseInt(Command.get(i + 2));
 					TurtleCommand current = new SetXY(myTurtle);
 					current.executeCommand(parameter);
 				}
-			
 			}
-		}
-		
+		}	
 	}
 	
 	public void booleanControl(int position){
@@ -158,15 +150,13 @@ public class INPUT {
 			if (toSum.get(i).equals("sum")){
 				toSum.set(i, "0");
 			}
-		}
-		
+		}	
 		int total = 0;
 		for (int i=0;i<toSum.size();i++){
 			total += Integer.parseInt(toSum.get(i));
 		}
-		
-		return total;
-		
+		return total;	
 	}
+
 	
 }

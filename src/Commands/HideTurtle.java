@@ -10,7 +10,8 @@ public class HideTurtle implements TurtleCommand {
 	}
 	
 	@Override
-	public void executeCommand(Integer[] args) {
+	public double executeCommand(Integer[] args) {
 		myMover.setImageStatus(false);
+		return 0;
 	}
 }

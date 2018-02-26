@@ -16,6 +16,7 @@ public class Main extends Application{
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
+
 		Window screen = new Window();
 		
 		Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();

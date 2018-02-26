@@ -10,7 +10,8 @@ public class PenUp implements TurtleCommand {
 	}
 	
 	@Override
-	public void executeCommand(Integer[] args) {
+	public double executeCommand(Integer[] args) {
 		myMover.setPenStatus(false);
+		return 0;
 	}
 }
