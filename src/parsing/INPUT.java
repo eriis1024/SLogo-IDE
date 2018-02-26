@@ -11,8 +11,8 @@ public class INPUT {
 	public String theInput;
 	public Mover myTurtle;
 
-	Map<String,Integer> variables = new HashMap<String,Integer>();
-	ArrayList<String> Command = new ArrayList<String>();
+	public Map<String,Integer> variables = new HashMap<String,Integer>();
+	public ArrayList<String> Command = new ArrayList<String>();
 	
 	public INPUT(String inputs, Mover turtle){
 		theInput = inputs;
@@ -38,17 +38,17 @@ public class INPUT {
 				booleanControl(i);
 			}
 			
-			if (Command.get(i).equals("sum")){
+			/*if (Command.get(i).equals("sum")){
 				for (int j=i+1;j<Command.size();j++){
 					if (!(Pattern.compile("^[+-]?[0-9]+$").matcher(Command.get(j)).find()) && !(Command.get(j)).equals("sum")){
 						sumControl(i,j);
 					}
 				}
-			}
+			}*/
 		}
 	}
 	
-	public Map<String, Integer> getVariavles(){
+	public Map getVariavles(){
 		return variables;
 	}
 	
@@ -62,6 +62,7 @@ public class INPUT {
 					parameter[0] = Integer.parseInt(Command.get(i + 1));
 					TurtleCommand current = new Forward(myTurtle);
 					current.executeCommand(parameter);
+<<<<<<< HEAD
 					//turtle positions are correct after execution of the command
 					System.out.println("x:" + myTurtle.getX());
 					System.out.println("y:" + myTurtle.getY());
@@ -95,6 +96,43 @@ public class INPUT {
 //					TurtleCommand current = new SetXY(myTurtle);
 //					current.executeCommand(parameter);
 //				}
+=======
+					break;
+				}
+				
+				case "bd":{
+					Integer[] parameter = new Integer[1];
+					parameter[0] = Integer.parseInt(Command.get(i + 1));
+					TurtleCommand current = new Back(myTurtle);
+					current.executeCommand(parameter);
+					break;
+				}
+				
+				case "lt":{
+					Integer[] parameter = new Integer[1];
+					parameter[0] = Integer.parseInt(Command.get(i + 1));
+					TurtleCommand current = new Left(myTurtle);
+					current.executeCommand(parameter);
+					break;
+				}
+				
+				case "rt":{
+					Integer[] parameter = new Integer[1];
+					parameter[0] = Integer.parseInt(Command.get(i + 1));
+					TurtleCommand current = new Right(myTurtle);
+					current.executeCommand(parameter);
+					break;
+				}
+				
+				case "SetXY":{
+					Integer[] parameter = new Integer[2];
+					parameter[0] = Integer.parseInt(Command.get(i + 1));
+					parameter[1] = Integer.parseInt(Command.get(i + 2));
+					TurtleCommand current = new SetXY(myTurtle);
+					current.executeCommand(parameter);
+					break;
+				}
+>>>>>>> 6f14e0249e2be120067653bc47b009c6cf0e4234
 			}
 		}	
 	}
@@ -102,14 +140,14 @@ public class INPUT {
 	public void booleanControl(int position){
 		
 		ArrayList<String> toCheck = new ArrayList<String>();
-		for (int i=position;i<position+3;i++){
+		for (int i=position;i<=position+3;i++){
 			toCheck.add(Command.get(i));
 		}
 		
 		boolean Checked = booleanCheck(toCheck);
 		
 		if (Checked == true){
-			for (int i=position;i<position+3;i++){
+			for (int i=position;i<=position+3;i++){
 				Command.remove(position);
 			}
 		} else {
