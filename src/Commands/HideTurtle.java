@@ -5,7 +5,7 @@ import Movers.Mover;
 public class HideTurtle implements TurtleCommand {
 	private Mover myMover;
 	
-	public HideTurtle(Mover turtle, Pane root) {
+	public HideTurtle(Mover turtle) {
 		myMover = turtle;
 	}
 	

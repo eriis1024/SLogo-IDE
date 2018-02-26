@@ -5,7 +5,7 @@ import Movers.Mover;
 public class PenUp implements TurtleCommand {
 	private Mover myMover;
 	
-	public PenUp(Mover turtle, Pane root) {
+	public PenUp(Mover turtle) {
 		myMover = turtle;
 	}
 	
