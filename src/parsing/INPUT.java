@@ -8,8 +8,10 @@ import Movers.Mover;
 public class INPUT {
 	
 	public String theInput;
-	public ArrayList<String> Command = new ArrayList<String>();
 	public Mover myTurtle;
+
+	Map<String,Integer> variables = new HashMap<String,Integer>();
+	ArrayList<String> Command = new ArrayList<String>();
 	
 	public INPUT(String inputs, Mover theTurtle){
 		theInput = inputs;
@@ -20,7 +22,7 @@ public class INPUT {
 		
 		String[] inputDivide = input.split(" ");
 		
-		for (int i=0;i<input.length();i++){
+		for (int i=0;i<inputDivide.length;i++){
 			Command.add(inputDivide[i]);
 		}
 		
@@ -51,9 +53,11 @@ public class INPUT {
 		
 	}
 	
-	/*public Map getVariavles(){
+	public Map getVariavles(){
 		
-	}*/
+		return variables;
+		
+	}
 	
 	public void executor(){
 		
@@ -63,34 +67,38 @@ public class INPUT {
 				case "fd":{
 					Integer[] parameter = new Integer[1];
 					parameter[0] = Integer.parseInt(Command.get(i + 1));
-					TurtleCommand current = new SetHeading(myTurtle);
+					TurtleCommand current = new Forward(myTurtle);
 					current.executeCommand(parameter);
 				}
 				
-				/*case "bd":{
-					int[] parameter = new int[1];
+				case "bd":{
+					Integer[] parameter = new Integer[1];
 					parameter[0] = Integer.parseInt(Command.get(i + 1));
-					Back.executeCommand(Command.get(i + 1));
+					TurtleCommand current = new Back(myTurtle);
+					current.executeCommand(parameter);
 				}
 				
 				case "lt":{
-					int[] parameter = new int[1];
+					Integer[] parameter = new Integer[1];
 					parameter[0] = Integer.parseInt(Command.get(i + 1));
-					Left.executeCommand(Command.get(i + 1));
+					TurtleCommand current = new Left(myTurtle);
+					current.executeCommand(parameter);
 				}
 				
 				case "rt":{
-					int[] parameter = new int[1];
+					Integer[] parameter = new Integer[1];
 					parameter[0] = Integer.parseInt(Command.get(i + 1));
-					Right.executeCommand(Command.get(i + 1));
+					TurtleCommand current = new Right(myTurtle);
+					current.executeCommand(parameter);
 				}
 				
 				case "SetXY":{
-					int[] parameter = new int[2];
+					Integer[] parameter = new Integer[2];
 					parameter[0] = Integer.parseInt(Command.get(i + 1));
 					parameter[1] = Integer.parseInt(Command.get(i + 2));
-					SetXY.executeCommand(parameter);
-				}*/
+					TurtleCommand current = new SetXY(myTurtle);
+					current.executeCommand(parameter);
+				}
 			
 			}
 		}
