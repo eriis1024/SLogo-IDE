@@ -43,14 +43,20 @@ public class INPUT {
 	public void reconstruct(){
 		
 		for (int i=0;i<Command.size();i++){
-			if (Command.get(i).equals("*")){
-				booleanControl(i);
+			if (Command.get(i).equals("XCOR") || Command.get(i).equals("YCOR")){
+				positionControl(i);
 			}
 		}
 		
 		for (int i=0;i<Command.size();i++){
 			if (Command.get(i).equals("sum")){
 				sumControl(i, i+2);
+			}
+		}
+		
+		for (int i=0;i<Command.size();i++){
+			if (Command.get(i).equals("*")){
+				booleanControl(i);
 			}
 		}
 	}
@@ -202,8 +208,36 @@ public class INPUT {
 					break;
 				}
 				
+				case "HEADING":{
+					CONSOLE = myTurtle.getAngle()+"";
+				}
+				
+				case "PENDOWN?":
+				case "PENDOWNP":{
+					if (myTurtle.getPenStatus()) {CONSOLE = "1";} 
+					else {CONSOLE = "0";}
+				}
+				
+				case "SHOWING":
+				case "SHOWINGP":{
+					if (myTurtle.getImageStatus()) {CONSOLE = "1";} 
+					else {CONSOLE = "0";}
+				}
+				
 			}
 		}	
+	}
+	
+	public void positionControl(int position){
+		
+		if (Command.get(position).equals("XCOR")){
+			Command.set(position, (int)myTurtle.getX()+"");
+			CONSOLE = myTurtle.getX()+"";
+		} else {
+			Command.set(position, (int)myTurtle.getY()+"");
+			CONSOLE = myTurtle.getY()+"";
+		}
+		
 	}
 	
 	public void booleanControl(int position){
