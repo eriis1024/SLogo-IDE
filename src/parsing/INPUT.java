@@ -49,7 +49,7 @@ public class INPUT {
 		}
 		
 		for (int i=0;i<Command.size();i++){
-			if (Command.get(i).equals("sum")){
+			if (Command.get(i).equals("SUM")){
 				sumControl(i, i+2);
 			}
 		}
@@ -73,6 +73,10 @@ public class INPUT {
 		
 		if (error == true){
 			return;
+		}
+		
+		for (int i=0;i<Command.size();i++){
+			System.out.print(Command.get(i)+" ");
 		}
 		
 		for (int i=0;i<Command.size();i++){
