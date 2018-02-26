@@ -1,5 +1,4 @@
 package Commands;
-import javafx.scene.layout.Pane;
 import Movers.Mover;
 
 public class Left implements TurtleCommand {
