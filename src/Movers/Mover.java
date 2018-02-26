@@ -74,8 +74,10 @@ public abstract class Mover implements MoverInterface {
 		return newLine;
 	}
 
-	public void removeLines(){
-		myLines.clear();
+	public void removeLines() {
+		for (int i = 0; i < myLines.size(); i++) {
+			myLines.remove(i);
+		}
 	}
 
 	private void setMover(double x, double y, String imageFilePath){

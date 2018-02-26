@@ -1,4 +1,7 @@
 package uiux;
+import java.util.ArrayList;
+import java.util.List;
+
 import Movers.Mover;
 import Movers.Turtle;
 
@@ -13,6 +16,7 @@ public class ImageWindow {
 	private Node myNode;
 	protected Mover myTurtle;
 	protected Pane myRoot;
+	protected List<Line> myLines = new ArrayList<Line>();
 
 	public ImageWindow() {
 		myNode = loadWelcomeScreen();
@@ -32,6 +36,7 @@ public class ImageWindow {
 	//don't let turtle out of screen bounds
 	//setXY, turtle at 0,0, input commands relative to that
 	//test all other commands
+	//clear lines, determine final window size and where (0,0) is, change this for Home, CS...
 	
 	public Node updateScreen() {
 		updateTurtleLocation(myTurtle);
@@ -67,10 +72,17 @@ public class ImageWindow {
 
 	private void addLineInScene(Mover turtle, double x, double y){
 		Line l = turtle.drawLine(x, y, turtle.getX(), turtle.getY());
+		myLines.add(l);
 		myRoot.getChildren().add(l);
 	}
 
 	public Mover getTurtle() {
 		return myTurtle;
+	}
+	
+	public void removeLines() {
+		for (int i = 0; i < myLines.size(); i++) {
+			myRoot.getChildren().remove(myLines.get(i));
+		}
 	}
 }
