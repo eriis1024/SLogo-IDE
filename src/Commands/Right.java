@@ -5,7 +5,7 @@ import Movers.Mover;
 public class Right implements TurtleCommand {
 	private Mover myMover;
 	
-	public Right(Mover turtle, Pane root) {
+	public Right(Mover turtle) {
 		myMover = turtle;
 	}
 	
