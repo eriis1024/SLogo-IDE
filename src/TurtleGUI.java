@@ -11,8 +11,6 @@ import Commands.TurtleCommand;
 import Movers.Mover;
 import Movers.Turtle;
 
-
-
 //Need to: figure out how to call commands after parsing, make turtle not depend on root, add complex commands
 //have turtle class have get/sets for coordinates, line, and image, actually add the components to scene in GUI class
 //Return the correct values in each class
@@ -54,10 +52,13 @@ public class TurtleGUI {
 		commandTextField.setOnKeyPressed(event -> {
 			if (event.getCode() == KeyCode.ENTER) {
 				int dist = Integer.parseInt(commandTextField.getText());
+			
 				TurtleCommand command = new Forward(myTurtle);
 				Integer[] args = new Integer[1];
 				args[0] = dist;
 				command.executeCommand(args);
+				
+				
 				updateTurtleLocation(myTurtle);
 			}
 		});
