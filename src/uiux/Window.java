@@ -4,6 +4,7 @@ import javafx.event.EventHandler;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
+import parsing.INPUT;
 /**
  * Compiles all the front-end components together.
  * 
@@ -35,9 +36,16 @@ public class Window extends BorderPane{
 				if(event.getCode() == KeyCode.ENTER) {
 					//TODO: Work this in with the backend to get the desired result
 					String res = compiler.getInput();
+					INPUT current = new INPUT(res, result.getTurtle());
+					current.inputDecoder(res);
 					console.findOutput(res);
+					updateScreen();
 				}
 			}
 		});
+	}
+	
+	private void updateScreen() {
+		this.setCenter(result.updateScreen());
 	}
 }

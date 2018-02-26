@@ -5,7 +5,7 @@ import javafx.scene.layout.Pane;
 public class SetXY implements TurtleCommand {
 	private Mover myMover;
 	
-	public SetXY(Mover turtle, Pane root) {
+	public SetXY(Mover turtle) {
 		myMover = turtle;
 	}
 	
