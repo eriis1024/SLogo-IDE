@@ -33,18 +33,15 @@ public class INPUT {
 	public void reconstruct(){
 		
 		for (int i=0;i<Command.size();i++){
-			
 			if (Command.get(i).equals("*")){
 				booleanControl(i);
 			}
-			
-			/*if (Command.get(i).equals("sum")){
-				for (int j=i+1;j<Command.size();j++){
-					if (!(Pattern.compile("^[+-]?[0-9]+$").matcher(Command.get(j)).find()) && !(Command.get(j)).equals("sum")){
-						sumControl(i,j);
-					}
-				}
-			}*/
+		}
+		
+		for (int i=0;i<Command.size();i++){
+			if (Command.get(i).equals("sum")){
+				sumControl(i, i+2);
+			}
 		}
 	}
 	
@@ -135,28 +132,23 @@ public class INPUT {
 	public void sumControl(int position1, int position2){
 		
 		ArrayList<String> toCheck = new ArrayList<String>();
-		for (int i=position1;i<position2;i++){
+		for (int i=position1;i<=position2;i++){
 			toCheck.add(Command.get(i));
 		}
 		
 		int summed = sumCheck(toCheck);
 		
-		for (int i=position1+1;i<position2 - 1;i++){
-			Command.remove(position1 + 1);
+		for (int i=position1+1;i<=position2;i++){
+			Command.remove(position1+1);
 		}
-		Command.set(position1+1, summed+"");
+		Command.set(position1, summed+"");
 		
 	}
 	
 	public int sumCheck(ArrayList<String> toSum){
 		
-		for (int i=0;i<toSum.size();i++){
-			if (toSum.get(i).equals("sum")){
-				toSum.set(i, "0");
-			}
-		}	
 		int total = 0;
-		for (int i=0;i<toSum.size();i++){
+		for (int i=1;i<toSum.size();i++){
 			total += Integer.parseInt(toSum.get(i));
 		}
 		return total;	
