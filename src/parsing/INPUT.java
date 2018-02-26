@@ -8,8 +8,10 @@ import Movers.Mover;
 public class INPUT {
 	
 	public String theInput;
-	public ArrayList<String> Command = new ArrayList<String>();
 	public Mover myTurtle;
+
+	Map<String,Integer> variables = new HashMap<String,Integer>();
+	ArrayList<String> Command = new ArrayList<String>();
 	
 	public INPUT(String inputs, Mover theTurtle){
 		theInput = inputs;
@@ -51,9 +53,11 @@ public class INPUT {
 		
 	}
 	
-	/*public Map getVariavles(){
+	public Map getVariavles(){
 		
-	}*/
+		return variables;
+		
+	}
 	
 	public void executor(){
 		
@@ -67,7 +71,7 @@ public class INPUT {
 					current.executeCommand(parameter);
 				}
 				
-				/*case "bd":{
+				case "bd":{
 					int[] parameter = new int[1];
 					parameter[0] = Integer.parseInt(Command.get(i + 1));
 					Back.executeCommand(Command.get(i + 1));
@@ -90,7 +94,7 @@ public class INPUT {
 					parameter[0] = Integer.parseInt(Command.get(i + 1));
 					parameter[1] = Integer.parseInt(Command.get(i + 2));
 					SetXY.executeCommand(parameter);
-				}*/
+				}
 			
 			}
 		}
