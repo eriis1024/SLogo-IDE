@@ -72,7 +72,8 @@ public class INPUT {
 		for (int i=0;i<Command.size();i++){
 			switch (Command.get(i)){
 			
-				case "fd":{
+				case "FORWARD":
+				case "FD":{
 					Integer[] parameter = new Integer[1];
 					parameter[0] = Integer.parseInt(Command.get(i + 1));
 					TurtleCommand current = new Forward(myTurtle);
@@ -81,7 +82,8 @@ public class INPUT {
 					break;
 				}
 				
-				case "bd":{
+				case "BACK":
+				case "BK":{
 					Integer[] parameter = new Integer[1];
 					parameter[0] = Integer.parseInt(Command.get(i + 1));
 					TurtleCommand current = new Back(myTurtle);
@@ -90,7 +92,8 @@ public class INPUT {
 					break;
 				}
 				
-				case "lt":{
+				case "LEFT":
+				case "LT":{
 					Integer[] parameter = new Integer[1];
 					parameter[0] = Integer.parseInt(Command.get(i + 1));
 					TurtleCommand current = new Left(myTurtle);
@@ -99,7 +102,8 @@ public class INPUT {
 					break;
 				}
 				
-				case "rt":{
+				case "RIGHT":
+				case "RT":{
 					Integer[] parameter = new Integer[1];
 					parameter[0] = Integer.parseInt(Command.get(i + 1));
 					TurtleCommand current = new Right(myTurtle);
@@ -108,7 +112,30 @@ public class INPUT {
 					break;
 				}
 				
-				case "SetXY":{
+				case "SETHEADING":
+				case "SETH":{
+					Integer[] parameter = new Integer[1];
+					parameter[0] = Integer.parseInt(Command.get(i + 1));
+					TurtleCommand current = new SetHeading(myTurtle);
+					current.executeCommand(parameter);
+					double turning = Math.abs(parameter[0]-myTurtle.getAngle());
+					CONSOLE = turning+"";
+					break;
+				}
+				
+				case "TOWARDS":{
+					double previous = myTurtle.getAngle();
+					Integer[] parameter = new Integer[1];
+					parameter[0] = Integer.parseInt(Command.get(i + 1));
+					TurtleCommand current = new SetHeading(myTurtle);
+					current.executeCommand(parameter);
+					double turning = Math.abs(previous-myTurtle.getAngle());
+					CONSOLE = turning+"";
+					break;
+				}
+				
+				case "GOTO":
+				case "SETXY":{
 					Integer[] parameter = new Integer[2];
 					parameter[0] = Integer.parseInt(Command.get(i + 1));
 					parameter[1] = Integer.parseInt(Command.get(i + 2));
@@ -117,6 +144,64 @@ public class INPUT {
 					CONSOLE = "{"+parameter[0]+","+parameter[1]+"}";
 					break;
 				}
+				
+				case "PENDOWN":
+				case "PD":{
+					TurtleCommand current = new PenDown(myTurtle);
+					current.executeCommand(new Integer[0]);
+					CONSOLE = "1";
+					break;
+				}
+				
+				case "PENUP":
+				case "PU":{
+					TurtleCommand current = new PenUp(myTurtle);
+					current.executeCommand(new Integer[0]);
+					CONSOLE = "0";
+					break;
+				}
+				
+				case "SHOWTURTLE":
+				case "ST":{
+					TurtleCommand current = new ShowTurtle(myTurtle);
+					current.executeCommand(new Integer[0]);
+					CONSOLE = "1";
+					break;
+				}
+				
+				case "HIDETURTLE":
+				case "HT":{
+					TurtleCommand current = new HideTurtle(myTurtle);
+					current.executeCommand(new Integer[0]);
+					CONSOLE = "0";
+					break;
+				}
+				
+				case "HOME":{
+					double previousX = myTurtle.getX();
+					double previousY = myTurtle.getY();
+					TurtleCommand current = new Home(myTurtle);
+					current.executeCommand(new Integer[0]);
+					double presentX = myTurtle.getX();
+					double presentY = myTurtle.getY();
+					double moving = Math.sqrt(Math.pow(presentX-previousX, 2) + Math.pow(presentY-previousY, 2));
+					CONSOLE = moving+"";
+					break;
+				}
+				
+				case "CLEARSCREEN":
+				case "CS":{
+					double previousX = myTurtle.getX();
+					double previousY = myTurtle.getY();
+					TurtleCommand current = new ClearScreen(myTurtle);
+					current.executeCommand(new Integer[0]);
+					double presentX = myTurtle.getX();
+					double presentY = myTurtle.getY();
+					double moving = Math.sqrt(Math.pow(presentX-previousX, 2) + Math.pow(presentY-previousY, 2));
+					CONSOLE = moving+"";
+					break;
+				}
+				
 			}
 		}	
 	}
