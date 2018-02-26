@@ -10,7 +10,8 @@ public class PenDown implements TurtleCommand {
 	}
 	
 	@Override
-	public void executeCommand(Integer[] args) {
+	public double executeCommand(Integer[] args) {
 		myMover.setPenStatus(true);
+		return 1;
 	}
 }

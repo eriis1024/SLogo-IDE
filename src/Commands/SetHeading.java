@@ -9,7 +9,13 @@ private Mover myTurtle;
 	}
 
 	@Override
-	public void executeCommand(Integer[] args) {
-		myTurtle.setAngle(myTurtle.getAngle() + args[0]);
+	public double executeCommand(Integer[] args) {
+		double angle = args[0];
+		double newangle = angle % 360;
+		if(newangle < 0){
+		    newangle += 360;
+		}
+		myTurtle.setAngle(myTurtle.getAngle() + angle);
+		return angle;
 	}
 }

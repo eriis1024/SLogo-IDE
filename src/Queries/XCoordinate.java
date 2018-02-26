@@ -13,6 +13,5 @@ public class XCoordinate implements TurtleQuery {
 	public double executeCommand(List<Integer> args) {
 		System.out.println(250 - myMover.getX());
 		return 250 - myMover.getX();
-		
 	}
 }
