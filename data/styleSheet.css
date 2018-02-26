@@ -20,3 +20,8 @@
 	-fx-border-width: 3;
 	-fx-border-color: #436b89;
 }
+
+.box {
+	-fx-border-color: #436b89;
+	-fx-border-width: 3;
+}

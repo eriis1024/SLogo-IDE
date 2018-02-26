@@ -11,6 +11,7 @@ public class ConsoleBox extends ListView<String>{
 	public ConsoleBox(){
 		super();
 		this.setItems(myPrevCommands);
+		this.getStyleClass().add("box");
 	}
 	
 	public void findOutput(String systemOutput) {
