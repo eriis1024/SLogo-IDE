@@ -29,6 +29,10 @@ public class ImageWindow {
 		return myRoot;
 	}
 	
+	//don't let turtle out of screen bounds
+	//setXY, turtle at 0,0, input commands relative to that
+	//test all other commands
+	
 	public Node updateScreen() {
 		updateTurtleLocation(myTurtle);
 		return myNode;
