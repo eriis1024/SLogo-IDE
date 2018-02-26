@@ -22,7 +22,7 @@ public class INPUT {
 		
 		String[] inputDivide = input.split(" ");
 		
-		for (int i=0;i<input.length();i++){
+		for (int i=0;i<inputDivide.length;i++){
 			Command.add(inputDivide[i]);
 		}
 		
