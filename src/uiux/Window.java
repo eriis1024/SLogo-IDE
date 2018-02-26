@@ -37,10 +37,19 @@ public class Window extends BorderPane {
 			public void handle(KeyEvent event) {
 				if(event.getCode() == KeyCode.ENTER) {
 					String res = compiler.getInput();
-					INPUT current = new INPUT(res, result.getTurtle());
-					current.inputDecoder(res);
-					console.findOutput(res);
-					updateScreen();
+					try {
+						res = res.toUpperCase();
+						INPUT current = new INPUT(res, result.getTurtle());
+						current.inputDecoder(res);
+						console.findOutput(res);
+						updateScreen();
+					}
+					catch (NullPointerException e){
+						//THERE IS NOTHING TO DO IN THE CATCH BECAUSE THIS IMPLIES
+						//THE USER DID NOT PUT ANYTHING INTO THE ACTUAL COMPILER
+						//THEREFORE THERE IS NO ERROR
+					}
+					
 				}
 			}
 		});

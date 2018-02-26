@@ -24,7 +24,7 @@ public class Terminal{
 	private TextField myTextField;
 	private ObservableList<String> myPrevCommands;
 	
-	private String input = "";
+	private String input = null;
 
 	/*
 	 * Sets the value of myNode to a node with a text field, enter button, and list
@@ -50,9 +50,12 @@ public class Terminal{
 		VBox result = new VBox();
 		result.getChildren().add(makeHistoryTable());
 		result.getChildren().add(makeInputField(40, event -> passTextInput()));
+		result.getStyleClass().add("box");
 		
 		Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
 		result.setPrefWidth(primaryScreenBounds.getWidth()/2);
+		result.setMinHeight(primaryScreenBounds.getHeight()/2);
+		
 		//Creates an enter button -- still debating on whether to use
 		//result.getChildren().add(makeButton("Enter", event -> passTextInput()));
 		
@@ -96,7 +99,9 @@ public class Terminal{
 	
 	
 	public String getInput() {
-		return input;
+		String result = input;
+		input = null;
+		return result;
 	}
 	
 	/*
