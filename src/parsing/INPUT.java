@@ -11,8 +11,8 @@ public class INPUT {
 	public String theInput;
 	public Mover myTurtle;
 
-	Map<String,Integer> variables = new HashMap<String,Integer>();
-	ArrayList<String> Command = new ArrayList<String>();
+	public Map<String,Integer> variables = new HashMap<String,Integer>();
+	public ArrayList<String> Command = new ArrayList<String>();
 	
 	public INPUT(String inputs, Mover turtle){
 		theInput = inputs;
@@ -48,7 +48,7 @@ public class INPUT {
 		}
 	}
 	
-	public Map<String, Integer> getVariavles(){
+	public Map getVariavles(){
 		return variables;
 	}
 	
@@ -62,7 +62,7 @@ public class INPUT {
 					parameter[0] = Integer.parseInt(Command.get(i + 1));
 					TurtleCommand current = new Forward(myTurtle);
 					current.executeCommand(parameter);
-					System.out.println("HERE:" + myTurtle.getX());
+					break;
 				}
 				
 				case "bd":{
@@ -70,6 +70,7 @@ public class INPUT {
 					parameter[0] = Integer.parseInt(Command.get(i + 1));
 					TurtleCommand current = new Back(myTurtle);
 					current.executeCommand(parameter);
+					break;
 				}
 				
 				case "lt":{
@@ -77,6 +78,7 @@ public class INPUT {
 					parameter[0] = Integer.parseInt(Command.get(i + 1));
 					TurtleCommand current = new Left(myTurtle);
 					current.executeCommand(parameter);
+					break;
 				}
 				
 				case "rt":{
@@ -84,14 +86,16 @@ public class INPUT {
 					parameter[0] = Integer.parseInt(Command.get(i + 1));
 					TurtleCommand current = new Right(myTurtle);
 					current.executeCommand(parameter);
+					break;
 				}
 				
 				case "SetXY":{
 					Integer[] parameter = new Integer[2];
 					parameter[0] = Integer.parseInt(Command.get(i + 1));
-//					parameter[1] = Integer.parseInt(Command.get(i + 2));
+					parameter[1] = Integer.parseInt(Command.get(i + 2));
 					TurtleCommand current = new SetXY(myTurtle);
 					current.executeCommand(parameter);
+					break;
 				}
 			}
 		}	
