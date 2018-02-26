@@ -38,13 +38,13 @@ public class INPUT {
 				booleanControl(i);
 			}
 			
-			if (Command.get(i).equals("sum")){
+			/*if (Command.get(i).equals("sum")){
 				for (int j=i+1;j<Command.size();j++){
 					if (!(Pattern.compile("^[+-]?[0-9]+$").matcher(Command.get(j)).find()) && !(Command.get(j)).equals("sum")){
 						sumControl(i,j);
 					}
 				}
-			}
+			}*/
 		}
 	}
 	
@@ -104,14 +104,14 @@ public class INPUT {
 	public void booleanControl(int position){
 		
 		ArrayList<String> toCheck = new ArrayList<String>();
-		for (int i=position;i<position+3;i++){
+		for (int i=position;i<=position+3;i++){
 			toCheck.add(Command.get(i));
 		}
 		
 		boolean Checked = booleanCheck(toCheck);
 		
 		if (Checked == true){
-			for (int i=position;i<position+3;i++){
+			for (int i=position;i<=position+3;i++){
 				Command.remove(position);
 			}
 		} else {
