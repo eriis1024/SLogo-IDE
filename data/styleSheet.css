@@ -17,6 +17,28 @@
 	#3c7fb1,
 	linear-gradient(#79bef2, #1f8fe2);
 	-fx-padding: 5;
-	-fx-border-width: 3;
+	-fx-border-width: 2;
 	-fx-border-color: #436b89;
 }
+
+.box {
+	-fx-border-color: #436b89;
+	-fx-border-width: 3;
+	-fx-font-size: 15;
+	-fx-font-weight: bold;
+}
+
+.list-cell { 
+    -fx-background-color: #ffffff;
+    
+}
+
+.list-cell:filled:selected:focused, .list-cell:filled:selected {
+    -fx-background-color: linear-gradient(#ADF0F8 0%, #A3F1FA 25%, #94EFF9 75%, #90EEF9 100%);
+    -fx-text-fill: black;
+}
+
+
+
+
+
