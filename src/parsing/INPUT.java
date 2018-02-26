@@ -3,11 +3,18 @@ import java.util.*;
 import java.util.regex.Pattern;
 
 import Commands.*;
+import Movers.Mover;
 
 public class INPUT {
 	
 	public String theInput;
 	public ArrayList<String> Command = new ArrayList<String>();
+	public Mover myTurtle;
+	
+	public INPUT(String inputs, Mover theTurtle){
+		theInput = inputs;
+		myTurtle = theTurtle;
+	}
 	
 	public void inputDecoder(String input){
 		
@@ -44,18 +51,23 @@ public class INPUT {
 		
 	}
 	
+	/*public Map getVariavles(){
+		
+	}*/
+	
 	public void executor(){
 		
 		for (int i=0;i<Command.size();i++){
 			switch (Command.get(i)){
 			
 				case "fd":{
-					int[] parameter = new int[1];
+					Integer[] parameter = new Integer[1];
 					parameter[0] = Integer.parseInt(Command.get(i + 1));
-					Forward.executeCommand(parameter);
+					TurtleCommand current = new SetHeading(myTurtle);
+					current.executeCommand(parameter);
 				}
 				
-				case "bd":{
+				/*case "bd":{
 					int[] parameter = new int[1];
 					parameter[0] = Integer.parseInt(Command.get(i + 1));
 					Back.executeCommand(Command.get(i + 1));
@@ -78,7 +90,7 @@ public class INPUT {
 					parameter[0] = Integer.parseInt(Command.get(i + 1));
 					parameter[1] = Integer.parseInt(Command.get(i + 2));
 					SetXY.executeCommand(parameter);
-				}
+				}*/
 			
 			}
 		}
