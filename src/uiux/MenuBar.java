@@ -7,13 +7,14 @@ import javafx.scene.layout.Region;
 public class MenuBar extends HBox{
 	private Region[] buttons = {
 			new HelpButton(),
+			new BackgroundButton(),
 			new SaveButton(),
 			new SettingsButton(),
 			new LanguageButton()
 	};
 	
-	private static final int PADDING = 10;
-	private static final int MIN_SIZE = 60;
+	private static final int PADDING = 15;
+	private static final int MIN_SIZE = 55;
 	
 	public MenuBar() {
 		super(PADDING);

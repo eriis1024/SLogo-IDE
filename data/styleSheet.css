@@ -17,11 +17,25 @@
 	#3c7fb1,
 	linear-gradient(#79bef2, #1f8fe2);
 	-fx-padding: 5;
-	-fx-border-width: 3;
+	-fx-border-width: 2;
 	-fx-border-color: #436b89;
 }
 
 .box {
 	-fx-border-color: #436b89;
 	-fx-border-width: 3;
+	-fx-font-size: 15;
+	-fx-font-weight: bold;
 }
+
+.list-cell { 
+    -fx-background-color: #ffffff;
+    
+}
+
+
+
+
+
+
+

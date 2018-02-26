@@ -24,9 +24,9 @@ public class ImageWindow {
 
 	private Node loadWelcomeScreen() {
 		myRoot = new Pane();
-		Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
 		
-		myTurtle = new Turtle(200, 100, "images/turtle.png");
+		setSizeAndTurtle();
+		
 		updateTurtleLocation(myTurtle);
 		
 		TextField commandTextField = new TextField();
@@ -62,7 +62,7 @@ public class ImageWindow {
 			}
 		});
 		myRoot.getChildren().addAll(commandTextField, headingTextField);
-		myRoot.setPrefWidth(primaryScreenBounds.getWidth()/2);
+		
 		return myRoot;
 	}
 	
@@ -109,6 +109,16 @@ public class ImageWindow {
 	private void addLineInScene(Mover turtle, double x, double y){
 		Line l = turtle.drawLine(x, y, turtle.getX(), turtle.getY());
 		myRoot.getChildren().add(l);
+	}
+	
+	//Sets up the size of the image window and positions the turtle in the middle,
+	//also adds the styling 
+	private void setSizeAndTurtle() {
+		Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
+		myRoot.setPrefWidth(primaryScreenBounds.getWidth()/2);
+		myRoot.setPrefHeight(primaryScreenBounds.getHeight()/2);
+		myRoot.getStyleClass().add("box");
+		myTurtle = new Turtle((int)(myRoot.getPrefWidth()/2), (int)(myRoot.getPrefHeight()/2), "images/turtle.png");
 	}
 
 	public Mover getTurtle() {
