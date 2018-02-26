@@ -6,7 +6,7 @@ import javafx.scene.layout.Pane;
 public class Home implements TurtleCommand {
 	private Mover myMover;
 	
-	public Home(Mover turtle, Pane root) {
+	public Home(Mover turtle) {
 		myMover = turtle;
 	}
 	
