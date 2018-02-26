@@ -14,6 +14,8 @@ public class INPUT {
 	public Map<String,Integer> variables = new HashMap<String,Integer>();
 	public ArrayList<String> Command = new ArrayList<String>();
 	
+	public String CONSOLE;
+	
 	public INPUT(String inputs, Mover turtle){
 		theInput = inputs;
 		myTurtle = turtle;
@@ -26,6 +28,9 @@ public class INPUT {
 		for (int i=0;i<inputDivide.length;i++){
 			Command.add(inputDivide[i]);
 		}
+		
+		variables.put("PREVIOUS_ANS", 0);
+		
 		reconstruct();
 		executor();
 	}
@@ -49,6 +54,10 @@ public class INPUT {
 		return variables;
 	}
 	
+	public String getConsole(){
+		return CONSOLE;
+	}
+	
 	public void executor(){
 		
 		for (int i=0;i<Command.size();i++){
@@ -59,6 +68,7 @@ public class INPUT {
 					parameter[0] = Integer.parseInt(Command.get(i + 1));
 					TurtleCommand current = new Forward(myTurtle);
 					current.executeCommand(parameter);
+					CONSOLE = parameter[0]+"";
 					break;
 				}
 				
@@ -67,6 +77,7 @@ public class INPUT {
 					parameter[0] = Integer.parseInt(Command.get(i + 1));
 					TurtleCommand current = new Back(myTurtle);
 					current.executeCommand(parameter);
+					CONSOLE = parameter[0]+"";
 					break;
 				}
 				
@@ -75,6 +86,7 @@ public class INPUT {
 					parameter[0] = Integer.parseInt(Command.get(i + 1));
 					TurtleCommand current = new Left(myTurtle);
 					current.executeCommand(parameter);
+					CONSOLE = parameter[0]+"";
 					break;
 				}
 				
@@ -83,6 +95,7 @@ public class INPUT {
 					parameter[0] = Integer.parseInt(Command.get(i + 1));
 					TurtleCommand current = new Right(myTurtle);
 					current.executeCommand(parameter);
+					CONSOLE = parameter[0]+"";
 					break;
 				}
 				
@@ -92,6 +105,7 @@ public class INPUT {
 					parameter[1] = Integer.parseInt(Command.get(i + 2));
 					TurtleCommand current = new SetXY(myTurtle);
 					current.executeCommand(parameter);
+					CONSOLE = "{"+parameter[0]+","+parameter[1]+"}";
 					break;
 				}
 			}
@@ -116,6 +130,8 @@ public class INPUT {
 				Command.remove(position - 1);
 			}
 		}
+		
+		CONSOLE = Boolean.toString(Checked);
 		
 	}
 	
@@ -142,6 +158,9 @@ public class INPUT {
 			Command.remove(position1+1);
 		}
 		Command.set(position1, summed+"");
+		
+		CONSOLE = summed+"";
+		variables.replace("PREVIOUS_ANS", summed);
 		
 	}
 	
