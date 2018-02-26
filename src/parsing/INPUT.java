@@ -10,6 +10,8 @@ public class INPUT {
 	
 	public String theInput;
 	public Mover myTurtle;
+	
+	public Boolean error;
 
 	public Map<String,Integer> variables = new HashMap<String,Integer>();
 	public ArrayList<String> Command = new ArrayList<String>();
@@ -29,7 +31,10 @@ public class INPUT {
 			Command.add(inputDivide[i]);
 		}
 		
+		error = false;
 		variables.put("PREVIOUS_ANS", 0);
+		
+		if ((Command.get(0).equals("#")) || (Command.size()<1)){return;}
 		
 		reconstruct();
 		executor();
@@ -59,6 +64,10 @@ public class INPUT {
 	}
 	
 	public void executor(){
+		
+		if (error == true){
+			return;
+		}
 		
 		for (int i=0;i<Command.size();i++){
 			switch (Command.get(i)){
@@ -121,6 +130,8 @@ public class INPUT {
 		
 		boolean Checked = booleanCheck(toCheck);
 		
+		if (error == true){return;}
+		
 		if (Checked == true){
 			for (int i=position;i<=position+3;i++){
 				Command.remove(position);
@@ -139,8 +150,12 @@ public class INPUT {
 		
 		if (toBoolean.get(1).equals("greater?")){
 			return Integer.parseInt(toBoolean.get(2))>Integer.parseInt(toBoolean.get(3));
-		} else {
+		} else if (toBoolean.get(1).equals("smaller?")){
 			return Integer.parseInt(toBoolean.get(2))<Integer.parseInt(toBoolean.get(3));
+		} else {
+			error = true;
+			CONSOLE = "Invalid comparing operation!";
+			return false;
 		}
 
 	}
@@ -153,6 +168,8 @@ public class INPUT {
 		}
 		
 		int summed = sumCheck(toCheck);
+		
+		if (error == true){return;}
 		
 		for (int i=position1+1;i<=position2;i++){
 			Command.remove(position1+1);
