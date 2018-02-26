@@ -30,7 +30,6 @@ public class ImageWindow {
 	}
 	
 	public Node updateScreen() {
-		System.out.println("HERE:" + myTurtle.getX());
 		updateTurtleLocation(myTurtle);
 		return myNode;
 	}

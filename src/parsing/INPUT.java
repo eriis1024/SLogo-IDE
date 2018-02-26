@@ -62,37 +62,39 @@ public class INPUT {
 					parameter[0] = Integer.parseInt(Command.get(i + 1));
 					TurtleCommand current = new Forward(myTurtle);
 					current.executeCommand(parameter);
-					System.out.println("HERE:" + myTurtle.getX());
+					//turtle positions are correct after execution of the command
+					System.out.println("x:" + myTurtle.getX());
+					System.out.println("y:" + myTurtle.getY());
 				}
 				
-				case "bd":{
-					Integer[] parameter = new Integer[1];
-					parameter[0] = Integer.parseInt(Command.get(i + 1));
-					TurtleCommand current = new Back(myTurtle);
-					current.executeCommand(parameter);
-				}
-				
-				case "lt":{
-					Integer[] parameter = new Integer[1];
-					parameter[0] = Integer.parseInt(Command.get(i + 1));
-					TurtleCommand current = new Left(myTurtle);
-					current.executeCommand(parameter);
-				}
-				
-				case "rt":{
-					Integer[] parameter = new Integer[1];
-					parameter[0] = Integer.parseInt(Command.get(i + 1));
-					TurtleCommand current = new Right(myTurtle);
-					current.executeCommand(parameter);
-				}
-				
-				case "SetXY":{
-					Integer[] parameter = new Integer[2];
-					parameter[0] = Integer.parseInt(Command.get(i + 1));
-//					parameter[1] = Integer.parseInt(Command.get(i + 2));
-					TurtleCommand current = new SetXY(myTurtle);
-					current.executeCommand(parameter);
-				}
+//				case "bd":{
+//					Integer[] parameter = new Integer[1];
+//					parameter[0] = Integer.parseInt(Command.get(i + 1));
+//					TurtleCommand current = new Back(myTurtle);
+//					current.executeCommand(parameter);
+//				}
+//				
+//				case "lt":{
+//					Integer[] parameter = new Integer[1];
+//					parameter[0] = Integer.parseInt(Command.get(i + 1));
+//					TurtleCommand current = new Left(myTurtle);
+//					current.executeCommand(parameter);
+//				}
+//				
+//				case "rt":{
+//					Integer[] parameter = new Integer[1];
+//					parameter[0] = Integer.parseInt(Command.get(i + 1));
+//					TurtleCommand current = new Right(myTurtle);
+//					current.executeCommand(parameter);
+//				}
+//				
+//				case "SetXY":{
+//					Integer[] parameter = new Integer[2];
+//					parameter[0] = Integer.parseInt(Command.get(i + 1));
+////					parameter[1] = Integer.parseInt(Command.get(i + 2));
+//					TurtleCommand current = new SetXY(myTurtle);
+//					current.executeCommand(parameter);
+//				}
 			}
 		}	
 	}
