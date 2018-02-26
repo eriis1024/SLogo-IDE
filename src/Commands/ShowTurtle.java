@@ -5,12 +5,13 @@ import Movers.Mover;
 public class ShowTurtle implements TurtleCommand {
 	private Mover myMover;
 	
-	public ShowTurtle(Mover turtle, Pane root) {
+	public ShowTurtle(Mover turtle) {
 		myMover = turtle;
 	}
 	
 	@Override
-	public void executeCommand(Integer[] args) {
+	public double executeCommand(Integer[] args) {
 		myMover.setImageStatus(false);
+		return 1;
 	}
 }

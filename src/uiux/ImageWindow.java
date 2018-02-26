@@ -1,13 +1,9 @@
 package uiux;
-import Commands.Forward;
-import Commands.SetHeading;
-import Commands.TurtleCommand;
 import Movers.Mover;
 import Movers.Turtle;
+
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
-import javafx.scene.control.TextField;
-import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Line;
 import javafx.stage.Screen;
@@ -24,63 +20,19 @@ public class ImageWindow {
 
 	private Node loadWelcomeScreen() {
 		myRoot = new Pane();
-		
 		setSizeAndTurtle();
-		
 		updateTurtleLocation(myTurtle);
-		
-		TextField commandTextField = new TextField();
-		commandTextField.setMaxSize(100, 20);
-		commandTextField.setPromptText("forward");
-		commandTextField.setTranslateY(200);
-		commandTextField.setTranslateX(200);
-
-		TextField headingTextField = new TextField();
-		headingTextField.setPromptText("heading");
-		headingTextField.setMaxSize(100, 20);
-		headingTextField.setTranslateY(200);
-		headingTextField.setTranslateX(100);
-
-		commandTextField.setOnKeyPressed(event -> {
-			if (event.getCode() == KeyCode.ENTER) {
-				int dist = Integer.parseInt(commandTextField.getText());
-				TurtleCommand command = new Forward(myTurtle);
-				Integer[] args = new Integer[1];
-				args[0] = dist;
-				command.executeCommand(args);
-				updateTurtleLocation(myTurtle);
-			}
-		});
-
-		headingTextField.setOnKeyPressed(event -> {
-			if (event.getCode() == KeyCode.ENTER) {
-				int rotate = Integer.parseInt(headingTextField.getText());
-				TurtleCommand command = new SetHeading(myTurtle);
-				Integer[] args = new Integer[1];
-				args[0] = rotate;
-				command.executeCommand(args);
-			}
-		});
-		myRoot.getChildren().addAll(commandTextField, headingTextField);
-		
 		return myRoot;
 	}
 	
 	public Node updateScreen() {
-		// TODO: instead of making iv2 a new image view, set iv2 = to a call to the
-		// backend external API that returns the current Image View
-		
+		System.out.println("HERE:" + myTurtle.getX());
 		updateTurtleLocation(myTurtle);
-		
-//		ImageView iv2 = new ImageView();
-//		myNode = iv2;
-		//myRoot.setCenter(this.getImageWindow());
 		return myNode;
 	}
 
 
 	public Node getImageWindow() {
-		//updateScreen();
 		return myNode;
 	}
 	

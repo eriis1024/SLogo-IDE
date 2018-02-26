@@ -5,12 +5,13 @@ import Movers.Mover;
 public class PenDown implements TurtleCommand {
 	private Mover myMover;
 	
-	public PenDown(Mover turtle, Pane root) {
+	public PenDown(Mover turtle) {
 		myMover = turtle;
 	}
 	
 	@Override
-	public void executeCommand(Integer[] args) {
+	public double executeCommand(Integer[] args) {
 		myMover.setPenStatus(true);
+		return 1;
 	}
 }
