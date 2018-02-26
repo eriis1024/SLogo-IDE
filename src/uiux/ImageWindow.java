@@ -1,54 +1,117 @@
 package uiux;
+import Commands.Forward;
+import Commands.SetHeading;
+import Commands.TurtleCommand;
+import Movers.Mover;
+import Movers.Turtle;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.layout.Pane;
+import javafx.scene.shape.Line;
 import javafx.stage.Screen;
 
 public class ImageWindow {
-	
-	//private BorderPane myRoot;
-	private Node myNode;
 
-	// load a welcome image
-	// everytime we hear the user press enter or the enterbutton. check for an
-	// update
+	private Node myNode;
+	protected Mover myTurtle;
+	protected Pane myRoot;
 
 	public ImageWindow() {
-		//myRoot = root;
 		myNode = loadWelcomeScreen();
-		//myRoot.setCenter(this.getImageWindow());
 	}
 
 	private Node loadWelcomeScreen() {
+		myRoot = new Pane();
 		Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
 		
-		Image welcomeImage = new Image("resources/welcomeScreen.png");
-		ImageView iv1 = new ImageView();
-		iv1.setImage(welcomeImage);
-		iv1.setFitWidth(primaryScreenBounds.getWidth()/2);
-		iv1.setPreserveRatio(true);
-		VBox result = new VBox();
-		result.getChildren().add(iv1);
+		myTurtle = new Turtle(200, 100, "images/turtle.png");
+		updateTurtleLocation(myTurtle);
 		
-		result.setPrefWidth(primaryScreenBounds.getWidth()/2);
-		return result;
-	}
+		TextField commandTextField = new TextField();
+		commandTextField.setMaxSize(100, 20);
+		commandTextField.setPromptText("forward");
+		commandTextField.setTranslateY(200);
+		commandTextField.setTranslateX(200);
 
-	// PART OF INTERNAL API
+		TextField headingTextField = new TextField();
+		headingTextField.setPromptText("heading");
+		headingTextField.setMaxSize(100, 20);
+		headingTextField.setTranslateY(200);
+		headingTextField.setTranslateX(100);
+
+		commandTextField.setOnKeyPressed(event -> {
+			if (event.getCode() == KeyCode.ENTER) {
+				int dist = Integer.parseInt(commandTextField.getText());
+				TurtleCommand command = new Forward(myTurtle);
+				Integer[] args = new Integer[1];
+				args[0] = dist;
+				command.executeCommand(args);
+				updateTurtleLocation(myTurtle);
+			}
+		});
+
+		headingTextField.setOnKeyPressed(event -> {
+			if (event.getCode() == KeyCode.ENTER) {
+				int rotate = Integer.parseInt(headingTextField.getText());
+				TurtleCommand command = new SetHeading(myTurtle);
+				Integer[] args = new Integer[1];
+				args[0] = rotate;
+				command.executeCommand(args);
+			}
+		});
+		myRoot.getChildren().addAll(commandTextField, headingTextField);
+		myRoot.setPrefWidth(primaryScreenBounds.getWidth()/2);
+		return myRoot;
+	}
+	
 	public Node updateScreen() {
 		// TODO: instead of making iv2 a new image view, set iv2 = to a call to the
 		// backend external API that returns the current Image View
-		ImageView iv2 = new ImageView();
-		myNode = iv2;
+		
+		updateTurtleLocation(myTurtle);
+		
+//		ImageView iv2 = new ImageView();
+//		myNode = iv2;
 		//myRoot.setCenter(this.getImageWindow());
 		return myNode;
 	}
+
 
 	public Node getImageWindow() {
 		//updateScreen();
 		return myNode;
+	}
+	
+	public void updateTurtleLocation(Mover turtle) {
+		double x = turtle.getImageView().getX();
+		double y = turtle.getImageView().getY();
+		turtle.getImageView().setX(turtle.getX());
+		turtle.getImageView().setY(turtle.getY());
+		if (x == 0 && y == 0) {
+			addTurtleInScene(turtle);
+			return;
+		}
+		if (turtle.getPenStatus() == true){
+			addLineInScene(myTurtle, x, y);
+		}
+	}
+
+	private void addTurtleInScene(Mover turtle){
+		if(!myRoot.getChildren().contains(turtle.getImageView())){
+			turtle.getImageView().setX(turtle.getX());
+			turtle.getImageView().setY(turtle.getY());
+			myRoot.getChildren().add(turtle.getImageView());
+		}
+	}
+
+	private void addLineInScene(Mover turtle, double x, double y){
+		Line l = turtle.drawLine(x, y, turtle.getX(), turtle.getY());
+		myRoot.getChildren().add(l);
+	}
+
+	public Mover getTurtle() {
+		return myTurtle;
 	}
 }
