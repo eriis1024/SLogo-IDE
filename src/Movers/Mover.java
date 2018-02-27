@@ -14,6 +14,7 @@ public abstract class Mover implements MoverInterface {
 	private double yInd;
 	protected boolean penCheck; 
 	protected boolean imageCheck;
+	protected boolean clearCheck;
 	private List<Line> myLines;
 
 	public Mover(double x, double y, String imageFilePath) {
@@ -51,12 +52,13 @@ public abstract class Mover implements MoverInterface {
 	}
 
 	public void setImageStatus(boolean image) {
+		myImage.setVisible(image);
 		imageCheck = image;
 	}
 
 	public boolean getImageStatus() {
 		return imageCheck;
-	}    
+	}
 
 	public ImageView getImageView() {
 		return myImage;
@@ -74,10 +76,16 @@ public abstract class Mover implements MoverInterface {
 		return newLine;
 	}
 
-	public void removeLines() {
-		for (int i = 0; i < myLines.size(); i++) {
-			myLines.remove(i);
-		}
+	public List<Line> getLines() {
+		return myLines;
+	}
+	
+	public boolean getClear() {
+		return clearCheck;	
+	}
+	
+	public void setClear(boolean bool) {
+		clearCheck = bool;	
 	}
 
 	private void setMover(double x, double y, String imageFilePath){

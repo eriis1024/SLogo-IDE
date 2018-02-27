@@ -12,8 +12,8 @@ public class ClearScreen implements TurtleCommand {
 	@Override
 	public double executeCommand(Integer[] args) { 
 		double dist = Math.sqrt(Math.pow(250 - myMover.getX(), 2) + Math.pow(250 - myMover.getY(), 2));
-		myMover.setCoords(200, 100);
-		myMover.removeLines();
+		myMover.setCoords(320, 240);
+		myMover.setClear(true);
 		return dist;
 	}
 }

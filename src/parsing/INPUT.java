@@ -9,7 +9,6 @@ public class INPUT {
 	
 	public String theInput;
 	public Mover myTurtle;
-	
 	public Boolean error;
 
 	public Map<String,Integer> variables = new HashMap<String,Integer>();
@@ -40,7 +39,6 @@ public class INPUT {
 	}
 	
 	public void reconstruct(){
-		
 		for (int i=0;i<Command.size();i++){
 			if (Command.get(i).equals("XCOR") || Command.get(i).equals("YCOR")){
 				positionControl(i);
@@ -53,8 +51,8 @@ public class INPUT {
 			}
 		}
 		
-		for (int i=0;i<Command.size();i++){
-			if (Command.get(i).equals("*")){
+		for (int i=0;i<Command.size();i++) {
+			if (Command.get(i).equals("*")) {
 				booleanControl(i);
 			}
 		}
@@ -311,5 +309,4 @@ public class INPUT {
 		}
 		return total;	
 	}
-
 }

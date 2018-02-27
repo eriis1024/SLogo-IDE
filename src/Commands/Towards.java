@@ -15,7 +15,7 @@ private Mover myTurtle;
 		double currX = myTurtle.getX();
 		double currY = myTurtle.getY();
 		double angle = Math.atan2(y - currY, x - currX);
-		myTurtle.setAngle(angle);
+		myTurtle.setAngle(Math.toDegrees(angle));
 		return Math.toDegrees(angle);
 	}
 }
