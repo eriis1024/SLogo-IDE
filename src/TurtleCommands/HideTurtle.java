@@ -1,8 +1,8 @@
-package Commands;
-import javafx.scene.layout.Pane;
+package TurtleCommands;
+import Command.CommandInterface;
 import Movers.Mover;
 
-public class HideTurtle implements TurtleCommand {
+public class HideTurtle implements CommandInterface {
 	private Mover myMover;
 	
 	public HideTurtle(Mover turtle) {

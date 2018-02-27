@@ -1,7 +1,8 @@
 package uiux;
+import java.util.ArrayList;
+import java.util.List;
 import Movers.Mover;
 import Movers.Turtle;
-
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;
@@ -13,6 +14,7 @@ public class ImageWindow {
 	private Node myNode;
 	protected Mover myTurtle;
 	protected Pane myRoot;
+	protected List<Line> myLines = new ArrayList<Line>();
 
 	public ImageWindow() {
 		myNode = loadWelcomeScreen();
@@ -25,12 +27,16 @@ public class ImageWindow {
 		return myRoot;
 	}
 	
+	//don't let turtle out of screen bounds
+	//setXY, turtle at 0,0, input commands relative to that
+	//test all other commands
+	//clear lines, determine final window size and where (0,0) is, change this for Home, CS...
+	//add methods to mover interface
+	
 	public Node updateScreen() {
-		System.out.println("HERE:" + myTurtle.getX());
 		updateTurtleLocation(myTurtle);
 		return myNode;
 	}
-
 
 	public Node getImageWindow() {
 		return myNode;
@@ -45,13 +51,17 @@ public class ImageWindow {
 			addTurtleInScene(turtle);
 			return;
 		}
-		if (turtle.getPenStatus() == true){
+		if (turtle.getPenStatus() == true) {
 			addLineInScene(myTurtle, x, y);
+		}
+		if (turtle.getClear() == true) {
+			turtle.setClear(false);
+			removeLines();
 		}
 	}
 
 	private void addTurtleInScene(Mover turtle){
-		if(!myRoot.getChildren().contains(turtle.getImageView())){
+		if(!myRoot.getChildren().contains(turtle.getImageView())) {
 			turtle.getImageView().setX(turtle.getX());
 			turtle.getImageView().setY(turtle.getY());
 			myRoot.getChildren().add(turtle.getImageView());
@@ -68,12 +78,20 @@ public class ImageWindow {
 	private void setSizeAndTurtle() {
 		Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
 		myRoot.setPrefWidth(primaryScreenBounds.getWidth()/2);
+		System.out.println(primaryScreenBounds.getWidth()/2);
 		myRoot.setPrefHeight(primaryScreenBounds.getHeight()/2);
 		myRoot.getStyleClass().add("box");
-		myTurtle = new Turtle((int)(myRoot.getPrefWidth()/2), (int)(myRoot.getPrefHeight()/2), "images/turtle.png");
+		myTurtle = new Turtle(320, 240, "images/turtle.png");
 	}
 
 	public Mover getTurtle() {
 		return myTurtle;
+	}
+	
+	public void removeLines() {
+		myLines = myTurtle.getLines();
+		for (int i = 0; i < myLines.size(); i++) {
+			myRoot.getChildren().remove(myLines.get(i));
+		}
 	}
 }

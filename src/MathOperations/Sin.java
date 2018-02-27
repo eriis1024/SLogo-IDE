@@ -1,6 +1,8 @@
 package MathOperations;
 
-public class Sin implements MathOperation {
+import Command.CommandInterface;
+
+public class Sin implements CommandInterface {
 
 	@Override
 	public double executeCommand(Integer[] args) {

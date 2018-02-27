@@ -1,8 +1,8 @@
 package Queries;
-import java.util.List;
+import Command.CommandInterface;
 import Movers.Mover;
 
-public class Showing implements TurtleQuery {
+public class Showing implements CommandInterface {
 	private Mover myMover;
 	
 	public Showing(Mover turtle) {
@@ -10,7 +10,7 @@ public class Showing implements TurtleQuery {
 	}
 	
 	@Override
-	public double executeCommand(List<Integer> args) {
+	public double executeCommand(Integer[] args) {
 		System.out.println(myMover.getImageStatus());
 		if (myMover.getImageStatus() == true) {
 			return 1;

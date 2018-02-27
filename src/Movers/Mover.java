@@ -7,13 +7,14 @@ import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 
-public abstract class Mover implements MoverInterface {
+public class Mover implements MoverInterface {
 
 	private ImageView myImage;
 	private double xInd;
 	private double yInd;
 	protected boolean penCheck; 
 	protected boolean imageCheck;
+	protected boolean clearCheck;
 	private List<Line> myLines;
 
 	public Mover(double x, double y, String imageFilePath) {
@@ -38,11 +39,11 @@ public abstract class Mover implements MoverInterface {
 		myImage.setRotate(myImage.getRotate() + angle);
 	}
 
-	public double getAngle(){
+	public double getAngle() {
 		return myImage.getRotate();
 	}
 	
-	public void setPenStatus(boolean pen){
+	public void setPenStatus(boolean pen) {
 		penCheck = pen;
 	}
 
@@ -51,18 +52,19 @@ public abstract class Mover implements MoverInterface {
 	}
 
 	public void setImageStatus(boolean image) {
+		myImage.setVisible(image);
 		imageCheck = image;
 	}
 
 	public boolean getImageStatus() {
 		return imageCheck;
-	}    
+	}
 
 	public ImageView getImageView() {
 		return myImage;
 	}
 
-	public Line drawLine(double x, double y, double x1, double y1){
+	public Line drawLine(double x, double y, double x1, double y1) {
 		Line newLine = new Line();
 		newLine.setStartX(x + 10);
 		newLine.setEndX(x1 + 10);
@@ -74,8 +76,16 @@ public abstract class Mover implements MoverInterface {
 		return newLine;
 	}
 
-	public void removeLines(){
-		myLines.clear();
+	public List<Line> getLines() {
+		return myLines;
+	}
+	
+	public boolean getClear() {
+		return clearCheck;	
+	}
+	
+	public void setClear(boolean bool) {
+		clearCheck = bool;	
 	}
 
 	private void setMover(double x, double y, String imageFilePath){

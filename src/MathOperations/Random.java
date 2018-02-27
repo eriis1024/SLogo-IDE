@@ -1,6 +1,8 @@
 package MathOperations;
 
-public class Random implements MathOperation {
+import Command.CommandInterface;
+
+public class Random implements CommandInterface {
 
 	@Override
 	public double executeCommand(Integer[] args) {

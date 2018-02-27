@@ -1,16 +1,15 @@
 package parsing;
 import java.util.*;
-import java.util.regex.Pattern;
 
-import Commands.*;
+import Command.*;
 import Movers.Mover;
+import TurtleCommands.*;
 
 
 public class INPUT {
 	
 	public String theInput;
 	public Mover myTurtle;
-	
 	public Boolean error;
 
 	public Map<String,Integer> variables = new HashMap<String,Integer>();
@@ -41,7 +40,6 @@ public class INPUT {
 	}
 	
 	public void reconstruct(){
-		
 		for (int i=0;i<Command.size();i++){
 			if (Command.get(i).equals("XCOR") || Command.get(i).equals("YCOR")){
 				positionControl(i);
@@ -54,14 +52,14 @@ public class INPUT {
 			}
 		}
 		
-		for (int i=0;i<Command.size();i++){
-			if (Command.get(i).equals("*")){
+		for (int i=0;i<Command.size();i++) {
+			if (Command.get(i).equals("*")) {
 				booleanControl(i);
 			}
 		}
 	}
 	
-	public Map getVariavles(){
+	public Map<String, Integer> getVariavles(){
 		return variables;
 	}
 	
@@ -86,7 +84,7 @@ public class INPUT {
 				case "FD":{
 					Integer[] parameter = new Integer[1];
 					parameter[0] = Integer.parseInt(Command.get(i + 1));
-					TurtleCommand current = new Forward(myTurtle);
+					CommandInterface current = new Forward(myTurtle);
 					current.executeCommand(parameter);
 					CONSOLE = parameter[0]+"";
 					break;
@@ -96,7 +94,7 @@ public class INPUT {
 				case "BK":{
 					Integer[] parameter = new Integer[1];
 					parameter[0] = Integer.parseInt(Command.get(i + 1));
-					TurtleCommand current = new Back(myTurtle);
+					CommandInterface current = new Back(myTurtle);
 					current.executeCommand(parameter);
 					CONSOLE = parameter[0]+"";
 					break;
@@ -106,7 +104,7 @@ public class INPUT {
 				case "LT":{
 					Integer[] parameter = new Integer[1];
 					parameter[0] = Integer.parseInt(Command.get(i + 1));
-					TurtleCommand current = new Left(myTurtle);
+					CommandInterface current = new Left(myTurtle);
 					current.executeCommand(parameter);
 					CONSOLE = parameter[0]+"";
 					break;
@@ -116,7 +114,7 @@ public class INPUT {
 				case "RT":{
 					Integer[] parameter = new Integer[1];
 					parameter[0] = Integer.parseInt(Command.get(i + 1));
-					TurtleCommand current = new Right(myTurtle);
+					CommandInterface current = new Right(myTurtle);
 					current.executeCommand(parameter);
 					CONSOLE = parameter[0]+"";
 					break;
@@ -126,7 +124,7 @@ public class INPUT {
 				case "SETH":{
 					Integer[] parameter = new Integer[1];
 					parameter[0] = Integer.parseInt(Command.get(i + 1));
-					TurtleCommand current = new SetHeading(myTurtle);
+					CommandInterface current = new SetHeading(myTurtle);
 					current.executeCommand(parameter);
 					double turning = Math.abs(parameter[0]-myTurtle.getAngle());
 					CONSOLE = turning+"";
@@ -137,7 +135,7 @@ public class INPUT {
 					double previous = myTurtle.getAngle();
 					Integer[] parameter = new Integer[1];
 					parameter[0] = Integer.parseInt(Command.get(i + 1));
-					TurtleCommand current = new SetHeading(myTurtle);
+					CommandInterface current = new SetHeading(myTurtle);
 					current.executeCommand(parameter);
 					double turning = Math.abs(previous-myTurtle.getAngle());
 					CONSOLE = turning+"";
@@ -149,7 +147,7 @@ public class INPUT {
 					Integer[] parameter = new Integer[2];
 					parameter[0] = Integer.parseInt(Command.get(i + 1));
 					parameter[1] = Integer.parseInt(Command.get(i + 2));
-					TurtleCommand current = new SetXY(myTurtle);
+					CommandInterface current = new SetXY(myTurtle);
 					current.executeCommand(parameter);
 					CONSOLE = "{"+parameter[0]+","+parameter[1]+"}";
 					break;
@@ -157,7 +155,7 @@ public class INPUT {
 				
 				case "PENDOWN":
 				case "PD":{
-					TurtleCommand current = new PenDown(myTurtle);
+					CommandInterface current = new PenDown(myTurtle);
 					current.executeCommand(new Integer[0]);
 					CONSOLE = "1";
 					break;
@@ -165,7 +163,7 @@ public class INPUT {
 				
 				case "PENUP":
 				case "PU":{
-					TurtleCommand current = new PenUp(myTurtle);
+					CommandInterface current = new PenUp(myTurtle);
 					current.executeCommand(new Integer[0]);
 					CONSOLE = "0";
 					break;
@@ -173,24 +171,24 @@ public class INPUT {
 				
 				case "SHOWTURTLE":
 				case "ST":{
-					TurtleCommand current = new ShowTurtle(myTurtle);
+					CommandInterface current = new ShowTurtle(myTurtle);
 					current.executeCommand(new Integer[0]);
 					CONSOLE = "1";
 					break;
 				}
-				
+				//doesn't work
 				case "HIDETURTLE":
 				case "HT":{
-					TurtleCommand current = new HideTurtle(myTurtle);
+					CommandInterface current = new HideTurtle(myTurtle);
 					current.executeCommand(new Integer[0]);
 					CONSOLE = "0";
 					break;
 				}
-				
+				//goes to wrong coords
 				case "HOME":{
 					double previousX = myTurtle.getX();
 					double previousY = myTurtle.getY();
-					TurtleCommand current = new Home(myTurtle);
+					CommandInterface current = new Home(myTurtle);
 					current.executeCommand(new Integer[0]);
 					double presentX = myTurtle.getX();
 					double presentY = myTurtle.getY();
@@ -198,12 +196,12 @@ public class INPUT {
 					CONSOLE = moving+"";
 					break;
 				}
-				
+				//doesn't work
 				case "CLEARSCREEN":
 				case "CS":{
 					double previousX = myTurtle.getX();
 					double previousY = myTurtle.getY();
-					TurtleCommand current = new ClearScreen(myTurtle);
+					CommandInterface current = new ClearScreen(myTurtle);
 					current.executeCommand(new Integer[0]);
 					double presentX = myTurtle.getX();
 					double presentY = myTurtle.getY();
@@ -312,6 +310,4 @@ public class INPUT {
 		}
 		return total;	
 	}
-
-	
 }

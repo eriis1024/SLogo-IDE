@@ -1,6 +1,8 @@
 package MathOperations;
 
-public class Tan implements MathOperation {
+import Command.CommandInterface;
+
+public class Tan implements CommandInterface {
 
 	@Override
 	public double executeCommand(Integer[] args) {

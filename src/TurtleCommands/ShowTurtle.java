@@ -1,8 +1,8 @@
-package Commands;
-import javafx.scene.layout.Pane;
+package TurtleCommands;
+import Command.CommandInterface;
 import Movers.Mover;
 
-public class ShowTurtle implements TurtleCommand {
+public class ShowTurtle implements CommandInterface {
 	private Mover myMover;
 	
 	public ShowTurtle(Mover turtle) {
@@ -11,7 +11,7 @@ public class ShowTurtle implements TurtleCommand {
 	
 	@Override
 	public double executeCommand(Integer[] args) {
-		myMover.setImageStatus(false);
+		myMover.setImageStatus(true);
 		return 1;
 	}
 }

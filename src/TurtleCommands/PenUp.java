@@ -1,8 +1,8 @@
-package Commands;
-import javafx.scene.layout.Pane;
+package TurtleCommands;
+import Command.CommandInterface;
 import Movers.Mover;
 
-public class PenUp implements TurtleCommand {
+public class PenUp implements CommandInterface {
 	private Mover myMover;
 	
 	public PenUp(Mover turtle) {
