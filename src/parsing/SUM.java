@@ -1,6 +1,6 @@
 package parsing;
 
-public class SUM extends Calculator{
+public class SUM extends Calculator {
 
 	public SUM(double[] input) {
 		super(input);
