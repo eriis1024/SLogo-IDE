@@ -7,7 +7,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 
-public abstract class Mover implements MoverInterface {
+public class Mover implements MoverInterface {
 
 	private ImageView myImage;
 	private double xInd;
@@ -39,11 +39,11 @@ public abstract class Mover implements MoverInterface {
 		myImage.setRotate(myImage.getRotate() + angle);
 	}
 
-	public double getAngle(){
+	public double getAngle() {
 		return myImage.getRotate();
 	}
 	
-	public void setPenStatus(boolean pen){
+	public void setPenStatus(boolean pen) {
 		penCheck = pen;
 	}
 
@@ -64,7 +64,7 @@ public abstract class Mover implements MoverInterface {
 		return myImage;
 	}
 
-	public Line drawLine(double x, double y, double x1, double y1){
+	public Line drawLine(double x, double y, double x1, double y1) {
 		Line newLine = new Line();
 		newLine.setStartX(x + 10);
 		newLine.setEndX(x1 + 10);

@@ -1,7 +1,8 @@
-package Commands;
+package TurtleCommands;
+import Command.CommandInterface;
 import Movers.Mover;
 
-public class SetHeading implements TurtleCommand {
+public class SetHeading implements CommandInterface {
 private Mover myTurtle;
 	
 	public SetHeading(Mover turtle) {

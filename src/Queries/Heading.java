@@ -1,9 +1,8 @@
 package Queries;
-
-import java.util.List;
+import Command.CommandInterface;
 import Movers.Mover;
 
-public class Heading implements TurtleQuery {
+public class Heading implements CommandInterface {
 	private Mover myMover;
 	
 	public Heading(Mover turtle) {
@@ -11,7 +10,7 @@ public class Heading implements TurtleQuery {
 	}
 	
 	@Override
-	public double executeCommand(List<Integer> args) { 
+	public double executeCommand(Integer[] args) { 
 		System.out.println(myMover.getAngle());
 		return myMover.getAngle();
 	}

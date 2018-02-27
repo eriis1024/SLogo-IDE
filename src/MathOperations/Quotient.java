@@ -1,6 +1,8 @@
 package MathOperations;
 
-public class Quotient implements MathOperation {
+import Command.CommandInterface;
+
+public class Quotient implements CommandInterface {
 
 	@Override
 	public double executeCommand(Integer[] args) {

@@ -1,6 +1,6 @@
-package Commands;
+package Command;
 
-public interface TurtleCommand {
+public interface CommandInterface {
 	
 	public double executeCommand(Integer[] args);
 

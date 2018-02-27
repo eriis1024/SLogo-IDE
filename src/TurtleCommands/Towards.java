@@ -1,7 +1,8 @@
-package Commands;
+package TurtleCommands;
+import Command.CommandInterface;
 import Movers.Mover;
 
-public class Towards implements TurtleCommand {
+public class Towards implements CommandInterface {
 private Mover myTurtle;
 	
 	public Towards(Mover turtle) {

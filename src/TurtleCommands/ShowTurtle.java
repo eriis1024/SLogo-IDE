@@ -1,7 +1,8 @@
-package Commands;
+package TurtleCommands;
+import Command.CommandInterface;
 import Movers.Mover;
 
-public class ShowTurtle implements TurtleCommand {
+public class ShowTurtle implements CommandInterface {
 	private Mover myMover;
 	
 	public ShowTurtle(Mover turtle) {

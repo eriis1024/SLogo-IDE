@@ -1,14 +1,14 @@
-package Commands;
-
+package TurtleCommands;
+import Command.CommandInterface;
 import Movers.Mover;
 
-public class Forward implements TurtleCommand {
+public class Back implements CommandInterface {
 	private Mover myMover;
-
-	public Forward(Mover turtle) {
+	
+	public Back(Mover turtle) {
 		myMover = turtle;
 	}
-
+	
 	@Override
 	public double executeCommand(Integer[] args) { 
 		double x = 0;
@@ -16,9 +16,8 @@ public class Forward implements TurtleCommand {
 		double angle = myMover.getAngle() - 90;
 		x = args[0]*Math.cos(Math.toRadians(angle));
 		y = args[0]*Math.sin(Math.toRadians(angle));
-		myMover.setCoords(myMover.getX() + x, myMover.getY() + y);
+		myMover.setCoords(myMover.getX() - x, myMover.getY() - y);
 		double dist = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
-		System.out.println(myMover.getX());
 		return dist;
 	}
 }

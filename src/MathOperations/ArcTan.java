@@ -1,6 +1,8 @@
 package MathOperations;
 
-public class ArcTan implements MathOperation {
+import Command.CommandInterface;
+
+public class ArcTan implements CommandInterface {
 
 	@Override
 	public double executeCommand(Integer[] args) {

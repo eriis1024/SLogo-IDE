@@ -1,11 +1,11 @@
-package Commands;
-
+package TurtleCommands;
+import Command.CommandInterface;
 import Movers.Mover;
 
-public class Home implements TurtleCommand {
+public class ClearScreen implements CommandInterface {
 	private Mover myMover;
 	
-	public Home(Mover turtle) {
+	public ClearScreen(Mover turtle) {
 		myMover = turtle;
 	}
 	
@@ -13,6 +13,7 @@ public class Home implements TurtleCommand {
 	public double executeCommand(Integer[] args) { 
 		double dist = Math.sqrt(Math.pow(250 - myMover.getX(), 2) + Math.pow(250 - myMover.getY(), 2));
 		myMover.setCoords(320, 240);
+		myMover.setClear(true);
 		return dist;
 	}
 }
