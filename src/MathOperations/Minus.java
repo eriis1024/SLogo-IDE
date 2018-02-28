@@ -1,6 +1,8 @@
 package MathOperations;
 
-public class Minus implements MathOperation {
+import Command.CommandInterface;
+
+public class Minus implements CommandInterface {
 
 	@Override
 	public double executeCommand(Integer[] args) {

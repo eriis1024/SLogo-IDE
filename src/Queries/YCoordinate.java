@@ -1,8 +1,8 @@
 package Queries;
-import java.util.List;
+import Command.CommandInterface;
 import Movers.Mover;
 
-public class YCoordinate implements TurtleQuery {
+public class YCoordinate implements CommandInterface {
 	private Mover myMover;
 	
 	public YCoordinate(Mover turtle) {
@@ -10,7 +10,7 @@ public class YCoordinate implements TurtleQuery {
 	}
 	
 	@Override
-	public double executeCommand(List<Integer> args) {
+	public double executeCommand(Integer[] args) {
 		System.out.println(250 - myMover.getY());
 		return 250 - myMover.getY();
 		

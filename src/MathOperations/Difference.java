@@ -1,6 +1,8 @@
 package MathOperations;
 
-public class Difference implements MathOperation {
+import Command.CommandInterface;
+
+public class Difference implements CommandInterface {
 	
 	@Override
 	public double executeCommand(Integer[] args) {

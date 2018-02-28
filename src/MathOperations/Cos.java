@@ -1,6 +1,8 @@
 package MathOperations;
 
-public class Cos implements MathOperation {
+import Command.CommandInterface;
+
+public class Cos implements CommandInterface {
 
 	@Override
 	public double executeCommand(Integer[] args) {

@@ -1,6 +1,8 @@
 package MathOperations;
 
-public class Log implements MathOperation {
+import Command.CommandInterface;
+
+public class Log implements CommandInterface {
 
 	@Override
 	public double executeCommand(Integer[] args) {

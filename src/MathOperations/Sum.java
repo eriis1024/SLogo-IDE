@@ -1,6 +1,8 @@
 package MathOperations;
 
-public class Sum implements MathOperation {
+import Command.CommandInterface;
+
+public class Sum implements CommandInterface {
 
 	@Override
 	public double executeCommand(Integer[] args) {

@@ -1,8 +1,8 @@
 package Queries;
-import java.util.List;
+import Command.CommandInterface;
 import Movers.Mover;
 
-public class IsPenDown implements TurtleQuery {
+public class IsPenDown implements CommandInterface {
 	private Mover myMover;
 	
 	public IsPenDown(Mover turtle) {
@@ -10,7 +10,7 @@ public class IsPenDown implements TurtleQuery {
 	}
 	
 	@Override
-	public double executeCommand(List<Integer> args) {
+	public double executeCommand(Integer[] args) {
 		if (myMover.getPenStatus() == true) {
 			return 1;
 		} else {

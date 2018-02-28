@@ -1,6 +1,8 @@
 package MathOperations;
 
-public class Remainder implements MathOperation {
+import Command.CommandInterface;
+
+public class Remainder implements CommandInterface {
 
 	@Override
 	public double executeCommand(Integer[] args) {
