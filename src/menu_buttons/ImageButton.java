@@ -10,6 +10,9 @@ public class ImageButton extends MenuButton{
 	private MenuBarController controller;
 	private Map<String, String> imageInfo = new HashMap<>();
 	
+	//TODO: Fix error where clicking on an image deletes that image from the list of option
+	//also clear the past image when a new image is chosen.
+	
 	public ImageButton(MenuBarController passedController) {
 		super("Images");
 		super.getStyleClass().add("toolbutton");
