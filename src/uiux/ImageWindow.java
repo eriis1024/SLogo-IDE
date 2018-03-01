@@ -51,8 +51,8 @@ public class ImageWindow implements ImageWindowInterface {
 		System.out.print(color);
 		String colorString = String.format("#%02X%02X%02X",
 				(int)(color.getRed()*255.0),
-				(int)(color.getBlue()*255.0),
-				(int)(color.getGreen()*255.0));
+				(int)(color.getGreen()*255.0),
+				(int)(color.getBlue()*255.0));
 		myRoot.setStyle("-fx-background-color: "+colorString);
 		System.out.println(colorString);
 		
