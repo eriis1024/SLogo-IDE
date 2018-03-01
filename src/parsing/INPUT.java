@@ -206,7 +206,6 @@ public class INPUT {
 					CONSOLE = "1";
 					break;
 				}
-				//doesn't work
 				case "HIDETURTLE":
 				case "HT":{
 					CommandInterface current = new HideTurtle(myTurtle);
@@ -214,7 +213,6 @@ public class INPUT {
 					CONSOLE = "0";
 					break;
 				}
-				//goes to wrong coords
 				case "HOME":{
 					double previousX = myTurtle.getX();
 					double previousY = myTurtle.getY();
@@ -226,7 +224,6 @@ public class INPUT {
 					CONSOLE = moving+"";
 					break;
 				}
-				//doesn't work
 				case "CLEARSCREEN":
 				case "CS":{
 					double previousX = myTurtle.getX();
