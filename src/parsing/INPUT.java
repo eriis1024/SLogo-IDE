@@ -1,4 +1,5 @@
 package parsing;
+
 import java.util.*;
 
 import Command.*;
@@ -11,6 +12,8 @@ public class INPUT {
 
 	public Mover myTurtle;
 	public Boolean error;
+	
+	public Bundle currentLang = new EnglishBundle("English");
 
 	public Map<String,Integer> variables = new HashMap<String,Integer>();
 	public ArrayList<String> Command = new ArrayList<String>();
@@ -20,6 +23,47 @@ public class INPUT {
 	public INPUT(Mover turtle){
 		myTurtle = turtle;
 		BooleanCons();
+		currentLang = new EnglishBundle("English");
+	}
+	
+	public void setLanguage(String s){
+		
+		switch (s){
+			
+			case "Chinese":{
+				currentLang = new ChineseBundle(s);
+			}
+			
+			case "English":{
+				currentLang = new EnglishBundle(s);
+			}
+			
+			case "French":{
+				currentLang = new FrenchBundle(s);
+			}
+			
+			case "German":{
+				currentLang = new GermanBundle(s);
+			}
+			
+			case "Italian":{
+				currentLang = new ItalianBundle(s);
+			}
+			
+			case "Portuguese":{
+				currentLang = new PortugueseBundle(s);
+			}
+			
+			case "Russian":{
+				currentLang = new RussianBundle(s);	
+			}
+			
+			case "Spanish":{
+				currentLang = new SpanishBundle(s);
+			}
+		
+		}
+		
 	}
 	
 	public void inputDecoder(String input){
@@ -58,19 +102,19 @@ public class INPUT {
 	public void reconstruct(){
 		
 		for (int i=0;i<Command.size();i++){
-			if (Command.get(i).equals("MAKE") || Command.get(i).equals("SET")){
+			if (Command.get(i).equals(currentLang.MakeVariable)){
 				setControl(i);
 			}
 		}
 		
 		for (int i=0;i<Command.size();i++){
-			if (Command.get(i).equals("XCOR") || Command.get(i).equals("YCOR")){
+			if (Command.get(i).equals(currentLang.XCoordinate) || Command.get(i).equals(currentLang.YCoordinate)){
 				positionControl(i);
 			}
 		}
 		
 		for (int i=0;i<Command.size();i++){
-			if (Command.get(i).equals("SUM")){
+			if (Command.get(i).equals(currentLang.Sum)){
 				sumControl(i, i+2);
 			}
 		}
@@ -82,7 +126,7 @@ public class INPUT {
 		}
 		
 		for (int i=0;i<Command.size();i++){
-			if (Command.get(i).equals("REPEAT")){
+			if (Command.get(i).equals(currentLang.Repeat)){
 				repeatControl(i);
 			}
 		}
@@ -108,151 +152,113 @@ public class INPUT {
 		}
 		
 		for (int i=0;i<Command.size();i++){
-			switch (Command.get(i)){
 			
-				case "FORWARD":
-				case "FD":{
-					Integer[] parameter = new Integer[1];
-					parameter[0] = Integer.parseInt(Command.get(i + 1));
-					CommandInterface current = new Forward(myTurtle);
-					current.executeCommand(parameter);
-					CONSOLE = parameter[0]+"";
-					break;
-				}
-				
-				case "BACK":
-				case "BK":{
-					Integer[] parameter = new Integer[1];
-					parameter[0] = Integer.parseInt(Command.get(i + 1));
-					CommandInterface current = new Back(myTurtle);
-					current.executeCommand(parameter);
-					CONSOLE = parameter[0]+"";
-					break;
-				}
-				
-				case "LEFT":
-				case "LT":{
-					Integer[] parameter = new Integer[1];
-					parameter[0] = Integer.parseInt(Command.get(i + 1));
-					CommandInterface current = new Left(myTurtle);
-					current.executeCommand(parameter);
-					CONSOLE = parameter[0]+"";
-					break;
-				}
-				
-				case "RIGHT":
-				case "RT":{
-					Integer[] parameter = new Integer[1];
-					parameter[0] = Integer.parseInt(Command.get(i + 1));
-					CommandInterface current = new Right(myTurtle);
-					current.executeCommand(parameter);
-					CONSOLE = parameter[0]+"";
-					break;
-				}
-				
-				case "SETHEADING":
-				case "SETH":{
-					Integer[] parameter = new Integer[1];
-					parameter[0] = Integer.parseInt(Command.get(i + 1));
-					CommandInterface current = new SetHeading(myTurtle);
-					current.executeCommand(parameter);
-					double turning = Math.abs(parameter[0]-myTurtle.getAngle());
-					CONSOLE = turning+"";
-					break;
-				}
-				
-				case "TOWARDS":{
-					double previous = myTurtle.getAngle();
-					Integer[] parameter = new Integer[1];
-					parameter[0] = Integer.parseInt(Command.get(i + 1));
-					CommandInterface current = new SetHeading(myTurtle);
-					current.executeCommand(parameter);
-					double turning = Math.abs(previous-myTurtle.getAngle());
-					CONSOLE = turning+"";
-					break;
-				}
-				
-				case "GOTO":
-				case "SETXY":{
-					Integer[] parameter = new Integer[2];
-					parameter[0] = Integer.parseInt(Command.get(i + 1));
-					parameter[1] = Integer.parseInt(Command.get(i + 2));
-					CommandInterface current = new SetXY(myTurtle);
-					current.executeCommand(parameter);
-					CONSOLE = "{"+parameter[0]+","+parameter[1]+"}";
-					break;
-				}
-				
-				case "PENDOWN":
-				case "PD":{
-					CommandInterface current = new PenDown(myTurtle);
-					current.executeCommand(new Integer[0]);
-					CONSOLE = "1";
-					break;
-				}
-				
-				case "PENUP":
-				case "PU":{
-					CommandInterface current = new PenUp(myTurtle);
-					current.executeCommand(new Integer[0]);
-					CONSOLE = "0";
-					break;
-				}
-				
-				case "SHOWTURTLE":
-				case "ST":{
-					CommandInterface current = new ShowTurtle(myTurtle);
-					current.executeCommand(new Integer[0]);
-					CONSOLE = "1";
-					break;
-				}
-				case "HIDETURTLE":
-				case "HT":{
-					CommandInterface current = new HideTurtle(myTurtle);
-					current.executeCommand(new Integer[0]);
-					CONSOLE = "0";
-					break;
-				}
-				case "HOME":{
-					double previousX = myTurtle.getX();
-					double previousY = myTurtle.getY();
-					CommandInterface current = new Home(myTurtle);
-					current.executeCommand(new Integer[0]);
-					double presentX = myTurtle.getX();
-					double presentY = myTurtle.getY();
-					double moving = Math.sqrt(Math.pow(presentX-previousX, 2) + Math.pow(presentY-previousY, 2));
-					CONSOLE = moving+"";
-					break;
-				}
-				case "CLEARSCREEN":
-				case "CS":{
-					double previousX = myTurtle.getX();
-					double previousY = myTurtle.getY();
-					CommandInterface current = new ClearScreen(myTurtle);
-					current.executeCommand(new Integer[0]);
-					double presentX = myTurtle.getX();
-					double presentY = myTurtle.getY();
-					double moving = Math.sqrt(Math.pow(presentX-previousX, 2) + Math.pow(presentY-previousY, 2));
-					CONSOLE = moving+"";
-					break;
-				}
-				
-				case "HEADING":{
-					CONSOLE = myTurtle.getAngle()+"";
-				}
-				
-				case "PENDOWN?":
-				case "PENDOWNP":{
-					if (myTurtle.getPenStatus()) {CONSOLE = "1";} 
-					else {CONSOLE = "0";}
-				}
-				
-				case "SHOWING":
-				case "SHOWINGP":{
-					if (myTurtle.getImageStatus()) {CONSOLE = "1";} 
-					else {CONSOLE = "0";}
-				}
-				
+			if (Command.get(i).equals(currentLang.Forward)){
+				Integer[] parameter = new Integer[1];
+				parameter[0] = Integer.parseInt(Command.get(i + 1));
+				CommandInterface current = new Forward(myTurtle);
+				current.executeCommand(parameter);
+				CONSOLE = parameter[0]+"";
+				break;
+			} 
+			else if (Command.get(i).equals(currentLang.Backward)){
+				Integer[] parameter = new Integer[1];
+				parameter[0] = Integer.parseInt(Command.get(i + 1));
+				CommandInterface current = new Back(myTurtle);
+				current.executeCommand(parameter);
+				CONSOLE = parameter[0]+"";
+				break;
+			} 
+			else if (Command.get(i).equals(currentLang.Left)){
+				Integer[] parameter = new Integer[1];
+				parameter[0] = Integer.parseInt(Command.get(i + 1));
+				CommandInterface current = new Left(myTurtle);
+				current.executeCommand(parameter);
+				CONSOLE = parameter[0]+"";
+				break;
+			} 
+			else if (Command.get(i).equals(currentLang.Right)){
+				Integer[] parameter = new Integer[1];
+				parameter[0] = Integer.parseInt(Command.get(i + 1));
+				CommandInterface current = new Right(myTurtle);
+				current.executeCommand(parameter);
+				CONSOLE = parameter[0]+"";
+				break;
+			} 
+			else if (Command.get(i).equals(currentLang.SetHeading)){
+				Integer[] parameter = new Integer[1];
+				parameter[0] = Integer.parseInt(Command.get(i + 1));
+				CommandInterface current = new SetHeading(myTurtle);
+				current.executeCommand(parameter);
+				double turning = Math.abs(parameter[0]-myTurtle.getAngle());
+				CONSOLE = turning+"";
+				break;
+			} 
+			else if (Command.get(i).equals(currentLang.SetPosition)){
+				Integer[] parameter = new Integer[2];
+				parameter[0] = Integer.parseInt(Command.get(i + 1));
+				parameter[1] = Integer.parseInt(Command.get(i + 2));
+				CommandInterface current = new SetXY(myTurtle);
+				current.executeCommand(parameter);
+				CONSOLE = "{"+parameter[0]+","+parameter[1]+"}";
+				break;
+			} 
+			else if (Command.get(i).equals(currentLang.PenDown)){
+				CommandInterface current = new PenDown(myTurtle);
+				current.executeCommand(new Integer[0]);
+				CONSOLE = "1";
+				break;
+			} 
+			else if (Command.get(i).equals(currentLang.PenUp)){
+				CommandInterface current = new PenUp(myTurtle);
+				current.executeCommand(new Integer[0]);
+				CONSOLE = "0";
+				break;
+			} 
+			else if (Command.get(i).equals(currentLang.ShowTurtle)){
+				CommandInterface current = new ShowTurtle(myTurtle);
+				current.executeCommand(new Integer[0]);
+				CONSOLE = "1";
+				break;
+			} 
+			else if (Command.get(i).equals(currentLang.HideTurtle)){
+				CommandInterface current = new HideTurtle(myTurtle);
+				current.executeCommand(new Integer[0]);
+				CONSOLE = "0";
+				break;
+			} 
+			else if (Command.get(i).equals(currentLang.Home)){
+				double previousX = myTurtle.getX();
+				double previousY = myTurtle.getY();
+				CommandInterface current = new Home(myTurtle);
+				current.executeCommand(new Integer[0]);
+				double presentX = myTurtle.getX();
+				double presentY = myTurtle.getY();
+				double moving = Math.sqrt(Math.pow(presentX-previousX, 2) + Math.pow(presentY-previousY, 2));
+				CONSOLE = moving+"";
+				break;
+			} 
+			else if (Command.get(i).equals(currentLang.ClearScreen)){
+				double previousX = myTurtle.getX();
+				double previousY = myTurtle.getY();
+				CommandInterface current = new ClearScreen(myTurtle);
+				current.executeCommand(new Integer[0]);
+				double presentX = myTurtle.getX();
+				double presentY = myTurtle.getY();
+				double moving = Math.sqrt(Math.pow(presentX-previousX, 2) + Math.pow(presentY-previousY, 2));
+				CONSOLE = moving+"";
+				break;
+			} 
+			else if (Command.get(i).equals(currentLang.Heading)){
+				CONSOLE = myTurtle.getAngle()+"";
+			} 
+			else if (Command.get(i).equals(currentLang.IsPenDown)){
+				if (myTurtle.getPenStatus()) {CONSOLE = "1";} 
+				else {CONSOLE = "0";}
+			} 
+			else if (Command.get(i).equals(currentLang.IsShowing)){
+				if (myTurtle.getImageStatus()) {CONSOLE = "1";} 
+				else {CONSOLE = "0";}
 			}
 		}	
 	}
