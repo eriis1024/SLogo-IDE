@@ -46,14 +46,19 @@ public class ImageWindow implements ImageWindowInterface {
 		System.out.print(color);
 		String colorString = String.format("#%02X%02X%02X",
 				(int)(color.getRed()*255.0),
-				(int)(color.getBlue()*255.0),
-				(int)(color.getGreen()*255.0));
+				(int)(color.getGreen()*255.0),
+				(int)(color.getBlue()*255.0));
 		myRoot.setStyle("-fx-background-color: "+colorString);
 		System.out.println(colorString);
 	}
 	
 	public void setPenColor(Color color) {
 		myTurtle.setPenColor(color);
+	}
+	
+	public void setNewTurtleImage(String imageFilePath) {
+		myTurtle.setImageView(imageFilePath);
+		updateTurtleLocation(myTurtle);
 	}
 	
 	private void updateTurtleLocation(Mover turtle) {
@@ -84,7 +89,6 @@ public class ImageWindow implements ImageWindowInterface {
 	}
 
 	private void addLineInScene(Mover turtle, double x, double y) {
-		//turtle.setPenColor(Color.RED);
 		Line l = turtle.drawLine(x, y, turtle.getX(), turtle.getY());
 		myRoot.getChildren().add(l);
 	}
