@@ -13,7 +13,8 @@ import uiux.ImageWindow;
  *
  */
 public class Window extends BorderPane {
-	private MenuBar toolbar = new MenuBar();
+	private MenuBarController controller = new MenuBarController();
+	private MenuBar toolbar = new MenuBar(controller);
 	private ConsoleBoxInterface console = new ConsoleBox();
 	private ImageWindowInterface result = new ImageWindow();
 	private TerminalInterface compiler = new Terminal();

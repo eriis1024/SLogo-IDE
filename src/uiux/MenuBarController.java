@@ -5,10 +5,10 @@ import javafx.scene.paint.Color;
 public class MenuBarController {
 	private BackgroundButton backgroundColor;
 	private PenButton penColor;
+	private ImageWindowInterface imageWindow;
 	
-	public MenuBarController(BackgroundButton bColor, PenButton pColor) {
-		backgroundColor = bColor;
-		penColor = pColor;
+	public MenuBarController(ImageWindowInterface passedImageWindow) {
+		imageWindow = passedImageWindow;
 	}
 	
 	public Color getBackgroundColor() {
@@ -18,5 +18,16 @@ public class MenuBarController {
 	public Color getPenColor() {
 		return penColor.getColor();
 	}
+
+	public void findPenColor(Color colorChosen) {
+		
+		
+	}
+
+	public void findBackgroundColor(Color colorChosen) {
+		// TODO Auto-generated method stub
+		
+	}
 	
+
 }
