@@ -17,9 +17,10 @@ public class INPUT {
 	
 	public String CONSOLE;
 	
-	public INPUT(String inputs, Mover turtle){
-		theInput = inputs;
+	public INPUT(Mover turtle){
 		myTurtle = turtle;
+
+		BooleanCons();
 	}
 	
 	public void inputDecoder(String input){
@@ -39,7 +40,29 @@ public class INPUT {
 		executor();
 	}
 	
+	public ArrayList<String> BooleanOps = new ArrayList<>();
+	public void BooleanCons(){
+		BooleanOps.add("LESS?");
+		BooleanOps.add("LESSP");
+		BooleanOps.add("GREATER?");
+		BooleanOps.add("GREATERP");
+		BooleanOps.add("EQUAL?");
+		BooleanOps.add("EQUALP");
+		BooleanOps.add("NOTEQUAL?");
+		BooleanOps.add("NOTEQUALP");
+		BooleanOps.add("AND");
+		BooleanOps.add("OR");
+		
+	}
+	
 	public void reconstruct(){
+		
+		for (int i=0;i<Command.size();i++){
+			if (Command.get(i).equals("MAKE") || Command.get(i).equals("SET")){
+				setControl(i);
+			}
+		}
+		
 		for (int i=0;i<Command.size();i++){
 			if (Command.get(i).equals("XCOR") || Command.get(i).equals("YCOR")){
 				positionControl(i);
@@ -53,13 +76,20 @@ public class INPUT {
 		}
 		
 		for (int i=0;i<Command.size();i++) {
-			if (Command.get(i).equals("*")) {
+			if (BooleanOps.contains(Command.get(i))){
 				booleanControl(i);
 			}
 		}
+		
+		for (int i=0;i<Command.size();i++){
+			if (Command.get(i).equals("REPEAT")){
+				repeatControl(i);
+			}
+		}
+		
 	}
 	
-	public Map<String, Integer> getVariavles(){
+	public Map<String, Integer> getVariables(){
 		return variables;
 	}
 	
@@ -245,8 +275,12 @@ public class INPUT {
 	public void booleanControl(int position){
 		
 		ArrayList<String> toCheck = new ArrayList<String>();
-		for (int i=position;i<=position+3;i++){
+		for (int i=position;i<position+3;i++){
 			toCheck.add(Command.get(i));
+		}
+		
+		for (int i=0;i<toCheck.size();i++){
+			System.out.print(toCheck.get(i)+" ");
 		}
 		
 		boolean Checked = booleanCheck(toCheck);
@@ -254,30 +288,56 @@ public class INPUT {
 		if (error == true){return;}
 		
 		if (Checked == true){
-			for (int i=position;i<=position+3;i++){
+			for (int i=position;i<position+2;i++){
 				Command.remove(position);
+				Command.set(position, 1+"");
+				CONSOLE = 1+"";
 			}
 		} else {
-			for (int i=position;i<position+5;i++){
-				Command.remove(position - 1);
+			for (int i=position;i<position+1;i++){
+				Command.remove(position);
+				Command.set(position, 0+"");
+				CONSOLE = 0+"";
 			}
 		}
-		
-		CONSOLE = Boolean.toString(Checked);
 		
 	}
 	
 	public boolean booleanCheck(ArrayList<String> toBoolean){
 		
-		if (toBoolean.get(1).equals("greater?")){
-			return Integer.parseInt(toBoolean.get(2))>Integer.parseInt(toBoolean.get(3));
-		} else if (toBoolean.get(1).equals("smaller?")){
-			return Integer.parseInt(toBoolean.get(2))<Integer.parseInt(toBoolean.get(3));
-		} else {
-			error = true;
-			CONSOLE = "Invalid comparing operation!";
-			return false;
+		switch (toBoolean.get(0)){
+		
+			case "LESS?":
+			case "LESSP":{
+				return Double.parseDouble(toBoolean.get(1)) < Double.parseDouble(toBoolean.get(2));
+			}
+			
+			case "GREATER?":
+			case "GREATERP":{
+				return Double.parseDouble(toBoolean.get(1)) > Double.parseDouble(toBoolean.get(2));
+			}
+			
+			case "EQUAL?":
+			case "EQUALP":{
+				return Double.parseDouble(toBoolean.get(1)) == Double.parseDouble(toBoolean.get(2));
+			}
+			
+			case "NOTEQUAL?":
+			case "NOTEQUALP":{
+				return !(Double.parseDouble(toBoolean.get(1)) == Double.parseDouble(toBoolean.get(2)));
+			}
+			
+			case "AND":{
+				return (!toBoolean.get(1).equals("0")) && (!toBoolean.get(2).equals("0"));
+			}
+			
+			case "OR":{
+				return (!toBoolean.get(1).equals("0")) || (!toBoolean.get(2).equals("0"));
+			}
+		
 		}
+		
+		return true;
 
 	}
 	
@@ -310,4 +370,39 @@ public class INPUT {
 		}
 		return total;	
 	}
+	
+	public void setControl(int position){
+		
+		if (variables.containsKey(Command.get(position+1))){
+			variables.replace(Command.get(position+1), Integer.parseInt(Command.get(position+2)));
+		} else {
+			variables.put(Command.get(position+1), Integer.parseInt(Command.get(position+2)));
+		}
+		
+	}
+	
+	public void repeatControl(int position){
+		
+		int ending = 0;
+		for (int i=position+2;i<Command.size();i++){
+			if (Command.get(i).equals("]")){
+				ending = i;
+				break;
+			}
+		}
+		
+		String toRepeat = "";
+		for (int i=position+3;i<ending;i++){
+			toRepeat += Command.get(i);
+			toRepeat += "";
+		}
+		
+		for (int i=0;i<Integer.parseInt(Command.get(position+1));i++){
+			inputDecoder(toRepeat);
+		}
+		
+		
+		
+	}
+	
 }
