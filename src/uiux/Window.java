@@ -17,6 +17,7 @@ public class Window extends BorderPane {
 	private ConsoleBoxInterface console = new ConsoleBox();
 	private ImageWindowInterface result = new ImageWindow();
 	private TerminalInterface compiler = new Terminal();
+	private INPUT current = new INPUT(result.getTurtle());
 	
 	
 	/**
@@ -37,9 +38,12 @@ public class Window extends BorderPane {
 			public void handle(KeyEvent event) {
 				if(event.getCode() == KeyCode.ENTER) {
 					String res = compiler.getInput();
+					if(res.length() == 0) {
+						res = null;
+					}
 					try {
+						
 						res = res.toUpperCase();
-						INPUT current = new INPUT(res, result.getTurtle());
 						current.inputDecoder(res);
 						console.findOutput(current.getConsole());
 						updateScreen();
