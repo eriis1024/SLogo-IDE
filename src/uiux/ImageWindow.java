@@ -29,12 +29,14 @@ public class ImageWindow implements ImageWindowInterface {
 	}
 	
 	// part of the API
+	@Override
 	public Node updateScreen() {
 		updateTurtleLocation(myTurtle);
 		return myNode;
 	}
 
 	// part of the API
+	@Override
 	public Node getImageWindow() {
 		return myNode;
 	}
@@ -82,6 +84,7 @@ public class ImageWindow implements ImageWindowInterface {
 	}
 	
 	// Part of the API
+	@Override
 	public Mover getTurtle() {
 		return myTurtle;
 	}
