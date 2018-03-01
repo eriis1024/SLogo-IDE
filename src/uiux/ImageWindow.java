@@ -114,9 +114,7 @@ public class ImageWindow implements ImageWindowInterface {
 		}
 	}
 	
-	//get rid of magic numbers, account for image size as well
 	private void setMoverBounds(Mover turtle) {
-		//System.out.println(primaryScreenBounds.getHeight());
 		if (turtle.getY() < 0) {
 			turtle.setCoords(turtle.getX(), 0 + 5);
 		} else if (turtle.getY() > myRoot.getHeight()) {
