@@ -2,6 +2,7 @@ package uiux;
 
 import Movers.Mover;
 import javafx.scene.Node;
+import javafx.scene.paint.Color;
 
 public interface ImageWindowInterface {
 
@@ -28,5 +29,9 @@ public interface ImageWindowInterface {
 	 * @return
 	 */
 	public Mover getTurtle();
-
+	
+	/**
+	 * 
+	 */
+	public void setBackgroundColor(Color colorChosen);
 }

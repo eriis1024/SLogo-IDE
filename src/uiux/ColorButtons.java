@@ -13,6 +13,7 @@ public abstract class ColorButtons extends ColorPicker{
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public ColorButtons(String label, Color defaultColor, MenuBarController passedController) {
 		super(defaultColor);
+		controller = passedController;
 		super.getStyleClass().add("toolbutton");
 		setToolTip(label);
 		this.setOnAction(new EventHandler() {

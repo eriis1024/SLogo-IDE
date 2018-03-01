@@ -13,13 +13,14 @@ import uiux.ImageWindow;
  *
  */
 public class Window extends BorderPane {
-	private MenuBarController controller = new MenuBarController();
-	private MenuBar toolbar = new MenuBar(controller);
+	
+	
 	private ConsoleBoxInterface console = new ConsoleBox();
 	private ImageWindowInterface result = new ImageWindow();
 	private TerminalInterface compiler = new Terminal();
 	private INPUT current = new INPUT(result.getTurtle());
-	
+	private MenuBarController controller = new MenuBarController(result);
+	private MenuBar toolbar = new MenuBar(controller);
 	
 	/**
 	 * Creates a Window class and sets the top section to be the button bar,

@@ -26,8 +26,12 @@ public class MenuBarController {
 
 	public void findBackgroundColor(Color colorChosen) {
 		// TODO Auto-generated method stub
+		imageWindow.setBackgroundColor(colorChosen);
 		
 	}
 	
 
+	public void test() {
+		System.out.println("not null");
+	}
 }
