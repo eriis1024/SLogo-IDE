@@ -6,7 +6,9 @@ import Movers.Turtle;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Screen;
 
 public class ImageWindow implements ImageWindowInterface {
@@ -45,7 +47,20 @@ public class ImageWindow implements ImageWindowInterface {
 		return myNode;
 	}
 	
+	public void setBackgroundColor(Color color) {
+		System.out.print(color);
+		String colorString = String.format("#%02X%02X%02X",
+				(int)(color.getRed()*255.0),
+				(int)(color.getBlue()*255.0),
+				(int)(color.getGreen()*255.0));
+		myRoot.setStyle("-fx-background-color: "+colorString);
+		System.out.println(colorString);
+		
+	}
+	
 	private void updateTurtleLocation(Mover turtle) {
+//		Rectangle background = new Rectangle(myRoot.getWidth(),myRoot.getHeight(),Color.BLUE);
+//		myRoot.getChildren().add(background);
 		double x = turtle.getImageView().getX();
 		double y = turtle.getImageView().getY();
 		if (x == 0 && y == 0) {
