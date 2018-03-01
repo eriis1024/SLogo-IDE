@@ -1,16 +1,30 @@
 package uiux;
 
-public class BackgroundButton extends ToolButton{
-	private static final String PATH = "background.png";
+import javafx.event.Event;
+import javafx.event.EventHandler;
+import javafx.scene.control.ColorPicker;
+import javafx.scene.paint.Color;
+
+public class BackgroundButton extends ColorPicker{
+	private Color backgroundColor;
 	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public BackgroundButton() {
-		super(PATH);
+		super();
+		super.getStyleClass().add("toolbutton");
+		this.setOnAction(new EventHandler() {
+			@Override
+			public void handle(Event event) {
+				action();
+			}
+        });
 	}
-
-	@Override
-	protected void action() {
-		// TODO Auto-generated method stub
-		
+	
+	private void action() {
+		backgroundColor = super.getValue();
 	}
-
+	
+	public Color getBackgroundColor() {
+		return backgroundColor;
+	}
 }
