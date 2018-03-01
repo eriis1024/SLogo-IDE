@@ -15,7 +15,7 @@ import uiux.ImageWindow;
  */
 public class Window extends BorderPane {
 	private MenuBar toolbar = new MenuBar();
-	private ConsoleBox console = new ConsoleBox();
+	private ConsoleBoxInterface console = new ConsoleBox();
 	private ImageWindowInterface result = new ImageWindow();
 	private TerminalInterface compiler = new Terminal();
 	
@@ -31,7 +31,7 @@ public class Window extends BorderPane {
 		super();
 		this.setTop(toolbar);
 		this.setLeft(compiler.getSlogoTerminal());
-		this.setBottom(console);
+		this.setBottom(console.getConsole());
 		this.setCenter(result.getImageWindow());
 		this.addEventFilter(KeyEvent.KEY_RELEASED, new EventHandler<KeyEvent>() {
 			@Override
