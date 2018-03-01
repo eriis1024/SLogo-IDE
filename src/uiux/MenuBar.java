@@ -7,9 +7,8 @@ import javafx.scene.layout.Region;
 public class MenuBar extends HBox{
 	private Region[] buttons = {
 			new HelpButton(),
-			new SaveButton(),
-			new SettingsButton(),
 			new BackgroundButton(),
+			new PenButton(),
 			new LanguageButton()
 	};
 	
