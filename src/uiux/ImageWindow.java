@@ -118,13 +118,13 @@ public class ImageWindow implements ImageWindowInterface {
 	private void setMoverBounds(Mover turtle) {
 		//System.out.println(primaryScreenBounds.getHeight());
 		if (turtle.getY() < 0) {
-			turtle.setCoords(turtle.getX(), 0 + Mover.MOVER_SIZE/2);
+			turtle.setCoords(turtle.getX(), 0 + 5);
 		} else if (turtle.getY() > myRoot.getHeight()) {
 			turtle.setCoords(turtle.getX(), myRoot.getHeight() - Mover.MOVER_SIZE);
 		} else if (turtle.getX() < 0) {
 			turtle.setCoords(0 + 5, turtle.getY());
 		} else if (turtle.getX() > myRoot.getWidth()) {
-			turtle.setCoords(myRoot.getWidth() - Mover.MOVER_SIZE/2, turtle.getY());
+			turtle.setCoords(myRoot.getWidth() - Mover.MOVER_SIZE, turtle.getY());
 		}
 	}
 }
