@@ -7,8 +7,7 @@ import TurtleCommands.*;
 
 
 public class INPUT {
-	
-	public String theInput;
+
 	public Mover myTurtle;
 	public Boolean error;
 
@@ -25,6 +24,8 @@ public class INPUT {
 	
 	public void inputDecoder(String input){
 		
+		Command.clear();
+		
 		String[] inputDivide = input.split(" ");
 		
 		for (int i=0;i<inputDivide.length;i++){
@@ -33,7 +34,7 @@ public class INPUT {
 		
 		error = false;
 		variables.put("PREVIOUS_ANS", 0);
-		
+	
 		if ((Command.get(0).equals("#")) || (Command.size()<1)){return;}
 		
 		reconstruct();
