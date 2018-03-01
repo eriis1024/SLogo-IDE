@@ -32,34 +32,42 @@ public class INPUT {
 			
 			case "Chinese":{
 				currentLang = new ChineseBundle(s);
+				break;
 			}
 			
 			case "English":{
 				currentLang = new EnglishBundle(s);
+				break;
 			}
 			
 			case "French":{
 				currentLang = new FrenchBundle(s);
+				break;
 			}
 			
 			case "German":{
 				currentLang = new GermanBundle(s);
+				break;
 			}
 			
 			case "Italian":{
 				currentLang = new ItalianBundle(s);
+				break;
 			}
 			
 			case "Portuguese":{
 				currentLang = new PortugueseBundle(s);
+				break;
 			}
 			
 			case "Russian":{
 				currentLang = new RussianBundle(s);	
+				break;
 			}
 			
 			case "Spanish":{
 				currentLang = new SpanishBundle(s);
+				break;
 			}
 		
 		}
@@ -116,6 +124,12 @@ public class INPUT {
 		for (int i=0;i<Command.size();i++){
 			if (Command.get(i).equals(currentLang.Sum)){
 				sumControl(i, i+2);
+			}
+		}
+		
+		for (int i=0;i<Command.size();i++){
+			if (Command.get(i).equals(currentLang.Not)){
+				notControl(i);
 			}
 		}
 		
@@ -263,6 +277,20 @@ public class INPUT {
 		}	
 	}
 	
+	public void notControl(int position){
+		
+		if (Command.get(position + 1).equals("1")){
+			Command.remove(position);
+			Command.set(position, "0");
+			CONSOLE = "0";
+		} else {
+			Command.remove(position);
+			Command.set(position, "1");
+			CONSOLE = "1";
+		}
+		
+	}
+	
 	public void positionControl(int position){
 		
 		if (Command.get(position).equals("XCOR")){
@@ -280,10 +308,6 @@ public class INPUT {
 		ArrayList<String> toCheck = new ArrayList<String>();
 		for (int i=position;i<position+3;i++){
 			toCheck.add(Command.get(i));
-		}
-		
-		for (int i=0;i<toCheck.size();i++){
-			System.out.print(toCheck.get(i)+" ");
 		}
 		
 		boolean Checked = booleanCheck(toCheck);
@@ -308,38 +332,19 @@ public class INPUT {
 	
 	public boolean booleanCheck(ArrayList<String> toBoolean){
 		
-		switch (toBoolean.get(0)){
-		
-			case "LESS?":
-			case "LESSP":{
-				return Double.parseDouble(toBoolean.get(1)) < Double.parseDouble(toBoolean.get(2));
-			}
-			
-			case "GREATER?":
-			case "GREATERP":{
-				return Double.parseDouble(toBoolean.get(1)) > Double.parseDouble(toBoolean.get(2));
-			}
-			
-			case "EQUAL?":
-			case "EQUALP":{
-				return Double.parseDouble(toBoolean.get(1)) == Double.parseDouble(toBoolean.get(2));
-			}
-			
-			case "NOTEQUAL?":
-			case "NOTEQUALP":{
-				return !(Double.parseDouble(toBoolean.get(1)) == Double.parseDouble(toBoolean.get(2)));
-			}
-			
-			case "AND":{
-				return (!toBoolean.get(1).equals("0")) && (!toBoolean.get(2).equals("0"));
-			}
-			
-			case "OR":{
-				return (!toBoolean.get(1).equals("0")) || (!toBoolean.get(2).equals("0"));
-			}
-		
+		if (toBoolean.get(0).equals(currentLang.LessThan)){
+			return Double.parseDouble(toBoolean.get(1)) < Double.parseDouble(toBoolean.get(2));
+		} else if (toBoolean.get(0).equals(currentLang.GreaterThan)){
+			return Double.parseDouble(toBoolean.get(1)) > Double.parseDouble(toBoolean.get(2));
+		} else if (toBoolean.get(0).equals(currentLang.Equal)){
+			return Double.parseDouble(toBoolean.get(1)) == Double.parseDouble(toBoolean.get(2));
+		} else if (toBoolean.get(0).equals(currentLang.NotEqual)){
+			return !(Double.parseDouble(toBoolean.get(1)) == Double.parseDouble(toBoolean.get(2)));
+		} else if (toBoolean.get(0).equals(currentLang.And)){
+			return (!toBoolean.get(1).equals("0")) && (!toBoolean.get(2).equals("0"));
+		} else if (toBoolean.get(0).equals(currentLang.Or)){
+			return (!toBoolean.get(1).equals("0")) || (!toBoolean.get(2).equals("0"));
 		}
-		
 		return true;
 
 	}
