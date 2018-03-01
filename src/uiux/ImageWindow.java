@@ -15,7 +15,6 @@ public class ImageWindow implements ImageWindowInterface {
 	protected Mover myTurtle;
 	protected Pane myRoot;
 	protected List<Line> myLines = new ArrayList<Line>();
-
 	
 	// constructor
 	public ImageWindow() {
@@ -29,11 +28,9 @@ public class ImageWindow implements ImageWindowInterface {
 		return myRoot;
 	}
 	
-	//don't let turtle out of screen bounds
 	//setXY, turtle at 0,0, input commands relative to that
 	//test all other commands
-	//clear lines, determine final window size and where (0,0) is, change this for Home, CS...
-	//add methods to mover interface
+	//set boundaries for turtle (wrap screen)
 	
 	// part of the API
 	@Override
@@ -51,12 +48,11 @@ public class ImageWindow implements ImageWindowInterface {
 	private void updateTurtleLocation(Mover turtle) {
 		double x = turtle.getImageView().getX();
 		double y = turtle.getImageView().getY();
-		turtle.getImageView().setX(turtle.getX());
-		turtle.getImageView().setY(turtle.getY());
 		if (x == 0 && y == 0) {
 			addTurtleInScene(turtle);
 			return;
 		}
+		setMoverBounds(myTurtle);
 		if (turtle.getPenStatus() == true) {
 			addLineInScene(myTurtle, x, y);
 		}
@@ -64,6 +60,8 @@ public class ImageWindow implements ImageWindowInterface {
 			turtle.setClear(false);
 			removeLines();
 		}
+		turtle.getImageView().setX(turtle.getX());
+		turtle.getImageView().setY(turtle.getY());
 	}
 
 	private void addTurtleInScene(Mover turtle){
@@ -79,8 +77,7 @@ public class ImageWindow implements ImageWindowInterface {
 		myRoot.getChildren().add(l);
 	}
 	
-	//Sets up the size of the image window and positions the turtle in the middle,
-	//also adds the styling 
+
 	private void setSizeAndTurtle() {
 		Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
 		myRoot.setPrefWidth(primaryScreenBounds.getWidth()/2);
@@ -100,6 +97,19 @@ public class ImageWindow implements ImageWindowInterface {
 		myLines = myTurtle.getLines();
 		for (int i = 0; i < myLines.size(); i++) {
 			myRoot.getChildren().remove(myLines.get(i));
+		}
+	}
+	//get rid of magic numbers, account for image size as well
+	private void setMoverBounds(Mover turtle) {
+		if (turtle.getY() < 0) {
+			turtle.setCoords(turtle.getX(), 0 + 5);
+		} else if (turtle.getY() > 460) {
+			turtle.setCoords(turtle.getX(), 460);
+		} else if (turtle.getX() < 0) {
+			System.out.println("here");
+			turtle.setCoords(0 + 5, turtle.getY());
+		} else if (turtle.getX() > 640) {
+			turtle.setCoords(620, turtle.getY());
 		}
 	}
 }
