@@ -4,6 +4,7 @@ import java.util.*;
 import Command.*;
 import Movers.Mover;
 import TurtleCommands.*;
+import resources.languages.*;
 
 
 public class INPUT {
