@@ -18,8 +18,7 @@ public class Window extends BorderPane {
 	private ImageWindowInterface result = new ImageWindow();
 	private TerminalInterface compiler = new Terminal();
 	private INPUT current = new INPUT(result.getTurtle());
-	
-	private INPUT current = new INPUT(result.getTurtle());
+
 	
 	/**
 	 * Creates a Window class and sets the top section to be the button bar,
@@ -43,7 +42,6 @@ public class Window extends BorderPane {
 						res = null;
 					}
 					try {
-						
 						res = res.toUpperCase();
 						current.inputDecoder(res);
 						console.findOutput(current.getConsole());

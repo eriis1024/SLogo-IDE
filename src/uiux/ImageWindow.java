@@ -6,14 +6,13 @@ import Movers.Turtle;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.stage.Screen;
 
 public class ImageWindow implements ImageWindowInterface {
 
 	private Node myNode;
-	protected Mover myTurtle;
+	public Mover myTurtle;
 	protected Pane myRoot;
 	protected List<Line> myLines = new ArrayList<Line>();
 	
