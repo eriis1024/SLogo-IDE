@@ -14,13 +14,6 @@ public class ConsoleBox implements ConsoleBoxInterface{
 	private Node myNode;
 	
 	public ConsoleBox(){
-//		super();
-//		this.setItems(myPrevCommands);
-//		this.getStyleClass().add("box");
-//		
-//		Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
-//		this.setPrefHeight(primaryScreenBounds.getHeight()/4);
-		
 		myNode = makeConsoleBox();
 	}
 	
@@ -44,6 +37,7 @@ public class ConsoleBox implements ConsoleBoxInterface{
 		return list;
 	}
 	
+	@Override
 	public Node getConsole() {
 		return myNode;
 	}
