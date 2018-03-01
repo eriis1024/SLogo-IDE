@@ -6,7 +6,7 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.control.ListView;
 import javafx.stage.Screen;
 
-public class ConsoleBox extends ListView<String>{
+public class ConsoleBox extends ListView<String> implements ConsoleBoxInterface{
 	private ObservableList<String> myPrevCommands = FXCollections.observableArrayList();;
 	private String currentOutput = "";
 	
@@ -19,6 +19,7 @@ public class ConsoleBox extends ListView<String>{
 		this.setPrefHeight(primaryScreenBounds.getHeight()/4);
 	}
 	
+	@Override
 	public void findOutput(String systemOutput) {
 		currentOutput = systemOutput;
 		updateList();

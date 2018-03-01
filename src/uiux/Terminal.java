@@ -37,6 +37,7 @@ public class Terminal implements TerminalInterface {
 	 * Returns the node representing the slogo terminal. Called in the SlogoView
 	 * class, when the view is initialized. Part of the Front End Internal API.
 	 */
+	@Override
 	public Node getSlogoTerminal() {
 		return myNode;
 	}
@@ -98,6 +99,7 @@ public class Terminal implements TerminalInterface {
 	 * Returns the text entered by the user that was passed to this class form the
 	 * textbox. Part of the Front End External API.
 	 */
+	@Override
 	public String getInput() {
 		String result = input;
 		input = null;
