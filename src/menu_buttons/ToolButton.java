@@ -1,4 +1,4 @@
-package uiux;
+package menu_buttons;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

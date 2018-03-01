@@ -99,9 +99,8 @@ public class Mover implements MoverInterface {
 		penColor = color;
 	}
 	
-	public void setNewImage(String imageFilePath) {
-		File file = new File(imageFilePath);
-		myImage = new ImageView(file.toURI().toString());
+	public void setNewImage(ImageView newImage) {
+		myImage = newImage;
 		myImage.setFitWidth(MOVER_SIZE);
 		myImage.setFitHeight(MOVER_SIZE);
 	}

@@ -2,6 +2,7 @@ package uiux;
 
 import Movers.Mover;
 import javafx.scene.Node;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 
 public interface ImageWindowInterface {
@@ -37,4 +38,6 @@ public interface ImageWindowInterface {
 	
 	
 	public void setPenColor(Color colorChosen);
+	
+	public void setNewTurtleImage(ImageView newImage);
 }

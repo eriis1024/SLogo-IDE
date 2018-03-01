@@ -1,4 +1,4 @@
-package uiux;
+package menu_buttons;
 
 public class SettingsButton extends ToolButton{
 	

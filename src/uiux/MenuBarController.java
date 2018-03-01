@@ -1,6 +1,9 @@
 package uiux;
 
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
+import menu_buttons.BackgroundButton;
+import menu_buttons.PenButton;
 
 public class MenuBarController {
 	private BackgroundButton backgroundColor;
@@ -27,4 +30,11 @@ public class MenuBarController {
 		imageWindow.setBackgroundColor(colorChosen);
 	}
 	
+	public void getImage(ImageView iconImage) {
+		imageWindow.setNewTurtleImage(iconImage);
+
+	}
+	public void test() {
+		System.out.println("not null");
+	}
 }
