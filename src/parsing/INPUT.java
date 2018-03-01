@@ -19,14 +19,12 @@ public class INPUT {
 	
 	public INPUT(Mover turtle){
 		myTurtle = turtle;
-
 		BooleanCons();
 	}
 	
 	public void inputDecoder(String input){
-		
+		CONSOLE = null;
 		Command.clear();
-		
 		String[] inputDivide = input.split(" ");
 		
 		for (int i=0;i<inputDivide.length;i++){
