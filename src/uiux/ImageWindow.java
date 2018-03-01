@@ -9,13 +9,14 @@ import javafx.scene.layout.Pane;
 import javafx.scene.shape.Line;
 import javafx.stage.Screen;
 
-public class ImageWindow {
+public class ImageWindow implements ImageWindowInterface {
 
 	private Node myNode;
 	protected Mover myTurtle;
 	protected Pane myRoot;
 	protected List<Line> myLines = new ArrayList<Line>();
-
+	
+	// constructor
 	public ImageWindow() {
 		myNode = loadWelcomeScreen();
 	}
@@ -32,17 +33,18 @@ public class ImageWindow {
 	//test all other commands
 	//set boundaries for turtle (wrap screen)
 	
+	// part of the API
 	public Node updateScreen() {
 		updateTurtleLocation(myTurtle);
 		return myNode;
 	}
 
+	// part of the API
 	public Node getImageWindow() {
 		return myNode;
 	}
 	
-	//have the screen 
-	public void updateTurtleLocation(Mover turtle) {
+	private void updateTurtleLocation(Mover turtle) {
 		double x = turtle.getImageView().getX();
 		double y = turtle.getImageView().getY();
 		turtle.getImageView().setX(turtle.getX());
@@ -88,12 +90,13 @@ public class ImageWindow {
 		myRoot.getStyleClass().add("box");
 		myTurtle = new Turtle(320, 240, "images/turtle.png");
 	}
-
+	
+	// Part of the API
 	public Mover getTurtle() {
 		return myTurtle;
 	}
 	
-	public void removeLines() {
+	private void removeLines() {
 		myLines = myTurtle.getLines();
 		for (int i = 0; i < myLines.size(); i++) {
 			myRoot.getChildren().remove(myLines.get(i));

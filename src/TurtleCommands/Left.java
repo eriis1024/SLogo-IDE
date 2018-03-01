@@ -11,8 +11,8 @@ public class Left implements CommandInterface {
 	
 	@Override
 	public double executeCommand(Integer[] args) { 
-		double angle = myMover.getAngle() - 180;
-		myMover.setAngle(angle);
+		double angle = args[0];
+		myMover.setAngle(myMover.getAngle() - angle);
 		return angle;
 	}
 }
