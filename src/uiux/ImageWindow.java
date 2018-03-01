@@ -28,10 +28,6 @@ public class ImageWindow implements ImageWindowInterface {
 		return myRoot;
 	}
 	
-	//setXY, turtle at 0,0, input commands relative to that
-	//test all other commands
-	//set boundaries for turtle (wrap screen)
-	
 	// part of the API
 	public Node updateScreen() {
 		updateTurtleLocation(myTurtle);
@@ -96,6 +92,7 @@ public class ImageWindow implements ImageWindowInterface {
 			myRoot.getChildren().remove(myLines.get(i));
 		}
 	}
+	
 	//get rid of magic numbers, account for image size as well
 	private void setMoverBounds(Mover turtle) {
 		if (turtle.getY() < 0) {
