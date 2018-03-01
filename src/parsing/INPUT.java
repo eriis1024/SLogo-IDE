@@ -13,7 +13,7 @@ public class INPUT {
 	public Mover myTurtle;
 	public Boolean error;
 	
-	public Bundle currentLang = new EnglishBundle("English");
+	public Bundle currentLang;
 
 	public Map<String,Integer> variables = new HashMap<String,Integer>();
 	public ArrayList<String> Command = new ArrayList<String>();
