@@ -10,8 +10,8 @@ public abstract class ColorButtons extends ColorPicker{
 	protected Color colorChosen;
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public ColorButtons(String label) {
-		super();
+	public ColorButtons(String label, Color defaultColor) {
+		super(defaultColor);
 		super.getStyleClass().add("toolbutton");
 		setToolTip(label);
 		this.setOnAction(new EventHandler() {
