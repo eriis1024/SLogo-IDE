@@ -1,4 +1,4 @@
-package image_button_items;
+package menu_buttons;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -7,7 +7,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import uiux.MenuBarController;
 
-public abstract class ImageItem extends MenuItem{
+public class ImageItem extends MenuItem{
 	MenuBarController controller;
 	ImageView iconImage;
 	
