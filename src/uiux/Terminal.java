@@ -37,6 +37,7 @@ public class Terminal implements TerminalInterface {
 	 * Returns the node representing the slogo terminal. Called in the SlogoView
 	 * class, when the view is initialized. Part of the Front End Internal API.
 	 */
+	@Override
 	public Node getSlogoTerminal() {
 		return myNode;
 	}
@@ -98,22 +99,10 @@ public class Terminal implements TerminalInterface {
 	 * Returns the text entered by the user that was passed to this class form the
 	 * textbox. Part of the Front End External API.
 	 */
+	@Override
 	public String getInput() {
 		String result = input;
 		input = null;
 		return result;
 	}
-
-	/*
-	 * makes enter button.
-	 */
-	// makeButton function code taken from webbrowser example
-	// makes a button using either an image or a label
-	private Button makeButton(String property, EventHandler<ActionEvent> handler) {
-		Button result = new Button();
-		result.setText(property);
-		result.setOnAction(handler);
-		return result;
-	}
-
 }
