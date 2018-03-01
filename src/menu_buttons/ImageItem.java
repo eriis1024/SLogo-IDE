@@ -27,10 +27,12 @@ public class ImageItem extends MenuItem{
 		path = "../mover-icons/" + path;
 		Image icon = new Image(getClass().getResourceAsStream(path));
 		iconImage = new ImageView(icon);
+		iconImage.setFitHeight(30);
+		iconImage.setFitWidth(30);
 		super.setGraphic(iconImage);
 	}
 	
 	private void applyImage() {
-		
+		controller.getImage(iconImage);
 	}
 }

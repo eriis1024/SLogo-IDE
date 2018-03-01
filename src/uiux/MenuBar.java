@@ -40,7 +40,7 @@ public class MenuBar extends HBox{
 				backgroundColor,
 				penColor,
 				new LanguageButton(),
-				new ImageButton()
+				new ImageButton(controller)
 		};
 		
 	    for(Region button : buttons) {
