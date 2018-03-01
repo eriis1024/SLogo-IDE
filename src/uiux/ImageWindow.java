@@ -56,6 +56,11 @@ public class ImageWindow implements ImageWindowInterface {
 		myTurtle.setPenColor(color);
 	}
 	
+	public void setNewTurtleImage(String imageFilePath) {
+		myTurtle.setImageView(imageFilePath);
+		updateTurtleLocation(myTurtle);
+	}
+	
 	private void updateTurtleLocation(Mover turtle) {
 		double x = turtle.getImageView().getX();
 		double y = turtle.getImageView().getY();
@@ -84,7 +89,6 @@ public class ImageWindow implements ImageWindowInterface {
 	}
 
 	private void addLineInScene(Mover turtle, double x, double y) {
-		//turtle.setPenColor(Color.RED);
 		Line l = turtle.drawLine(x, y, turtle.getX(), turtle.getY());
 		myRoot.getChildren().add(l);
 	}
