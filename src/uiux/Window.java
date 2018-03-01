@@ -45,7 +45,6 @@ public class Window extends BorderPane {
 						res = null;
 					}
 					try {
-						res = res.toUpperCase();
 						current.inputDecoder(res);
 						console.findOutput(current.getConsole());
 						updateScreen();
