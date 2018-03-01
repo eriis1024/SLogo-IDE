@@ -3,10 +3,10 @@ import Command.CommandInterface;
 import Movers.Mover;
 
 public class SetHeading implements CommandInterface {
-private Mover myTurtle;
+private Mover myMover;
 	
 	public SetHeading(Mover turtle) {
-		myTurtle = turtle;
+		myMover = turtle;
 	}
 
 	@Override
@@ -15,7 +15,7 @@ private Mover myTurtle;
 		if(angle < 0){
 		   angle += 360;
 		}
-		myTurtle.setAngle(angle);
+		myMover.setAngle(angle);
 		return angle;
 	}
 }

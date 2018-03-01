@@ -28,7 +28,6 @@ public class ImageWindow implements ImageWindowInterface {
 		return myRoot;
 	}
 	
-	//don't let turtle out of screen bounds
 	//setXY, turtle at 0,0, input commands relative to that
 	//test all other commands
 	//set boundaries for turtle (wrap screen)
@@ -47,17 +46,11 @@ public class ImageWindow implements ImageWindowInterface {
 	private void updateTurtleLocation(Mover turtle) {
 		double x = turtle.getImageView().getX();
 		double y = turtle.getImageView().getY();
-		turtle.getImageView().setX(turtle.getX());
-		turtle.getImageView().setY(turtle.getY());
 		if (x == 0 && y == 0) {
 			addTurtleInScene(turtle);
 			return;
 		}
-//		if (turtle.getY() < 0) {
-//			turtle.setPenStatus(false);
-//			turtle.setCoords(50, 50);
-//			
-//		}
+		setMoverBounds(myTurtle);
 		if (turtle.getPenStatus() == true) {
 			addLineInScene(myTurtle, x, y);
 		}
@@ -65,6 +58,8 @@ public class ImageWindow implements ImageWindowInterface {
 			turtle.setClear(false);
 			removeLines();
 		}
+		turtle.getImageView().setX(turtle.getX());
+		turtle.getImageView().setY(turtle.getY());
 	}
 
 	private void addTurtleInScene(Mover turtle){
@@ -83,7 +78,6 @@ public class ImageWindow implements ImageWindowInterface {
 
 	private void setSizeAndTurtle() {
 		Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
-		System.out.println(primaryScreenBounds.getWidth()/2);
 		myRoot.setPrefWidth(primaryScreenBounds.getWidth()/2);
 		System.out.println(primaryScreenBounds.getWidth()/2);
 		myRoot.setPrefHeight(primaryScreenBounds.getHeight()/2);
@@ -100,6 +94,19 @@ public class ImageWindow implements ImageWindowInterface {
 		myLines = myTurtle.getLines();
 		for (int i = 0; i < myLines.size(); i++) {
 			myRoot.getChildren().remove(myLines.get(i));
+		}
+	}
+	//get rid of magic numbers, account for image size as well
+	private void setMoverBounds(Mover turtle) {
+		if (turtle.getY() < 0) {
+			turtle.setCoords(turtle.getX(), 0 + 5);
+		} else if (turtle.getY() > 460) {
+			turtle.setCoords(turtle.getX(), 460);
+		} else if (turtle.getX() < 0) {
+			System.out.println("here");
+			turtle.setCoords(0 + 5, turtle.getY());
+		} else if (turtle.getX() > 640) {
+			turtle.setCoords(620, turtle.getY());
 		}
 	}
 }
