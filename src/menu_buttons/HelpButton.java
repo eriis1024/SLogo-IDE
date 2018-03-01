@@ -1,4 +1,4 @@
-package uiux;
+package menu_buttons;
 
 import java.awt.Desktop;
 import java.io.IOException;

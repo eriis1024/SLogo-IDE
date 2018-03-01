@@ -5,6 +5,7 @@ import Movers.Mover;
 import Movers.Turtle;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
@@ -56,8 +57,8 @@ public class ImageWindow implements ImageWindowInterface {
 		myTurtle.setPenColor(color);
 	}
 	
-	public void setNewTurtleImage(String imageFilePath) {
-		myTurtle.setImageView(imageFilePath);
+	public void setNewTurtleImage(ImageView newImage) {
+		myTurtle.setNewImage(newImage);
 		updateTurtleLocation(myTurtle);
 	}
 	

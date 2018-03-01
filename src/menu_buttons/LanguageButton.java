@@ -1,4 +1,4 @@
-package uiux;
+package menu_buttons;
 
 import javafx.scene.control.MenuButton;
 import javafx.scene.image.Image;

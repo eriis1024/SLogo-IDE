@@ -1,10 +1,11 @@
-package uiux;
+package menu_buttons;
 
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Tooltip;
 import javafx.scene.paint.Color;
+import uiux.MenuBarController;
 
 public abstract class ColorButtons extends ColorPicker{
 	protected Color colorChosen;
