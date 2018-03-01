@@ -10,7 +10,7 @@ public class ChineseBundle extends Bundle{
 
 	@Override
 	public void bundleChooser() {
-		RB = ResourceBundle.getBundle("Chinese");
+		RB = ResourceBundle.getBundle("resources/languages/Chinese");
 	}
 	
 }
