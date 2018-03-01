@@ -105,17 +105,4 @@ public class Terminal implements TerminalInterface {
 		input = null;
 		return result;
 	}
-
-	/*
-	 * makes enter button.
-	 */
-	// makeButton function code taken from webbrowser example
-	// makes a button using either an image or a label
-	private Button makeButton(String property, EventHandler<ActionEvent> handler) {
-		Button result = new Button();
-		result.setText(property);
-		result.setOnAction(handler);
-		return result;
-	}
-
 }
