@@ -13,9 +13,10 @@ import javafx.stage.Screen;
 public class ImageWindow implements ImageWindowInterface {
 
 	private Node myNode;
-	public Mover myTurtle;
-	protected Pane myRoot;
-	protected List<Line> myLines = new ArrayList<Line>();
+	private Mover myTurtle;
+	private Pane myRoot;
+	private Rectangle2D primaryScreenBounds;
+	private List<Line> myLines = new ArrayList<Line>();
 	
 	// constructor
 	public ImageWindow() {
@@ -25,6 +26,7 @@ public class ImageWindow implements ImageWindowInterface {
 	private Node loadWelcomeScreen() {
 		myRoot = new Pane();
 		setSizeAndTurtle();
+		System.out.println(myRoot.getHeight());
 		updateTurtleLocation(myTurtle);
 		return myRoot;
 	}
@@ -43,13 +45,11 @@ public class ImageWindow implements ImageWindowInterface {
 	}
 	
 	public void setBackgroundColor(Color color) {
-		System.out.print(color);
 		String colorString = String.format("#%02X%02X%02X",
 				(int)(color.getRed()*255.0),
 				(int)(color.getGreen()*255.0),
 				(int)(color.getBlue()*255.0));
 		myRoot.setStyle("-fx-background-color: "+colorString);
-		System.out.println(colorString);
 	}
 	
 	public void setPenColor(Color color) {
@@ -94,7 +94,7 @@ public class ImageWindow implements ImageWindowInterface {
 	}
 
 	private void setSizeAndTurtle() {
-		Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
+		primaryScreenBounds = Screen.getPrimary().getVisualBounds();
 		myRoot.setPrefWidth(primaryScreenBounds.getWidth()/2);
 		myRoot.setPrefHeight(primaryScreenBounds.getHeight()/2);
 		myRoot.getStyleClass().add("box");
@@ -116,14 +116,15 @@ public class ImageWindow implements ImageWindowInterface {
 	
 	//get rid of magic numbers, account for image size as well
 	private void setMoverBounds(Mover turtle) {
+		//System.out.println(primaryScreenBounds.getHeight());
 		if (turtle.getY() < 0) {
-			turtle.setCoords(turtle.getX(), 0 + 5);
-		} else if (turtle.getY() > 460) {
-			turtle.setCoords(turtle.getX(), 460);
+			turtle.setCoords(turtle.getX(), 0 + Mover.MOVER_SIZE/2);
+		} else if (turtle.getY() > myRoot.getHeight()) {
+			turtle.setCoords(turtle.getX(), myRoot.getHeight() - Mover.MOVER_SIZE);
 		} else if (turtle.getX() < 0) {
 			turtle.setCoords(0 + 5, turtle.getY());
-		} else if (turtle.getX() > 640) {
-			turtle.setCoords(620 - 5, turtle.getY());
+		} else if (turtle.getX() > myRoot.getWidth()) {
+			turtle.setCoords(myRoot.getWidth() - Mover.MOVER_SIZE/2, turtle.getY());
 		}
 	}
 }
