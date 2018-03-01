@@ -17,8 +17,7 @@ public class INPUT {
 	
 	public String CONSOLE;
 	
-	public INPUT(String inputs, Mover turtle){
-		theInput = inputs;
+	public INPUT(Mover turtle){
 		myTurtle = turtle;
 
 		BooleanCons();
@@ -59,6 +58,12 @@ public class INPUT {
 	public void reconstruct(){
 		
 		for (int i=0;i<Command.size();i++){
+			if (Command.get(i).equals("MAKE") || Command.get(i).equals("SET")){
+				setControl(i);
+			}
+		}
+		
+		for (int i=0;i<Command.size();i++){
 			if (Command.get(i).equals("XCOR") || Command.get(i).equals("YCOR")){
 				positionControl(i);
 			}
@@ -75,9 +80,16 @@ public class INPUT {
 				booleanControl(i);
 			}
 		}
+		
+		for (int i=0;i<Command.size();i++){
+			if (Command.get(i).equals("REPEAT")){
+				repeatControl(i);
+			}
+		}
+		
 	}
 	
-	public Map<String, Integer> getVariavles(){
+	public Map<String, Integer> getVariables(){
 		return variables;
 	}
 	
@@ -358,4 +370,39 @@ public class INPUT {
 		}
 		return total;	
 	}
+	
+	public void setControl(int position){
+		
+		if (variables.containsKey(Command.get(position+1))){
+			variables.replace(Command.get(position+1), Integer.parseInt(Command.get(position+2)));
+		} else {
+			variables.put(Command.get(position+1), Integer.parseInt(Command.get(position+2)));
+		}
+		
+	}
+	
+	public void repeatControl(int position){
+		
+		int ending = 0;
+		for (int i=position+2;i<Command.size();i++){
+			if (Command.get(i).equals("]")){
+				ending = i;
+				break;
+			}
+		}
+		
+		String toRepeat = "";
+		for (int i=position+3;i<ending;i++){
+			toRepeat += Command.get(i);
+			toRepeat += "";
+		}
+		
+		for (int i=0;i<Integer.parseInt(Command.get(position+1));i++){
+			inputDecoder(toRepeat);
+		}
+		
+		
+		
+	}
+	
 }
