@@ -66,8 +66,9 @@ public class Mover implements MoverInterface {
 		return myImage;
 	}
 	
-	public ImageView setImageView() {
-		return myImage;
+	public void setImageView(String imageFilePath) {
+		File file = new File(imageFilePath);
+		myImage = new ImageView(file.toURI().toString());
 	}
 
 	public Line drawLine(double x, double y, double x1, double y1) {

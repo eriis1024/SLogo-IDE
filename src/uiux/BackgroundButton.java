@@ -5,7 +5,7 @@ import javafx.event.EventHandler;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.paint.Color;
 
-public class BackgroundButton extends ColorPicker{
+public class BackgroundButton extends ColorPicker {
 	private Color backgroundColor;
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
