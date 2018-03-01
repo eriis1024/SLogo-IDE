@@ -18,6 +18,7 @@ public class Window extends BorderPane {
 	private ImageWindowInterface result = new ImageWindow();
 	private TerminalInterface compiler = new Terminal();
 	
+	private INPUT current = new INPUT(result.getTurtle());
 	
 	/**
 	 * Creates a Window class and sets the top section to be the button bar,
@@ -39,7 +40,6 @@ public class Window extends BorderPane {
 					String res = compiler.getInput();
 					try {
 						res = res.toUpperCase();
-						INPUT current = new INPUT(res, result.getTurtle());
 						current.inputDecoder(res);
 						console.findOutput(current.getConsole());
 						updateScreen();
@@ -48,8 +48,7 @@ public class Window extends BorderPane {
 						//THERE IS NOTHING TO DO IN THE CATCH BECAUSE THIS IMPLIES
 						//THE USER DID NOT PUT ANYTHING INTO THE ACTUAL COMPILER
 						//THEREFORE THERE IS NO ERROR
-					}
-					
+					}	
 				}
 			}
 		});
