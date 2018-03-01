@@ -50,12 +50,13 @@ public class ImageWindow implements ImageWindowInterface {
 				(int)(color.getGreen()*255.0));
 		myRoot.setStyle("-fx-background-color: "+colorString);
 		System.out.println(colorString);
-		
+	}
+	
+	public void setPenColor(Color color) {
+		myTurtle.setPenColor(color);
 	}
 	
 	private void updateTurtleLocation(Mover turtle) {
-//		Rectangle background = new Rectangle(myRoot.getWidth(),myRoot.getHeight(),Color.BLUE);
-//		myRoot.getChildren().add(background);
 		double x = turtle.getImageView().getX();
 		double y = turtle.getImageView().getY();
 		if (x == 0 && y == 0) {
