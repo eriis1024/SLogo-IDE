@@ -41,7 +41,7 @@ public class INPUT {
 		executor();
 	}
 	
-	public ArrayList<String> BooleanOps;
+	public ArrayList<String> BooleanOps = new ArrayList<>();
 	public void BooleanCons(){
 		BooleanOps.add("LESS?");
 		BooleanOps.add("LESSP");
@@ -53,8 +53,6 @@ public class INPUT {
 		BooleanOps.add("NOTEQUALP");
 		BooleanOps.add("AND");
 		BooleanOps.add("OR");
-		
-		System.out.println("BooleanConstructed");
 		
 	}
 	
