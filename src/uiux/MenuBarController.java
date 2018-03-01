@@ -31,7 +31,7 @@ public class MenuBarController {
 	}
 	
 	public void getImage(ImageView iconImage) {
-		
+		imageWindow.setNewTurtleImage(iconImage);
 
 	}
 	public void test() {

@@ -8,14 +8,16 @@ import uiux.MenuBarController;
 
 public class ImageButton extends MenuButton{
 	private MenuBarController controller;
-	private Map<String, String> imageInfo;
+	private Map<String, String> imageInfo = new HashMap<>();
 	
 	public ImageButton(MenuBarController passedController) {
 		super("Images");
 		super.getStyleClass().add("toolbutton");
+		super.setPrefWidth(80);
+		controller = passedController;
 		
-		imageInfo = new HashMap<>();
 		imageInfo.put("bowser.png", "Bowser");
+		imageInfo.put("bowserjr.png", "Bowser Junior");
 		imageInfo.put("cow.png", "Cow");
 		imageInfo.put("newturtle.png", "New Turtle");
 		imageInfo.put("turtle.png", "Standard Turtle");
