@@ -1,6 +1,5 @@
 package uiux;
 
-import Movers.Mover;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -40,7 +39,6 @@ public class Window extends BorderPane {
 					String res = compiler.getInput();
 					try {
 						res = res.toUpperCase();
-						//TODO: Make new interface
 						INPUT current = new INPUT(res, result.getTurtle());
 						current.inputDecoder(res);
 						console.findOutput(current.getConsole());
