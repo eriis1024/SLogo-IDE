@@ -19,7 +19,6 @@ public class Window extends BorderPane {
 	private TerminalInterface compiler = new Terminal();
 	private INPUT current = new INPUT(result.getTurtle());
 	
-	private INPUT current = new INPUT(result.getTurtle());
 	
 	/**
 	 * Creates a Window class and sets the top section to be the button bar,

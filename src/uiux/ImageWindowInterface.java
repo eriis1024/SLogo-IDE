@@ -22,7 +22,7 @@ public interface ImageWindowInterface {
 	public Node getImageWindow();
 
 	/**
-	 * Returns the turlte object from the imagewindow. Called by the backend, so the
+	 * Returns the turtle object from the ImageWindow. Called by the back end, so the
 	 * turtle can be manipulated. Part of the Front End External API.
 	 * 
 	 * @return
