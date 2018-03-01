@@ -24,7 +24,11 @@ public class ConsoleBox implements ConsoleBoxInterface{
 	}
 	
 	private void updateList() {
-		myPrevCommands.add(currentOutput);
+		if(currentOutput == null) {
+			myPrevCommands.add("INVALID COMMAND");
+		} else {
+			myPrevCommands.add(currentOutput);
+		}
 	}
 	
 	private Node makeConsoleBox() {

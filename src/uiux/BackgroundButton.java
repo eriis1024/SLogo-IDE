@@ -11,7 +11,6 @@ public class BackgroundButton extends ColorButtons {
 	@Override
 	public void action() {
 		super.action();
-		controller.test();
 		super.controller.findBackgroundColor(colorChosen);
 	}
 }

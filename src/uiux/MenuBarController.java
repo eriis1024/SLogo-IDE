@@ -26,8 +26,5 @@ public class MenuBarController {
 	public void findBackgroundColor(Color colorChosen) {
 		imageWindow.setBackgroundColor(colorChosen);
 	}
-
-	public void test() {
-		System.out.println("not null");
-	}
+	
 }
