@@ -1,5 +1,6 @@
-package uiux;
+package menu_buttons;
 import javafx.scene.paint.Color;
+import uiux.MenuBarController;
 
 public class PenButton extends ColorButtons{
 	public PenButton(MenuBarController passedController) {

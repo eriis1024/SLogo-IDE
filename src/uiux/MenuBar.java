@@ -4,6 +4,11 @@ package uiux;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
+import menu_buttons.BackgroundButton;
+import menu_buttons.HelpButton;
+import menu_buttons.ImageButton;
+import menu_buttons.LanguageButton;
+import menu_buttons.PenButton;
 
 public class MenuBar extends HBox{
 	private MenuBarController controller;
@@ -34,7 +39,8 @@ public class MenuBar extends HBox{
 				new HelpButton(),
 				backgroundColor,
 				penColor,
-				new LanguageButton()
+				new LanguageButton(),
+				new ImageButton()
 		};
 		
 	    for(Region button : buttons) {

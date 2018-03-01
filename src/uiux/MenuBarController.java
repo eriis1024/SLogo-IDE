@@ -1,6 +1,8 @@
 package uiux;
 
 import javafx.scene.paint.Color;
+import menu_buttons.BackgroundButton;
+import menu_buttons.PenButton;
 
 public class MenuBarController {
 	private BackgroundButton backgroundColor;
