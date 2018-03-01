@@ -8,10 +8,12 @@ import javafx.scene.paint.Color;
 
 public abstract class ColorButtons extends ColorPicker{
 	protected Color colorChosen;
+	protected MenuBarController controller;
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public ColorButtons(String label, Color defaultColor) {
+	public ColorButtons(String label, Color defaultColor, MenuBarController passedController) {
 		super(defaultColor);
+		controller = passedController;
 		super.getStyleClass().add("toolbutton");
 		setToolTip(label);
 		this.setOnAction(new EventHandler() {
@@ -29,7 +31,7 @@ public abstract class ColorButtons extends ColorPicker{
 		Tooltip.install(this, hover);
 	}
 	
-	private void action() {
+	public void action() {
 		colorChosen = super.getValue();
 	}
 	

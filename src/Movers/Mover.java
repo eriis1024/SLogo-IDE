@@ -9,6 +9,8 @@ import javafx.scene.shape.Line;
 
 public class Mover implements MoverInterface {
 
+	public static int MOVER_SIZE = 20;
+	public static int PEN_WIDTH = 2;
 	private ImageView myImage;
 	private double xInd;
 	private double yInd;
@@ -16,6 +18,7 @@ public class Mover implements MoverInterface {
 	protected boolean imageCheck;
 	protected boolean clearCheck;
 	private List<Line> myLines;
+	private Color penColor = Color.BLACK; //default
 
 	public Mover(double x, double y, String imageFilePath) {
 		setMover(x, y, imageFilePath);
@@ -62,6 +65,11 @@ public class Mover implements MoverInterface {
 	public ImageView getImageView() {
 		return myImage;
 	}
+	
+	public void setImageView(String imageFilePath) {
+		File file = new File(imageFilePath);
+		myImage = new ImageView(file.toURI().toString());
+	}
 
 	public Line drawLine(double x, double y, double x1, double y1) {
 		Line newLine = new Line();
@@ -69,8 +77,8 @@ public class Mover implements MoverInterface {
 		newLine.setEndX(x1 + 10);
 		newLine.setStartY(y + 10);
 		newLine.setEndY(y1 + 10);
-		newLine.setFill(Color.RED);
-		newLine.setStrokeWidth(2);
+		newLine.setStrokeWidth(PEN_WIDTH);
+		newLine.setStroke(penColor);
 		myLines.add(newLine);
 		return newLine;
 	}
@@ -86,14 +94,25 @@ public class Mover implements MoverInterface {
 	public void setClear(boolean bool) {
 		clearCheck = bool;	
 	}
+	
+	public void setPenColor(Color color) {
+		penColor = color;
+	}
+	
+	public void setNewImage(String imageFilePath) {
+		File file = new File(imageFilePath);
+		myImage = new ImageView(file.toURI().toString());
+		myImage.setFitWidth(MOVER_SIZE);
+		myImage.setFitHeight(MOVER_SIZE);
+	}
 
 	private void setMover(double x, double y, String imageFilePath){
 		xInd = x;
 		yInd = y;
 		File file = new File(imageFilePath);
 		myImage = new ImageView(file.toURI().toString());
-		myImage.setFitWidth(20);
-		myImage.setFitHeight(20);
+		myImage.setFitWidth(MOVER_SIZE);
+		myImage.setFitHeight(MOVER_SIZE);
 		myLines = new ArrayList<Line>();
 		penCheck =  true;
 		imageCheck = true;   
