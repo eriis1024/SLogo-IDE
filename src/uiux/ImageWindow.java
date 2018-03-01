@@ -30,8 +30,7 @@ public class ImageWindow {
 	//don't let turtle out of screen bounds
 	//setXY, turtle at 0,0, input commands relative to that
 	//test all other commands
-	//clear lines, determine final window size and where (0,0) is, change this for Home, CS...
-	//add methods to mover interface
+	//set boundaries for turtle (wrap screen)
 	
 	public Node updateScreen() {
 		updateTurtleLocation(myTurtle);
@@ -42,6 +41,7 @@ public class ImageWindow {
 		return myNode;
 	}
 	
+	//have the screen 
 	public void updateTurtleLocation(Mover turtle) {
 		double x = turtle.getImageView().getX();
 		double y = turtle.getImageView().getY();
@@ -51,6 +51,11 @@ public class ImageWindow {
 			addTurtleInScene(turtle);
 			return;
 		}
+//		if (turtle.getY() < 0) {
+//			turtle.setPenStatus(false);
+//			turtle.setCoords(50, 50);
+//			
+//		}
 		if (turtle.getPenStatus() == true) {
 			addLineInScene(myTurtle, x, y);
 		}
@@ -73,10 +78,10 @@ public class ImageWindow {
 		myRoot.getChildren().add(l);
 	}
 	
-	//Sets up the size of the image window and positions the turtle in the middle,
-	//also adds the styling 
+
 	private void setSizeAndTurtle() {
 		Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
+		System.out.println(primaryScreenBounds.getWidth()/2);
 		myRoot.setPrefWidth(primaryScreenBounds.getWidth()/2);
 		System.out.println(primaryScreenBounds.getWidth()/2);
 		myRoot.setPrefHeight(primaryScreenBounds.getHeight()/2);
