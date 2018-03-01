@@ -41,7 +41,7 @@ public class Window extends BorderPane {
 						res = res.toUpperCase();
 						INPUT current = new INPUT(res, result.getTurtle());
 						current.inputDecoder(res);
-						console.findOutput(res);
+						console.findOutput(current.getConsole());
 						updateScreen();
 					}
 					catch (NullPointerException e){

@@ -38,6 +38,9 @@
     -fx-text-fill: black;
 }
 
+.color-picker .color-picker-label .text {
+	visibility: false;
+}
 
 
 
