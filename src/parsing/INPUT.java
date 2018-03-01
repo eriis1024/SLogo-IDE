@@ -166,7 +166,15 @@ public class INPUT {
 		}
 		
 		for (int i=0;i<Command.size();i++){
-			if (Command.get(i).equals(currentLang.Forward)){
+			
+			if (Command.get(i).equals("SHOWVARS")) {
+				CONSOLE = variables.keySet().toString();
+				break;
+			}
+			
+			else if((currentLang.Forward).toUpperCase().contains(Command.get(i).toUpperCase())) {
+			//if (Command.get(i).equals(currentLang.Forward)){
+				System.out.println("FD COMMAND");
 				Integer[] parameter = new Integer[1];
 				parameter[0] = Integer.parseInt(Command.get(i + 1));
 				CommandInterface current = new Forward(myTurtle);
@@ -174,7 +182,8 @@ public class INPUT {
 				CONSOLE = parameter[0]+"";
 				break;
 			} 
-			else if (Command.get(i).equals(currentLang.Backward)){
+			else if ((currentLang.Backward).toUpperCase().contains(Command.get(i).toUpperCase())) {
+			//else if (Command.get(i).equals(currentLang.Backward)){
 				Integer[] parameter = new Integer[1];
 				parameter[0] = Integer.parseInt(Command.get(i + 1));
 				CommandInterface current = new Back(myTurtle);
@@ -182,7 +191,8 @@ public class INPUT {
 				CONSOLE = parameter[0]+"";
 				break;
 			} 
-			else if (Command.get(i).equals(currentLang.Left)){
+			else if ((currentLang.Left).toUpperCase().contains(Command.get(i).toUpperCase())) {
+			//else if (Command.get(i).equals(currentLang.Left)){
 				Integer[] parameter = new Integer[1];
 				parameter[0] = Integer.parseInt(Command.get(i + 1));
 				CommandInterface current = new Left(myTurtle);
@@ -190,7 +200,8 @@ public class INPUT {
 				CONSOLE = parameter[0]+"";
 				break;
 			} 
-			else if (Command.get(i).equals(currentLang.Right)){
+			else if ((currentLang.Right).toUpperCase().contains(Command.get(i).toUpperCase())) {
+			//else if (Command.get(i).equals(currentLang.Right)){
 				Integer[] parameter = new Integer[1];
 				parameter[0] = Integer.parseInt(Command.get(i + 1));
 				CommandInterface current = new Right(myTurtle);
@@ -198,7 +209,8 @@ public class INPUT {
 				CONSOLE = parameter[0]+"";
 				break;
 			} 
-			else if (Command.get(i).equals(currentLang.SetHeading)){
+			else if ((currentLang.SetHeading).toUpperCase().contains(Command.get(i).toUpperCase())) {
+			//else if (Command.get(i).equals(currentLang.SetHeading)){
 				Integer[] parameter = new Integer[1];
 				parameter[0] = Integer.parseInt(Command.get(i + 1));
 				CommandInterface current = new SetHeading(myTurtle);
@@ -207,7 +219,8 @@ public class INPUT {
 				CONSOLE = turning+"";
 				break;
 			} 
-			else if (Command.get(i).equals(currentLang.SetPosition)){
+			else if ((currentLang.SetPosition).toUpperCase().contains(Command.get(i).toUpperCase())) {
+			//else if (Command.get(i).equals(currentLang.SetPosition)){
 				Integer[] parameter = new Integer[2];
 				parameter[0] = Integer.parseInt(Command.get(i + 1));
 				parameter[1] = Integer.parseInt(Command.get(i + 2));
@@ -216,31 +229,36 @@ public class INPUT {
 				CONSOLE = "{"+parameter[0]+","+parameter[1]+"}";
 				break;
 			} 
-			else if (Command.get(i).equals(currentLang.PenDown)){
+			else if ((currentLang.PenDown).toUpperCase().contains(Command.get(i).toUpperCase())) {
+			//else if (Command.get(i).equals(currentLang.PenDown)){
 				CommandInterface current = new PenDown(myTurtle);
 				current.executeCommand(new Integer[0]);
 				CONSOLE = "1";
 				break;
 			} 
-			else if (Command.get(i).equals(currentLang.PenUp)){
+			else if ((currentLang.PenUp).toUpperCase().contains(Command.get(i).toUpperCase())) {
+			//else if (Command.get(i).equals(currentLang.PenUp)){
 				CommandInterface current = new PenUp(myTurtle);
 				current.executeCommand(new Integer[0]);
 				CONSOLE = "0";
 				break;
 			} 
-			else if (Command.get(i).equals(currentLang.ShowTurtle)){
+			else if ((currentLang.ShowTurtle).toUpperCase().contains(Command.get(i).toUpperCase())) {
+			//else if (Command.get(i).equals(currentLang.ShowTurtle)){
 				CommandInterface current = new ShowTurtle(myTurtle);
 				current.executeCommand(new Integer[0]);
 				CONSOLE = "1";
 				break;
 			} 
-			else if (Command.get(i).equals(currentLang.HideTurtle)){
+			else if ((currentLang.HideTurtle).toUpperCase().contains(Command.get(i).toUpperCase())) {
+			//else if (Command.get(i).equals(currentLang.HideTurtle)){
 				CommandInterface current = new HideTurtle(myTurtle);
 				current.executeCommand(new Integer[0]);
 				CONSOLE = "0";
 				break;
 			} 
-			else if (Command.get(i).equals(currentLang.Home)){
+			else if ((currentLang.Home).toUpperCase().contains(Command.get(i).toUpperCase())) {
+			//else if (Command.get(i).equals(currentLang.Home)){
 				double previousX = myTurtle.getX();
 				double previousY = myTurtle.getY();
 				CommandInterface current = new Home(myTurtle);
@@ -251,7 +269,8 @@ public class INPUT {
 				CONSOLE = moving+"";
 				break;
 			} 
-			else if (Command.get(i).equals(currentLang.ClearScreen)){
+			else if ((currentLang.ClearScreen).toUpperCase().contains(Command.get(i).toUpperCase())) {
+			//else if (Command.get(i).equals(currentLang.ClearScreen)){
 				double previousX = myTurtle.getX();
 				double previousY = myTurtle.getY();
 				CommandInterface current = new ClearScreen(myTurtle);
@@ -262,14 +281,17 @@ public class INPUT {
 				CONSOLE = moving+"";
 				break;
 			} 
-			else if (Command.get(i).equals(currentLang.Heading)){
+			else if ((currentLang.Heading).toUpperCase().contains(Command.get(i).toUpperCase())) {
+			//else if (Command.get(i).equals(currentLang.Heading)){
 				CONSOLE = myTurtle.getAngle()+"";
 			} 
-			else if (Command.get(i).equals(currentLang.IsPenDown)){
+			else if ((currentLang.IsPenDown).toUpperCase().contains(Command.get(i).toUpperCase())) {
+			//else if (Command.get(i).equals(currentLang.IsPenDown)){
 				if (myTurtle.getPenStatus()) {CONSOLE = "1";} 
 				else {CONSOLE = "0";}
 			} 
-			else if (Command.get(i).equals(currentLang.IsShowing)){
+			else if ((currentLang.IsShowing).toUpperCase().contains(Command.get(i).toUpperCase())) {
+			//else if (Command.get(i).equals(currentLang.IsShowing)){
 				if (myTurtle.getImageStatus()) {CONSOLE = "1";} 
 				else {CONSOLE = "0";}
 			}
