@@ -11,7 +11,6 @@ public class Heading implements CommandInterface {
 	
 	@Override
 	public double executeCommand(Integer[] args) { 
-		System.out.println(myMover.getAngle());
 		return myMover.getAngle();
 	}
 }

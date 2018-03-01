@@ -20,16 +20,12 @@ public class MenuBarController {
 	}
 
 	public void findPenColor(Color colorChosen) {
-		
-		
+		imageWindow.setPenColor(colorChosen);
 	}
 
 	public void findBackgroundColor(Color colorChosen) {
-		// TODO Auto-generated method stub
 		imageWindow.setBackgroundColor(colorChosen);
-		
 	}
-	
 
 	public void test() {
 		System.out.println("not null");

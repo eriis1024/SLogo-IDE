@@ -1,5 +1,4 @@
 package uiux;
-
 import javafx.scene.paint.Color;
 
 public class PenButton extends ColorButtons{
@@ -11,5 +10,6 @@ public class PenButton extends ColorButtons{
 	public void action() {
 		super.action();
 		super.controller.findPenColor(colorChosen);
+
 	}
 }

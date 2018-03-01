@@ -34,4 +34,7 @@ public interface ImageWindowInterface {
 	 * 
 	 */
 	public void setBackgroundColor(Color colorChosen);
+	
+	
+	public void setPenColor(Color colorChosen);
 }
