@@ -109,6 +109,11 @@ public class INPUT {
 		
 		for (int i=0;i<Command.size();i++){
 			switch (Command.get(i)){
+				
+				case "SHOWVARS":{
+					CONSOLE = variables.keySet().toString();
+					break;
+				}
 			
 				case "FORWARD":
 				case "FD":{
