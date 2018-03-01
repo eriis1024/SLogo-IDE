@@ -19,6 +19,7 @@ public class Window extends BorderPane {
 	private ImageWindowInterface result = new ImageWindow();
 	private TerminalInterface compiler = new Terminal();
 	private INPUT current = new INPUT(result.getTurtle());
+	
 
 	private MenuBarController controller = new MenuBarController(result);
 	private MenuBar toolbar = new MenuBar(controller);
@@ -32,6 +33,7 @@ public class Window extends BorderPane {
 	
 	public Window() {
 		super();
+		current.setLanguage("English");
 		this.setTop(toolbar);
 		this.setLeft(compiler.getSlogoTerminal());
 		this.setBottom(console.getConsole());
@@ -45,7 +47,6 @@ public class Window extends BorderPane {
 						res = null;
 					}
 					try {
-						res = res.toUpperCase();
 						current.inputDecoder(res);
 						console.findOutput(current.getConsole());
 						updateScreen();

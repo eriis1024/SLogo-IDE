@@ -29,7 +29,6 @@ public class MenuBar extends HBox{
 	public MenuBar(MenuBarController passedController) {
 		super(PADDING);
 		controller = passedController;
-		controller.test();
 		penColor = new PenButton(controller);
 		backgroundColor = new BackgroundButton(controller);
 		
