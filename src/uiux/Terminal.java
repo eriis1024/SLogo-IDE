@@ -1,6 +1,5 @@
 package uiux;
 
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,12 +17,12 @@ import javafx.stage.Screen;
  *  This is an area of the program with a textbox that the user can type commands into.
  *	The program will list the previous commands for the user to see. 
  */
-public class Terminal{
-	
+public class Terminal implements TerminalInterface {
+
 	private Node myNode;
 	private TextField myTextField;
 	private ObservableList<String> myPrevCommands;
-	
+
 	private String input = null;
 
 	/*
@@ -36,9 +35,8 @@ public class Terminal{
 
 	/*
 	 * Returns the node representing the slogo terminal. Called in the SlogoView
-	 * class, when the view is initialized.
+	 * class, when the view is initialized. Part of the Front End Internal API.
 	 */
-	// INTERNAL API
 	public Node getSlogoTerminal() {
 		return myNode;
 	}
@@ -51,18 +49,18 @@ public class Terminal{
 		result.getChildren().add(makeHistoryTable());
 		result.getChildren().add(makeInputField(40, event -> passTextInput()));
 		result.getStyleClass().add("box");
-		
+
 		Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
-		result.setPrefWidth(primaryScreenBounds.getWidth()/2);
-		result.setMinHeight(primaryScreenBounds.getHeight()/2);
-		
-		//Creates an enter button -- still debating on whether to use
-		//result.getChildren().add(makeButton("Enter", event -> passTextInput()));
-		
+		result.setPrefWidth(primaryScreenBounds.getWidth() / 2);
+		result.setMinHeight(primaryScreenBounds.getHeight() / 2);
+
+		// Creates an enter button -- still debating on whether to use
+		// result.getChildren().add(makeButton("Enter", event -> passTextInput()));
+
 		return result;
-		
+
 	}
-	
+
 	/*
 	 * Makes list of previously entered commands.
 	 */
@@ -72,7 +70,7 @@ public class Terminal{
 		list.setItems(myPrevCommands);
 		return list;
 	}
-	
+
 	/*
 	 * Makes input text field.
 	 */
@@ -84,26 +82,28 @@ public class Terminal{
 		myTextField = result;
 		return result;
 	}
-	
+
 	/*
 	 * Returns the text entered by the user currently in the textbox
 	 */
-	// PART OF THE EXTERNAL API
-	public String passTextInput() {
+	private String passTextInput() {
 		String retString = myTextField.getText();
 		myPrevCommands.add(retString);
 		myTextField.clear();
 		input = retString;
 		return retString;
 	}
-	
-	
+
+	/*
+	 * Returns the text entered by the user that was passed to this class form the
+	 * textbox. Part of the Front End External API.
+	 */
 	public String getInput() {
 		String result = input;
 		input = null;
 		return result;
 	}
-	
+
 	/*
 	 * makes enter button.
 	 */
@@ -115,5 +115,5 @@ public class Terminal{
 		result.setOnAction(handler);
 		return result;
 	}
-	
+
 }
